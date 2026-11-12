@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --tm-bg: #0E0F12;
+    --tm-surface: #17181D;
+    --tm-surface-hover: #1F2128;
+    --tm-border: rgba(255, 255, 255, 0.08);
+    --tm-text: #FFFFFF;
+    --tm-muted: #8E929C;
+    --tm-green: #22C55E;
+    --tm-green-glow: rgba(34, 197, 94, 0.25);
+  }
+
+  body {
+    background-color: #0E0F12;
+    color: #FFFFFF;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  code, pre, .font-mono-val, .mono-telemetry {
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+    font-feature-settings: "tnum" 1, "zero" 1;
+  }
+}
+
+/* Sleek dark scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121316;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2D36;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B3F4A;
+}
+
+/* Glass panel effect */
+.dark-glass-panel {
+  background: rgba(23, 24, 29, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark-pill {
+  background: #1F2128;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.dark-pill-inactive {
+  color: #8E929C;
+  transition: all 0.15s ease-in-out;
+}
+
+.dark-pill-inactive:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Leaflet dark pill tooltip */
+.leaflet-dark-pill-label {
+  background: #18191E !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 6px !important;
+  padding: 3px 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-dark-pill-label::before {
+  display: none !important;
+}
