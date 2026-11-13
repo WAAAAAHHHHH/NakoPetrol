@@ -199,7 +199,6 @@ export function App() {
         demoFields={demoFields}
         onSelectField={handleSelectField}
         onOpenDisclosures={() => setShowTransparencyModal(true)}
-        fieldDigitalTwin={fieldDigitalTwin}
       />
 
       {/* 2. MAIN ACTIVE VIEWPORT */}
