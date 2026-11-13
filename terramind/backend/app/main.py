@@ -1,5 +1,5 @@
 """
-Germelon — Global Agricultural Intelligence & Decision-Support Platform
+Farmelster — Global Agricultural Intelligence & Decision-Support Platform
 NASA Space Apps Challenge 2026: Field Shift: Adapting Farms with NASA Data
 Backend Application Server
 """
@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router as api_router
 
 app = FastAPI(
-    title="Germelon — Global Agricultural Intelligence Platform API",
+    title="Farmelster — Global Agricultural Intelligence Platform API",
     description="Scientific decision-support platform integrating NASA POWER agroclimatology, SoilGrids pedology, and remote sensing for climate-resilient farming worldwide.",
     version="1.0.0"
 )
@@ -29,7 +29,7 @@ app.include_router(api_router, prefix="/api")
 def health_check():
     return {
         "status": "nominal",
-        "platform": "Germelon Global Agricultural Intelligence System",
+        "platform": "Farmelster Global Agricultural Intelligence System",
         "challenge": "NASA Space Apps Challenge 2026 | Field Shift: Adapting Farms with NASA Data",
         "version": "1.0.0",
         "data_feeds": {

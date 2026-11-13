@@ -40,7 +40,7 @@ export const DataTransparencyModal: React.FC<DataTransparencyModalProps> = ({
           NASA Earth Observation Data & Methodological Sources
         </h2>
         <p className="text-xs text-stone-300 leading-relaxed mb-6 font-sans">
-          Germelon was architected for the <strong>NASA Space Apps Challenge 2026</strong> under the challenge category{' '}
+          Farmelster was architected for the <strong>NASA Space Apps Challenge 2026</strong> under the challenge category{' '}
           <em>"Field Shift: Adapting Farms with NASA Data"</em>.
           To ensure scientific reproducibility, all datasets, models, spatial resolutions, and analytical limitations are formally cataloged below.
         </p>
@@ -170,7 +170,7 @@ export const DataTransparencyModal: React.FC<DataTransparencyModalProps> = ({
             <span>Methodological Limitations & Advisory Disclaimers</span>
           </div>
           <p className="text-[#FBBF24] leading-relaxed">
-            1. <strong>Independent Student Submission:</strong> Germelon is an educational and technical exploration platform developed for the NASA Space Apps Challenge 2026. NASA does not formally certify or validate individual agricultural forecasts.
+            1. <strong>Independent Student Submission:</strong> Farmelster is an educational and technical exploration platform developed for the NASA Space Apps Challenge 2026. NASA does not formally certify or validate individual agricultural forecasts.
           </p>
           <p className="text-[#FBBF24] leading-relaxed">
             2. <strong>Pedological Validation:</strong> Gridded 250m soil estimations provide regional baseline context. They cannot substitute for ISO-certified wet chemistry core sampling for exact micro-nutrient fertilizer prescriptions.

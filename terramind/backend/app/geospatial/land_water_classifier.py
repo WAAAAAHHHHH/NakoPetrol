@@ -1,5 +1,5 @@
 """
-Germelon Geospatial Intelligence
+Farmelster Geospatial Intelligence
 High-Precision Global Land vs. Marine Hydrosphere Surface Classifier
 Uses 10m Natural Earth vector polygons (4,064 indexed polygons) loaded into a Shapely STRtree
 for sub-millisecond, 100% deterministic, offline pinpoint accuracy across the entire globe.
@@ -37,12 +37,12 @@ class LandWaterClassifier:
                     wkb_list = pickle.load(f)
                 self._polygons = [wkb.loads(w) for w in wkb_list]
                 self._tree = STRtree(self._polygons)
-                print(f"[Germelon] Loaded {len(self._polygons)} global land polygons into STRtree (Pinpoint Precision Active).")
+                print(f"[Farmelster] Loaded {len(self._polygons)} global land polygons into STRtree (Pinpoint Precision Active).")
             except Exception as e:
-                print(f"[Germelon] Warning: Failed to load spatial index: {e}")
+                print(f"[Farmelster] Warning: Failed to load spatial index: {e}")
                 self._tree = None
         else:
-            print(f"[Germelon] Warning: {wkb_file} not found.")
+            print(f"[Farmelster] Warning: {wkb_file} not found.")
 
     def is_terrestrial_land(self, lat: float, lon: float) -> bool:
         """Determines with mathematical point-in-polygon precision if (lat, lon) is on land."""

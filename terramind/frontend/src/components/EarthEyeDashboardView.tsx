@@ -166,7 +166,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
           latitude={currentLat}
           longitude={currentLon}
           polygonCoordinates={selectedField?.polygon_coordinates}
-          fieldName={`germelon: ${selectedField?.name.split(' ')[0] || 'Active Farm'}`}
+          fieldName={`farmelster: ${selectedField?.name.split(' ')[0] || 'Active Farm'}`}
           activeLayer={activeLayer}
           onMapClick={handleMapClick}
           zoomLevel={zoomLevel}
@@ -598,7 +598,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
               Analyze Any Global Farm Coordinates
             </h3>
             <p className="text-xs text-[#8E929C] mb-4">
-              Enter any coordinate worldwide. Germelon will retrieve live NASA POWER agroclimatology and ISRIC SoilGrids pedology.
+              Enter any coordinate worldwide. Farmelster will retrieve live NASA POWER agroclimatology and ISRIC SoilGrids pedology.
             </p>
 
             <form onSubmit={handleCustomFormSubmit} className="space-y-3 text-xs">

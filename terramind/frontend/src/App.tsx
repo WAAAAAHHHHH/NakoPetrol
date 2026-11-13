@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GermelonHeader, GermelonTab } from './components/EarthEyeHeader';
+import { FarmelsterHeader, FarmelsterTab } from './components/EarthEyeHeader';
 import { EarthEyeDashboardView } from './components/EarthEyeDashboardView';
 import { FieldExplorer } from './components/FieldExplorer';
 import { CropRecommendationsView } from './components/CropRecommendationsView';
@@ -16,7 +16,7 @@ import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
 import { terramindApi } from './services/api';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<GermelonTab>('dashboard');
+  const [activeTab, setActiveTab] = useState<FarmelsterTab>('dashboard');
   const [demoFields, setDemoFields] = useState<DemoField[]>([]);
   const [selectedField, setSelectedField] = useState<DemoField | null>(null);
   const [fieldDigitalTwin, setFieldDigitalTwin] = useState<FieldDigitalTwin | null>(null);
@@ -192,7 +192,7 @@ export function App() {
   return (
     <div className="flex flex-col h-screen w-screen bg-[#0E0F12] text-white overflow-hidden font-sans select-none">
       {/* 1. TOP GLOBAL NAVIGATION HEADER */}
-      <GermelonHeader
+      <FarmelsterHeader
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         selectedField={selectedField}
@@ -308,7 +308,7 @@ export function App() {
               </div>
             )}
 
-            {/* ADVISOR -> Germelon AI Agronomic Decision Engine */}
+            {/* ADVISOR -> Farmelster AI Agronomic Decision Engine */}
             {activeTab === 'advisor' && (
               <div className="h-full overflow-y-auto p-6 bg-[#0E0F12]">
                 <AiAdvisorView

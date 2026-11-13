@@ -1,8 +1,8 @@
-# Germelon — Global Agricultural Intelligence & Remote Sensing Platform
+# Farmelster — Global Agricultural Intelligence & Remote Sensing Platform
 
 > **NASA Space Apps Challenge 2026** — *Field Shift: Adapting Farms with NASA Data*
 
-Germelon is a scientific agricultural intelligence platform and geospatial decision-support system. It integrates live NASA satellite observations, NASA POWER agroclimatology reanalysis, ISRIC SoilGrids 250m pedology, and FAO EcoCrop multi-attribute suitability algorithms into an interactive global GIS environment.
+Farmelster is a scientific agricultural intelligence platform and geospatial decision-support system. It integrates live NASA satellite observations, NASA POWER agroclimatology reanalysis, ISRIC SoilGrids 250m pedology, and FAO EcoCrop multi-attribute suitability algorithms into an interactive global GIS environment.
 
 ---
 
@@ -24,7 +24,7 @@ Germelon is a scientific agricultural intelligence platform and geospatial decis
 ## Architecture
 
 ```
-germelon/
+farmelster/
 ├── run_local.bat                     # 1-Click Windows Local Launcher
 ├── terramind/
 │   ├── backend/                      # FastAPI Python Service
@@ -76,7 +76,7 @@ npm run dev -- --host 0.0.0.0 --port 5173
 
 ## Scientific Data Integrity
 
-Germelon strictly enforces scientific realism:
+Farmelster strictly enforces scientific realism:
 - **No Random Numbers**: All climate waveforms originate directly from NASA POWER MERRA-2 grids.
 - **Open Water Physics**: Ocean and sea coordinates display genuine maritime atmospheric conditions alongside submerged non-arable substrate, negative spectral NDVI, and zero cultivable terrestrial crops.
 - **Zero Hallucination**: Fallbacks are grounded in published FAO EcoCrop agronomic standards.
@@ -85,3 +85,4 @@ Germelon strictly enforces scientific realism:
 
 ## License
 MIT License. Developed for the NASA Space Apps Challenge 2026.
+

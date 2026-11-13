@@ -1,14 +1,14 @@
 @echo off
-title Germelon Platform Launcher
+title Farmelster Platform Launcher
 echo ========================================================
-echo   Launching Germelon — Global Agricultural Intelligence
+echo   Launching Farmelster — Global Agricultural Intelligence
 echo ========================================================
 echo.
 
-start "Germelon Backend (FastAPI)" cmd /k "cd /d %~dp0terramind\backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+start "Farmelster Backend (FastAPI)" cmd /k "cd /d %~dp0terramind\backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
 timeout /t 2 /nobreak >nul
 
-start "Germelon Frontend (Vite React)" cmd /k "cd /d %~dp0terramind\frontend && npm run dev -- --host 0.0.0.0 --port 5173"
+start "Farmelster Frontend (Vite React)" cmd /k "cd /d %~dp0terramind\frontend && npm run dev -- --host 0.0.0.0 --port 5173"
 
 echo.
 echo Both services launched!

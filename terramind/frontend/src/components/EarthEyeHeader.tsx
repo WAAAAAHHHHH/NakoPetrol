@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { DemoField, FieldDigitalTwin } from '../types/terramind';
 
-export type GermelonTab = 
+export type FarmelsterTab = 
   | 'dashboard'
   | 'crops'
   | 'soil'
@@ -28,9 +28,9 @@ export type GermelonTab =
   | 'rotation'
   | 'advisor';
 
-interface GermelonHeaderProps {
-  activeTab: GermelonTab;
-  setActiveTab: (tab: GermelonTab) => void;
+interface FarmelsterHeaderProps {
+  activeTab: FarmelsterTab;
+  setActiveTab: (tab: FarmelsterTab) => void;
   selectedField: DemoField | null;
   demoFields: DemoField[];
   onSelectField: (f: DemoField) => void;
@@ -38,7 +38,7 @@ interface GermelonHeaderProps {
   fieldDigitalTwin: FieldDigitalTwin | null;
 }
 
-export const GermelonHeader: React.FC<GermelonHeaderProps> = ({
+export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   activeTab,
   setActiveTab,
   selectedField,
@@ -116,7 +116,7 @@ export const GermelonHeader: React.FC<GermelonHeaderProps> = ({
     });
   }
 
-  const primaryTabs: Array<{ id: GermelonTab; label: string }> = [
+  const primaryTabs: Array<{ id: FarmelsterTab; label: string }> = [
     { id: 'dashboard', label: 'Dashboard' },
     { id: 'crops', label: 'Crop Planning' },
     { id: 'soil', label: 'Soil Analysis' },
@@ -125,7 +125,7 @@ export const GermelonHeader: React.FC<GermelonHeaderProps> = ({
     { id: 'scenario', label: 'Scenario Lab' }
   ];
 
-  const secondaryTabs: Array<{ id: GermelonTab; label: string; icon: React.ReactNode }> = [
+  const secondaryTabs: Array<{ id: FarmelsterTab; label: string; icon: React.ReactNode }> = [
     { id: 'climate', label: 'NASA POWER Climate', icon: <Sun size={13} /> },
     { id: 'rotation', label: 'Crop Succession', icon: <Sprout size={13} /> },
     { id: 'advisor', label: 'Agronomic Advisor', icon: <Terminal size={13} /> }
@@ -133,7 +133,7 @@ export const GermelonHeader: React.FC<GermelonHeaderProps> = ({
 
   return (
     <header className="h-16 bg-[#121316] border-b border-white/[0.06] px-5 flex items-center justify-between select-none shrink-0 z-30 font-sans">
-      {/* 1. BRAND: germelon Typography (Clean, Minimal, No Neon / No Green Logo) */}
+      {/* 1. BRAND: farmelster Typography (Clean, Minimal, No Neon / No Green Logo) */}
       <div className="flex items-center space-x-3">
         <div 
           onClick={() => setActiveTab('dashboard')}
@@ -142,7 +142,7 @@ export const GermelonHeader: React.FC<GermelonHeaderProps> = ({
           <div>
             <div className="flex items-center space-x-2 leading-none">
               <span className="font-semibold text-base text-white tracking-tight font-sans">
-                germelon
+                farmelster
               </span>
               <span className="text-[9px] font-mono font-medium uppercase px-1.5 py-0.5 rounded bg-white/[0.06] text-[#A0A29C] border border-white/10">
                 NASA Earth Data
