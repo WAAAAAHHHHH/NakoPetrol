@@ -202,7 +202,13 @@ export function App() {
         onSelectField={handleSelectField}
         onOpenDisclosures={() => setShowTransparencyModal(true)}
         simplified={simplified}
-        onToggleSimplified={() => setSimplified(s => !s)}
+        onToggleSimplified={() => {
+          setSimplified(s => {
+            // when switching back to expert, reset to dashboard so the map always shows
+            if (s) setActiveTab('dashboard');
+            return !s;
+          });
+        }}
       />
 
       {/* 2. MAIN ACTIVE VIEWPORT */}

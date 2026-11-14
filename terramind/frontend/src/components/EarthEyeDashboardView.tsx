@@ -159,7 +159,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-64px)] overflow-hidden bg-[#0D0E12] select-none font-sans">
+    <div className="relative w-full h-full overflow-hidden bg-[#0D0E12] select-none font-sans">
       {/* 1. REAL GLOBAL SATELLITE MAP */}
       <div className="absolute inset-0 z-0">
         <GlobalLeafletMap
