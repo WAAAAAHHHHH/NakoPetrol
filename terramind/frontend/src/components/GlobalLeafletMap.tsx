@@ -55,9 +55,26 @@ export const GlobalLeafletMap: React.FC<GlobalLeafletMapProps> = ({
       });
 
       mapInstanceRef.current = map;
+
+      // Invalidate size shortly after mount to ensure tiles render immediately
+      setTimeout(() => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize();
+        }
+      }, 100);
+    }
+
+    const observer = new ResizeObserver(() => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    });
+    if (mapContainerRef.current) {
+      observer.observe(mapContainerRef.current);
     }
 
     return () => {
+      observer.disconnect();
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FarmelsterHeader, FarmelsterTab } from './components/EarthEyeHeader';
 import { EarthEyeDashboardView } from './components/EarthEyeDashboardView';
 import { CropRecommendationsView } from './components/CropRecommendationsView';
@@ -16,15 +16,50 @@ import { IntroSplash } from './components/IntroSplash';
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
 import { terramindApi } from './services/api';
 
+const DEFAULT_DEMO_FIELD: DemoField = {
+  id: 'field_california',
+  name: 'San Joaquin Valley Farm',
+  region: 'Central Valley, California, USA',
+  latitude: 36.8025,
+  longitude: -119.8145,
+  area_hectares: 52.0,
+  elevation_m: 82.0,
+  default_previous_crop: 'tomatoes',
+  irrigation_available: true,
+  description: 'High-value Mediterranean agricultural basin; intensive drip fertigation, high solar insolation, and managed alluvial soils.',
+  polygon_coordinates: [
+    [36.8040, -119.8170],
+    [36.8040, -119.8120],
+    [36.8010, -119.8120],
+    [36.8010, -119.8170],
+  ],
+};
+
 export function App() {
-  const [showSplash, setShowSplash]           = useState<boolean>(true);
+  const [showSplash, setShowSplash] = useState<boolean>(() => {
+    try {
+      return !sessionStorage.getItem('farmelster_splash_dismissed');
+    } catch {
+      return false;
+    }
+  });
+
+  const handleDismissSplash = useCallback(() => {
+    setShowSplash(false);
+    try {
+      sessionStorage.setItem('farmelster_splash_dismissed', '1');
+    } catch {
+      // ignore
+    }
+  }, []);
+
   const [activeTab, setActiveTab]             = useState<FarmelsterTab>('dashboard');
-  const [demoFields, setDemoFields]           = useState<DemoField[]>([]);
-  const [selectedField, setSelectedField]     = useState<DemoField | null>(null);
+  const [demoFields, setDemoFields]           = useState<DemoField[]>([DEFAULT_DEMO_FIELD]);
+  const [selectedField, setSelectedField]     = useState<DemoField | null>(DEFAULT_DEMO_FIELD);
   const [fieldDigitalTwin, setFieldDigitalTwin] = useState<FieldDigitalTwin | null>(null);
 
-  const [irrigationAvailable, setIrrigationAvailable]           = useState<boolean>(false);
-  const [selectedCropIdForCalendar, setSelectedCropIdForCalendar] = useState<string>('wheat');
+  const [irrigationAvailable, setIrrigationAvailable]           = useState<boolean>(true);
+  const [selectedCropIdForCalendar, setSelectedCropIdForCalendar] = useState<string>('tomatoes');
   const [customWeights, setCustomWeights] = useState<ScoringWeights>({
     weight_climate_temp: 0.30,
     weight_water:        0.30,
@@ -182,7 +217,7 @@ export function App() {
   return (
     <>
       {/* ── ENTRANCE SPLASH ── */}
-      {showSplash && <IntroSplash onDone={() => setShowSplash(false)} />}
+      {showSplash && <IntroSplash onDone={handleDismissSplash} />}
 
       {/* ── MAIN APP ── */}
       <div className="flex flex-col h-screen w-screen bg-[#0E0F12] text-white overflow-hidden font-sans select-none">
@@ -314,6 +349,13 @@ export function App() {
                 </div>
               )}
             </>
+          )}
+
+          {!selectedField && (
+            <div className="flex flex-col items-center justify-center h-full gap-3 text-white/40">
+              <div className="w-7 h-7 border-2 border-white/10 border-t-[#7C9A6B] rounded-full animate-spin" />
+              <span className="text-xs font-medium">Loading Farmelster Intelligence...</span>
+            </div>
           )}
         </main>
 
