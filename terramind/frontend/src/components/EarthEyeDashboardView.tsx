@@ -20,7 +20,8 @@ import {
   MapPin,
   ExternalLink,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  FileText
 } from 'lucide-react';
 import { DemoField, FieldDigitalTwin } from '../types/terramind';
 import { GlobalLeafletMap } from './GlobalLeafletMap';
@@ -34,6 +35,7 @@ interface EarthEyeDashboardViewProps {
   onNavigateToTab: (tab: any) => void;
   onRunCustomAnalysis: (name: string, lat: number, lon: number, area: number, irrig: boolean) => void;
   onOpenDisclosures: () => void;
+  onOpenDossier?: () => void;
 }
 
 export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
@@ -44,7 +46,8 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
   loading,
   onNavigateToTab,
   onRunCustomAnalysis,
-  onOpenDisclosures
+  onOpenDisclosures,
+  onOpenDossier
 }) => {
   const [activeLayer, setActiveLayer] = useState<string>('satellite');
   const [showRightPanel, setShowRightPanel] = useState<boolean>(true);
@@ -437,13 +440,25 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
             </div>
 
             {/* Add Custom Parcel Action */}
-            <button
-              onClick={() => setShowAddModal(true)}
-              className="w-full py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors cursor-pointer border border-white/10"
-            >
-              <Plus size={13} className="text-emerald-400" />
-              <span>Analyze Custom Coordinates</span>
-            </button>
+            <div className="space-y-2 pt-1">
+              <button
+                onClick={() => setShowAddModal(true)}
+                className="w-full py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors cursor-pointer border border-white/10"
+              >
+                <Plus size={13} className="text-[#7C9A6B]" />
+                <span>Analyze Custom Coordinates</span>
+              </button>
+
+              {onOpenDossier && (
+                <button
+                  onClick={onOpenDossier}
+                  className="w-full py-2 bg-[#7C9A6B]/10 hover:bg-[#7C9A6B]/20 text-[#A8C496] rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors cursor-pointer border border-[#7C9A6B]/25 shadow-sm"
+                >
+                  <FileText size={13} className="text-[#7C9A6B]" />
+                  <span>Download Scientific Dossier (PDF)</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

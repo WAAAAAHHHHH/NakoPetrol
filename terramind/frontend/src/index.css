@@ -217,3 +217,92 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
 }
 .leaflet-dark-pill-label::before { display: none !important; }
+
+/* ─── PRINT DOSSIER PUBLICATION STYLES ───────────────────── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+
+  body, html {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide app chrome during print */
+  header, nav, main {
+    display: none !important;
+  }
+
+  .no-print-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .no-print-backdrop > div {
+    max-width: 100% !important;
+    max-height: none !important;
+    border: none !important;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  #printable-dossier, .dossier-print-area {
+    color: #111827 !important;
+    background: #FFFFFF !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #printable-dossier * {
+    color: #111827 !important;
+    border-color: #E2E8F0 !important;
+  }
+
+  #printable-dossier h1, 
+  #printable-dossier h2, 
+  #printable-dossier h3 {
+    color: #0F172A !important;
+  }
+
+  #printable-dossier table {
+    border-collapse: collapse !important;
+  }
+
+  #printable-dossier th {
+    background: #F1F5F9 !important;
+    color: #475569 !important;
+    border-bottom: 2px solid #CBD5E1 !important;
+  }
+
+  #printable-dossier td {
+    border-bottom: 1px solid #E2E8F0 !important;
+  }
+
+  #printable-dossier .bg-white\/\[0\.02\],
+  #printable-dossier .bg-white\/\[0\.03\] {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+  }
+
+  .dossier-page-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 18pt !important;
+  }
+
+  .dossier-footer {
+    border-top: 1px solid #CBD5E1 !important;
+    color: #64748B !important;
+  }
+}

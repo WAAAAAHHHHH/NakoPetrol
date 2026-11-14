@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck } from 'lucide-react';
+import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck, FileText } from 'lucide-react';
 import { DemoField } from '../types/terramind';
 
 export type FarmelsterTab =
@@ -20,12 +20,14 @@ interface FarmelsterHeaderProps {
   demoFields: DemoField[];
   onSelectField: (f: DemoField) => void;
   onOpenDisclosures: () => void;
+  onOpenDossier: () => void;
 }
 
 export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   activeTab,
   setActiveTab,
   onOpenDisclosures,
+  onOpenDossier,
 }) => {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
@@ -134,8 +136,17 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
         </div>
       </nav>
 
-      {/* RIGHT spacer — keeps brand centred */}
-      <div style={{ width: 140 }} />
+      {/* RIGHT: Export Dossier (PDF) Action */}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={onOpenDossier}
+          className="btn px-3 py-1.5 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:border-white/20"
+          title="Download printable field assessment dossier (PDF)"
+        >
+          <FileText size={13} className="text-[#7C9A6B]" />
+          <span>Export Dossier (PDF)</span>
+        </button>
+      </div>
     </header>
   );
 };

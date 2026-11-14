@@ -10,6 +10,7 @@ import { WhatIfSimulatorView } from './components/WhatIfSimulatorView';
 import { CropRotationView } from './components/CropRotationView';
 import { AiAdvisorView } from './components/AiAdvisorView';
 import { DataTransparencyModal } from './components/DataTransparencyModal';
+import { FieldDossierModal } from './components/FieldDossierModal';
 import { IntroSplash } from './components/IntroSplash';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
@@ -33,6 +34,7 @@ export function App() {
 
   const [loading, setLoading]                         = useState<boolean>(false);
   const [showTransparencyModal, setShowTransparencyModal] = useState<boolean>(false);
+  const [showDossierModal, setShowDossierModal]           = useState<boolean>(false);
 
   // ── Init: load demo fields + first analysis ──────────────────────────────
   useEffect(() => {
@@ -192,6 +194,7 @@ export function App() {
           demoFields={demoFields}
           onSelectField={handleSelectField}
           onOpenDisclosures={() => setShowTransparencyModal(true)}
+          onOpenDossier={() => setShowDossierModal(true)}
         />
 
         <main className="flex-1 overflow-hidden relative">
@@ -208,6 +211,7 @@ export function App() {
                   onNavigateToTab={(tab: any) => setActiveTab(tab)}
                   onRunCustomAnalysis={handleRunCustomAnalysis}
                   onOpenDisclosures={() => setShowTransparencyModal(true)}
+                  onOpenDossier={() => setShowDossierModal(true)}
                 />
               )}
 
@@ -316,6 +320,13 @@ export function App() {
         <DataTransparencyModal
           isOpen={showTransparencyModal}
           onClose={() => setShowTransparencyModal(false)}
+        />
+
+        <FieldDossierModal
+          isOpen={showDossierModal}
+          onClose={() => setShowDossierModal(false)}
+          selectedField={selectedField}
+          fieldDigitalTwin={fieldDigitalTwin}
         />
       </div>
     </>
