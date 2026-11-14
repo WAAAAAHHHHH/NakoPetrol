@@ -7,7 +7,7 @@ import {
   Database,
   ArrowRight,
   Activity,
-  FileCode
+  Sparkles
 } from 'lucide-react';
 import { FieldDigitalTwin, CropRecommendation } from '../types/terramind';
 import { terramindApi } from '../services/api';
@@ -101,74 +101,74 @@ export const AiAdvisorView: React.FC<AiAdvisorViewProps> = ({
   };
 
   return (
-    <div className="space-y-5 max-w-7xl mx-auto">
+    <div className="max-w-6xl mx-auto space-y-6 anim-fade-up">
       {/* Module Header */}
-      <div className="bg-[#18191E] border border-white/10 rounded-sm p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="border-b border-white/[0.07] pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2 text-[10px] font-mono font-semibold text-[#8E929C] uppercase tracking-widest mb-1">
-            <Terminal size={13} className="text-[#22C55E]" strokeWidth={2} />
-            <span>Telemetry-Grounded Decision Support</span>
+          <div className="text-xs text-[#7C9A6B] font-medium tracking-wide mb-1 flex items-center gap-1.5">
+            <Sparkles size={13} />
+            <span>Telemetry-Grounded Decision Support &bull; In-Silico Synthesis</span>
           </div>
-          <h2 className="font-serif font-bold text-xl text-white tracking-tight">
-            Agronomic Advisory & Synthesis Engine
-          </h2>
-          <p className="text-xs text-[#8E929C] mt-1 max-w-2xl leading-relaxed">
-            Direct parameter-grounded inquiry model cross-referencing multi-layer satellite observations, pedology, and FAO physiological models.
+          <h1 className="text-xl font-semibold text-white tracking-tight">
+            Agronomic Advisory &amp; Synthesis Engine
+          </h1>
+          <p className="text-xs text-white/50 mt-1">
+            Grounded inquiry model referencing multi-layer satellite observations, pedology, and FAO models for <span className="text-white/90 font-medium">{fieldName}</span>.
           </p>
         </div>
 
-        <div className="flex items-center space-x-2 text-xs font-mono bg-[#202229] border border-white/10 rounded-sm px-3 py-2 text-stone-300 shrink-0">
-          <Database size={13} className="text-[#22C55E]" />
-          <span>PARCEL: <strong className="text-white font-semibold">{fieldName.split(' ')[0]}</strong></span>
+        <div className="flex items-center space-x-2 text-xs bg-white/[0.03] border border-white/[0.08] rounded-xl px-3.5 py-1.5 text-white/80 shrink-0">
+          <Database size={13} className="text-[#7C9A6B]" />
+          <span>Parcel: <strong className="text-white font-semibold">{fieldName.split(' ')[0]}</strong></span>
         </div>
       </div>
 
       {/* Main Console Box */}
-      <div className="bg-[#18191E] border border-white/10 rounded-sm flex flex-col h-[650px] shadow-xs">
+      <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl flex flex-col h-[650px] shadow-sm overflow-hidden">
         {/* Top Status Bar */}
-        <div className="px-4 py-2 bg-[#18191E] border-b border-white/10 flex items-center justify-between text-[11px] font-mono text-[#8E929C]">
+        <div className="px-5 py-3 bg-white/[0.02] border-b border-white/[0.06] flex items-center justify-between text-xs text-white/50">
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-[#22C55E]" />
-            <span className="text-white font-semibold">SYNTHESIS_SHELL</span>
+            <span className="w-2 h-2 rounded-full bg-[#7C9A6B]" />
+            <span className="text-white font-medium">Synthesis Shell</span>
             <span>&bull;</span>
-            <span>MERRA-2 / SOILGRIDS / ECOCROP</span>
+            <span className="text-white/40">MERRA-2 / SoilGrids / EcoCrop</span>
           </div>
-          <div>READY</div>
+          <div className="text-[#7C9A6B] font-medium text-xs">Ready</div>
         </div>
 
         {/* Message Stream */}
-        <div className="flex-1 p-5 overflow-y-auto space-y-5 bg-[#0E0F12]/40">
+        <div className="flex-1 p-5 overflow-y-auto space-y-4">
           {messages.map((msg) => (
             <div
               key={msg.id}
               className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
             >
               {/* Header Badge */}
-              <div className="flex items-center space-x-2 text-[10px] font-mono text-[#8E929C] mb-1 px-1">
-                <span>{msg.sender === 'user' ? 'OPERATOR' : 'TERRAMIND_ADVISOR'}</span>
+              <div className="flex items-center space-x-2 text-[10px] text-white/40 mb-1 px-1">
+                <span className="font-medium uppercase tracking-wider">{msg.sender === 'user' ? 'You' : 'Farmelster Advisor'}</span>
                 <span>&bull;</span>
                 <span>{msg.timestamp}</span>
               </div>
 
               {/* Message Box */}
               <div
-                className={`max-w-3xl rounded-sm p-4 text-xs leading-relaxed border ${
+                className={`max-w-2xl rounded-2xl p-4 text-xs leading-relaxed ${
                   msg.sender === 'user'
-                    ? 'bg-[#22C55E] text-[#0E0F12] border-[#1D3E2D]'
-                    : 'bg-[#18191E] text-white border-white/10'
+                    ? 'bg-[#7C9A6B] text-[#0E0F12] font-medium'
+                    : 'bg-white/[0.03] text-white/90 border border-white/[0.07]'
                 }`}
               >
-                <div className="whitespace-pre-line font-sans">{msg.text}</div>
+                <div className="whitespace-pre-line leading-relaxed">{msg.text}</div>
 
                 {/* Citations Block */}
                 {msg.citations && msg.citations.length > 0 && (
-                  <div className="mt-3.5 pt-3 border-t border-white/10 text-[10px] space-y-1">
-                    <span className="font-mono font-bold text-[#8E929C] block uppercase tracking-wider">
-                      Authoritative Datasets & Citations:
+                  <div className="mt-3.5 pt-3 border-t border-white/[0.08] text-[11px] space-y-1.5">
+                    <span className="font-semibold text-white/50 block text-[10px] uppercase tracking-wider">
+                      Authoritative Datasets &amp; Citations:
                     </span>
                     {msg.citations.map((c, i) => (
-                      <div key={i} className="flex items-center gap-1.5 text-[#22C55E] font-mono">
-                        <CheckCircle2 size={11} strokeWidth={2} />
+                      <div key={i} className="flex items-center gap-1.5 text-[#7C9A6B]">
+                        <CheckCircle2 size={12} />
                         <span>{c}</span>
                       </div>
                     ))}
@@ -177,13 +177,13 @@ export const AiAdvisorView: React.FC<AiAdvisorViewProps> = ({
 
                 {/* Actionable Recommendations Block */}
                 {msg.actionable && msg.actionable.length > 0 && (
-                  <div className="mt-3 pt-2.5 border-t border-white/10 text-[11px] text-[#22C55E] space-y-1">
-                    <span className="font-mono font-bold text-[#8E929C] block text-[10px] uppercase tracking-wider mb-1">
+                  <div className="mt-3 pt-3 border-t border-white/[0.08] text-xs text-[#A8C496] space-y-1.5">
+                    <span className="font-semibold text-white/50 block text-[10px] uppercase tracking-wider mb-1">
                       Actionable Agronomic Protocols:
                     </span>
                     {msg.actionable.map((a, i) => (
-                      <div key={i} className="flex items-start gap-1.5 font-sans">
-                        <ArrowRight size={12} className="shrink-0 mt-0.5 text-[#22C55E]" strokeWidth={2} />
+                      <div key={i} className="flex items-start gap-1.5 text-white/80">
+                        <ArrowRight size={12} className="shrink-0 mt-0.5 text-[#7C9A6B]" />
                         <span>{a}</span>
                       </div>
                     ))}
@@ -194,24 +194,24 @@ export const AiAdvisorView: React.FC<AiAdvisorViewProps> = ({
           ))}
 
           {loading && (
-            <div className="flex items-center space-x-2 text-xs text-[#22C55E] font-mono p-3 bg-[#18191E] border border-white/10 rounded-sm max-w-md">
-              <Activity size={14} className="animate-spin" />
+            <div className="flex items-center space-x-2.5 text-xs text-[#7C9A6B] p-3.5 bg-white/[0.02] border border-white/[0.06] rounded-xl max-w-md">
+              <Activity size={14} className="animate-spin text-[#7C9A6B]" />
               <span>Querying FAO phenological thresholds and NASA MERRA-2...</span>
             </div>
           )}
         </div>
 
         {/* Suggested Queries Tray */}
-        <div className="bg-[#18191E] px-4 py-2 border-t border-white/10 flex items-center space-x-2 overflow-x-auto text-xs">
-          <span className="text-[10px] font-mono uppercase text-[#8E929C] font-semibold shrink-0">
-            Suggested Vectors:
+        <div className="bg-white/[0.02] px-5 py-2.5 border-t border-white/[0.06] flex items-center space-x-2 overflow-x-auto text-xs">
+          <span className="text-[10px] text-white/40 font-semibold uppercase tracking-wider shrink-0">
+            Suggested:
           </span>
           {samplePrompts.map((p, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(p)}
               disabled={loading}
-              className="px-2.5 py-1 rounded-sm bg-[#202229] hover:bg-[rgba(255,255,255,0.1)] text-white text-[11px] font-mono whitespace-nowrap transition-colors cursor-pointer disabled:opacity-50 border border-white/10"
+              className="btn px-3 py-1 rounded-full bg-white/[0.03] hover:bg-white/[0.07] text-white/70 hover:text-white text-xs whitespace-nowrap transition-colors cursor-pointer disabled:opacity-40 border border-white/[0.06]"
             >
               {p}
             </button>
@@ -219,29 +219,30 @@ export const AiAdvisorView: React.FC<AiAdvisorViewProps> = ({
         </div>
 
         {/* Console Input Bar */}
-        <div className="p-3 bg-[#18191E] border-t border-white/10">
+        <div className="p-3.5 bg-white/[0.02] border-t border-white/[0.06]">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               handleSendMessage(inputText);
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2.5"
           >
             <div className="relative flex-1">
               <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder={`Submit agronomic query for ${fieldName}...`}
-                className="w-full bg-[#18191E] border border-white/10 rounded-sm px-3.5 py-2 text-xs text-white placeholder-[#8E929C] focus:outline-none focus:border-[#22C55E] font-sans"
-              />
+                placeholder={`Ask an agronomic question for ${fieldName}...`}
+                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#7C9A6B]/50 transition-colors"
+              >
+              </input>
             </div>
             <button
               type="submit"
               disabled={!inputText.trim() || loading}
-              className="px-4 py-2 bg-[#22C55E] hover:bg-[#15803D] text-[#0E0F12] rounded-sm text-xs font-mono font-medium transition-colors cursor-pointer disabled:opacity-40 flex items-center space-x-1.5"
+              className="btn px-4 py-2.5 bg-[#7C9A6B] hover:bg-[#6E8A5D] text-[#0E0F12] rounded-xl text-xs font-semibold transition-all cursor-pointer disabled:opacity-40 flex items-center space-x-1.5"
             >
-              <span>EXEC</span>
+              <span>Ask</span>
               <Send size={12} />
             </button>
           </form>
@@ -249,10 +250,10 @@ export const AiAdvisorView: React.FC<AiAdvisorViewProps> = ({
       </div>
 
       {/* Methodological Integrity Disclosure */}
-      <div className="p-3.5 bg-[#18191E] border border-white/10 rounded-sm text-xs text-[#8E929C] flex items-start gap-2.5">
-        <ShieldCheck size={15} className="text-[#22C55E] shrink-0 mt-0.5" strokeWidth={2} />
+      <div className="p-3.5 bg-white/[0.02] border border-white/[0.06] rounded-xl text-xs text-white/50 flex items-start gap-3">
+        <ShieldCheck size={16} className="text-[#7C9A6B] shrink-0 mt-0.5" />
         <p className="leading-relaxed">
-          The Advisory Engine performs zero speculative hallucination. All inferences cite specific NASA POWER solar radiation/precipitation arrays, ISRIC SoilGrids 0-30cm pedological strata, and FAO Irrigation & Drainage Paper 56 evapotranspiration thresholds.
+          The Advisory Engine performs zero speculative hallucination. All inferences cite specific NASA POWER solar radiation/precipitation arrays, ISRIC SoilGrids 0-30cm pedological strata, and FAO Irrigation &amp; Drainage Paper 56 evapotranspiration thresholds.
         </p>
       </div>
     </div>

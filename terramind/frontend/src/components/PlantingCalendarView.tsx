@@ -51,46 +51,47 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
 
   const getStatusClass = (status: string) => {
     if (status.includes('Planting')) {
-      return 'bg-[#22C55E] text-[#0E0F12] font-semibold';
+      return 'bg-[#7C9A6B]/20 text-[#A8C496] border border-[#7C9A6B]/30 font-medium';
     }
     if (status.includes('Harvest')) {
-      return 'bg-[#A6B58A] text-[#15803D] font-semibold';
+      return 'bg-[#D9A84C]/20 text-[#E8C078] border border-[#D9A84C]/30 font-medium';
     }
     if (status.includes('Heat Stress')) {
-      return 'bg-[#202229] text-[#8E929C] font-mono';
+      return 'bg-[#C47B6A]/20 text-[#DFA090] border border-[#C47B6A]/30 font-medium';
     }
     if (status.includes('Vegetative')) {
-      return 'bg-[#18191E] text-[#22C55E] border border-white/10';
+      return 'bg-white/[0.04] text-white/80 border border-white/[0.08]';
     }
-    return 'bg-[#0E0F12] text-[#8E929C]';
+    return 'bg-white/[0.02] text-white/40 border border-transparent';
   };
 
   return (
-    <div className="space-y-4">
+    <div className="max-w-6xl mx-auto space-y-6 anim-fade-up">
       {/* Editorial Header */}
-      <div className="border-b border-white/10 pb-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="border-b border-white/[0.07] pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="text-[11px] font-mono uppercase tracking-wider text-[#8E929C]">
-            NASA POWER Agroclimatology &bull; Thermal Phenology Model
+          <div className="text-xs text-[#7C9A6B] font-medium tracking-wide mb-1 flex items-center gap-1.5">
+            <Calendar size={13} />
+            <span>NASA POWER Agroclimatology &bull; Thermal Phenology Model</span>
           </div>
-          <h1 className="font-serif text-xl font-bold text-white">
+          <h1 className="text-xl font-semibold text-white tracking-tight">
             Planting Calendar &amp; Phenological Windows
           </h1>
-          <p className="text-xs text-stone-300 mt-0.5">
-            Optimal sowing windows, harvest periods, and frost avoidance for <strong className="text-white">{fieldName}</strong>.
+          <p className="text-xs text-white/50 mt-1">
+            Optimal sowing windows, harvest periods, and frost avoidance for <span className="text-white/90 font-medium">{fieldName}</span>.
           </p>
         </div>
 
         {/* Crop Selector */}
-        <div className="flex items-center space-x-2 bg-[#18191E] border border-white/10 rounded-sm px-2.5 py-1 text-xs">
-          <span className="text-[10px] font-mono uppercase text-[#8E929C]">SPECIMEN:</span>
+        <div className="flex items-center space-x-2 bg-white/[0.03] border border-white/[0.08] rounded-xl px-3 py-1.5 text-xs">
+          <span className="text-xs text-white/40 font-medium">Crop:</span>
           <select
             value={selectedCropId}
             onChange={(e) => onSelectCrop(e.target.value)}
-            className="bg-transparent text-white font-serif font-bold text-xs focus:outline-none cursor-pointer"
+            className="bg-transparent text-white font-medium text-xs focus:outline-none cursor-pointer pr-1"
           >
             {crops.map((c) => (
-              <option key={c.crop_id} value={c.crop_id}>
+              <option key={c.crop_id} value={c.crop_id} className="bg-[#18191E] text-white">
                 {c.name} ({c.category})
               </option>
             ))}
@@ -99,89 +100,96 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
       </div>
 
       {/* Target Sowing & Harvest Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div className="bg-[#18191E] border border-white/10 rounded-sm p-3.5">
-          <div className="text-[10px] font-mono uppercase text-[#8E929C] mb-1">
-            Optimal Sowing Window
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-xs text-white/40 font-medium mb-1">
+              Optimal Sowing Window
+            </div>
+            <div className="text-xl font-bold text-[#7C9A6B] mt-0.5 tracking-tight">
+              {calendarData?.optimal_sowing_window || currentCrop?.recommended_planting_period}
+            </div>
           </div>
-          <div className="font-mono text-xl font-bold text-[#22C55E] mt-0.5">
-            {calendarData?.optimal_sowing_window || currentCrop?.recommended_planting_period}
-          </div>
-          <div className="text-[10px] font-mono text-[#8E929C] mt-1">
-            MIN SOIL SEEDBED TEMP: &ge; {calendarData?.planting_risk_analysis?.critical_soil_temp_c || 4}°C
-          </div>
-        </div>
-
-        <div className="bg-[#18191E] border border-white/10 rounded-sm p-3.5">
-          <div className="text-[10px] font-mono uppercase text-[#8E929C] mb-1">
-            Anticipated Harvest Period
-          </div>
-          <div className="font-mono text-xl font-bold text-white mt-0.5">
-            {calendarData?.expected_harvest_window || currentCrop?.harvest_period}
-          </div>
-          <div className="text-[10px] font-mono text-[#8E929C] mt-1">
-            DURATION: {calendarData?.growing_season_duration || `${currentCrop?.parameters?.growing_season_days} days`}
+          <div className="text-xs text-white/50 mt-3 pt-2.5 border-t border-white/[0.06]">
+            Min soil seedbed temp: &ge; {calendarData?.planting_risk_analysis?.critical_soil_temp_c || 4}°C
           </div>
         </div>
 
-        <div className="bg-[#18191E] border border-white/10 rounded-sm p-3.5">
-          <div className="text-[10px] font-mono uppercase text-[#8E929C] mb-1">
-            Heat Avoidance Limit
+        <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-xs text-white/40 font-medium mb-1">
+              Anticipated Harvest Period
+            </div>
+            <div className="text-xl font-bold text-white mt-0.5 tracking-tight">
+              {calendarData?.expected_harvest_window || currentCrop?.harvest_period}
+            </div>
           </div>
-          <div className="font-mono text-xl font-bold text-white mt-0.5">
-            {calendarData?.planting_risk_analysis?.heat_avoidance_threshold_c || 33}°C Max
+          <div className="text-xs text-white/50 mt-3 pt-2.5 border-t border-white/[0.06]">
+            Duration: {calendarData?.growing_season_duration || `${currentCrop?.parameters?.growing_season_days} days`}
           </div>
-          <div className="text-[10px] font-mono text-[#8E929C] mt-1">
+        </div>
+
+        <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-xs text-white/40 font-medium mb-1">
+              Heat Avoidance Limit
+            </div>
+            <div className="text-xl font-bold text-white mt-0.5 tracking-tight">
+              {calendarData?.planting_risk_analysis?.heat_avoidance_threshold_c || 33}°C Max
+            </div>
+          </div>
+          <div className="text-xs text-white/50 mt-3 pt-2.5 border-t border-white/[0.06]">
             Pollen desiccation threshold during flowering
           </div>
         </div>
       </div>
 
       {/* 12-Month Phenological Matrix Grid */}
-      <div className="bg-[#18191E] border border-white/10 rounded-sm p-4">
-        <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/10">
-          <span className="font-mono text-[10px] uppercase text-[#8E929C] font-semibold">
+      <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-5 shadow-sm">
+        <div className="flex justify-between items-center mb-4 pb-3 border-b border-white/[0.06]">
+          <span className="text-xs font-semibold text-white/80">
             12-Month Phenological Progression Matrix: {currentCrop?.name}
           </span>
-          <div className="flex items-center space-x-3 text-[10px] font-mono text-[#8E929C]">
-            <span className="flex items-center gap-1"><span className="w-2 h-2 bg-[#22C55E] inline-block" /> SOWING</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 bg-[#A6B58A] inline-block" /> HARVEST</span>
+          <div className="flex items-center space-x-4 text-xs text-white/50">
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#7C9A6B] inline-block" /> Sowing</span>
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#D9A84C] inline-block" /> Harvest</span>
           </div>
         </div>
 
         {loading ? (
-          <div className="p-8 text-center text-[#8E929C] font-mono text-xs">
-            COMPUTING PHENOLOGICAL WINDOWS...
+          <div className="flex flex-col items-center justify-center p-12 text-white/40 text-xs">
+            <div className="w-6 h-6 border-2 border-white/10 border-t-[#7C9A6B] rounded-full animate-spin mb-3" />
+            <span>Computing phenological progression windows...</span>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5">
             {calendarData?.monthly_schedule?.map((m: any) => {
               const statusClass = getStatusClass(m.status);
               return (
                 <div
                   key={m.month}
-                  className={`p-2.5 rounded-xs border border-white/10 flex flex-col justify-between ${
+                  className={`p-3 rounded-xl border flex flex-col justify-between transition-all ${
                     m.is_planting_window
-                      ? 'border-[#22C55E] bg-[#22C55E]/5'
+                      ? 'border-[#7C9A6B]/40 bg-[#7C9A6B]/5 shadow-sm'
                       : m.is_harvest_window
-                      ? 'border-[#A6B58A] bg-[#A6B58A]/10'
-                      : 'bg-[#18191E]'
+                      ? 'border-[#D9A84C]/40 bg-[#D9A84C]/5 shadow-sm'
+                      : 'border-white/[0.06] bg-white/[0.02]'
                   }`}
                 >
                   <div>
-                    <div className="flex justify-between items-center mb-1 font-mono text-xs">
-                      <strong className="text-white">{m.month}</strong>
-                      <span className="text-[#8E929C] text-[10px]">{m.temp_mean_c}°C</span>
+                    <div className="flex justify-between items-center mb-2 text-xs">
+                      <strong className="text-white font-semibold">{m.month}</strong>
+                      <span className="text-white/40">{m.temp_mean_c}°C</span>
                     </div>
 
-                    <div className={`px-1.5 py-0.5 rounded-xs text-[10px] font-mono text-center truncate ${statusClass}`}>
+                    <div className={`px-2 py-1 rounded-lg text-[11px] text-center truncate ${statusClass}`}>
                       {m.status.split(' ')[0]}
                     </div>
                   </div>
 
-                  <div className="mt-2.5 pt-1.5 border-t border-white/10 text-[9px] font-mono text-[#8E929C] flex justify-between">
-                    <span>RAIN: {m.precipitation_mm}mm</span>
-                    <span>MIN: {m.temp_min_c}°C</span>
+                  <div className="mt-3 pt-2 border-t border-white/[0.06] text-[10px] text-white/40 flex justify-between">
+                    <span>Rain: {m.precipitation_mm}mm</span>
+                    <span>Min: {m.temp_min_c}°C</span>
                   </div>
                 </div>
               );
@@ -191,27 +199,27 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
       </div>
 
       {/* Early vs Delayed Sowing Risks */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div className="bg-[#18191E] border border-white/10 rounded-sm p-4 space-y-2">
-          <span className="text-[10px] font-mono uppercase text-[#8E929C] font-semibold block">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-5 space-y-3">
+          <span className="text-xs font-semibold text-white/80 block">
             Early Planting Risks &amp; Vulnerabilities
           </span>
-          <ul className="space-y-1.5 text-xs text-stone-300">
+          <ul className="space-y-2 text-xs text-white/80">
             {calendarData?.planting_risk_analysis?.early_planting_risks?.map((r: string, i: number) => (
-              <li key={i} className="bg-[#202229] p-2 border border-white/10 leading-relaxed">
+              <li key={i} className="bg-white/[0.02] p-3 rounded-xl border border-white/[0.05] leading-relaxed">
                 &bull; {r}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="bg-[#18191E] border border-white/10 rounded-sm p-4 space-y-2">
-          <span className="text-[10px] font-mono uppercase text-[#8E929C] font-semibold block">
+        <div className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-5 space-y-3">
+          <span className="text-xs font-semibold text-white/80 block">
             Delayed Sowing Risks &amp; Terminal Heat
           </span>
-          <ul className="space-y-1.5 text-xs text-stone-300">
+          <ul className="space-y-2 text-xs text-white/80">
             {calendarData?.planting_risk_analysis?.late_planting_risks?.map((r: string, i: number) => (
-              <li key={i} className="bg-[#202229] p-2 border border-white/10 leading-relaxed">
+              <li key={i} className="bg-white/[0.02] p-3 rounded-xl border border-white/[0.05] leading-relaxed">
                 &bull; {r}
               </li>
             ))}
@@ -220,9 +228,11 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
       </div>
 
       {/* Scientific Limitation */}
-      <div className="p-3 bg-[#202229] border border-white/10 rounded-sm text-[11px] text-stone-300 leading-relaxed font-mono">
-        OBSERVATION NOTE: {calendarData?.scientific_disclaimer}
-      </div>
+      {calendarData?.scientific_disclaimer && (
+        <div className="p-3.5 bg-white/[0.02] border border-white/[0.06] rounded-xl text-xs text-white/50 leading-relaxed">
+          <strong className="text-white/70">Observation note:</strong> {calendarData.scientific_disclaimer}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,46 +1,48 @@
 @import "tailwindcss";
 
-/* ─── Load Inter ─────────────────────────────────────────
-   Inter is already the body font; we just override Tailwind's
-   font-mono to also use Inter so nothing ever renders in
-   monospace. Numbers still look tabular via font-variant. */
+@theme {
+  --font-mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
 @layer base {
   :root {
     --tm-bg:          #0E0F12;
-    --tm-surface:     #15161A;
+    --tm-surface:     #141519;
     --tm-border:      rgba(255, 255, 255, 0.07);
     --tm-text:        #FFFFFF;
-    --tm-muted:       #7A7E8A;
+    --tm-muted:       #8E929C;
     --tm-accent:      #7C9A6B;
     --tm-accent-dim:  rgba(124, 154, 107, 0.12);
 
-    /* Smooth, natural easing — no jarring snaps */
+    /* Smooth, natural easing */
     --ease-soft:  cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out:   cubic-bezier(0, 0, 0.2, 1);
-    --ease-enter: cubic-bezier(0.0, 0.0, 0.2, 1.0);
 
-    /* Base transition duration */
     --dur-fast:   120ms;
     --dur-base:   200ms;
-    --dur-slow:   320ms;
+    --dur-slow:   300ms;
   }
 
-  /* Override Tailwind's font-mono — use Inter everywhere.
-     Tabular numbers on elements that need them. */
+  /* Universal font normalizer across every element and pseudo-element */
+  *, *::before, *::after {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+
   .font-mono,
+  .font-serif,
   code, pre,
   .font-mono-val,
   .mono-telemetry {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-variant-numeric: tabular-nums;
-    letter-spacing: 0;
   }
 
   body {
     background-color: var(--tm-bg);
     color: var(--tm-text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -49,52 +51,53 @@
     overflow-x: hidden;
   }
 
-  /* Normalize heading tracking */
   h1, h2, h3, h4 {
-    font-family: 'Inter', sans-serif;
     letter-spacing: -0.02em;
     font-weight: 600;
   }
 
-  /* Smooth all interactive elements by default */
+  /* Smooth all interactive elements */
   button, a, [role="button"] {
     transition:
       background-color var(--dur-base) var(--ease-soft),
       color            var(--dur-base) var(--ease-soft),
       border-color     var(--dur-base) var(--ease-soft),
       opacity          var(--dur-base) var(--ease-soft),
-      box-shadow       var(--dur-base) var(--ease-soft);
+      box-shadow       var(--dur-base) var(--ease-soft),
+      transform        var(--dur-fast) var(--ease-soft);
   }
 
-  /* Smooth all layout transitions */
-  * {
-    transition-timing-function: var(--ease-soft);
+  /* Soften all legacy boxy corners automatically */
+  .rounded-sm {
+    border-radius: 12px !important;
+  }
+  .rounded-xs {
+    border-radius: 8px !important;
   }
 }
 
 /* ─── Scrollbars ─────────────────────────────────────────── */
-::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 99px;
   transition: background var(--dur-base) var(--ease-soft);
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
 
 /* ─── Glass Panel ────────────────────────────────────────── */
 .dark-glass-panel {
-  background: rgba(16, 17, 20, 0.97);
+  background: rgba(16, 17, 21, 0.96);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(255,255,255,0.03) inset;
+    0 24px 48px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.03) inset;
 }
 
-/* ─── BUTTONS ────────────────────────────────────────────── */
-
+/* ─── Universal Button System ────────────────────────────── */
 .btn {
   position: relative;
   display: inline-flex;
@@ -122,24 +125,10 @@
   transform: none;
 }
 
-/* Subtle flash on click */
-.btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.06);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--dur-fast) var(--ease-soft);
-}
-.btn:active::after { opacity: 1; transition-duration: 0ms; }
-
 /* ─── NAV TABS ───────────────────────────────────────────── */
-
 .nav-tab {
   position: relative;
-  padding: 0.3rem 0.85rem;
+  padding: 0.35rem 0.9rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -156,27 +145,27 @@
 .nav-tab:active { transform: scale(0.96); }
 
 .nav-tab-active {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.09);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(255,255,255,0.05) inset;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
 .nav-tab-inactive {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.45);
   border: 1px solid transparent;
 }
 
 .nav-tab-inactive:hover {
-  color: rgba(255,255,255,0.75);
-  background: rgba(255,255,255,0.04);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* ─── CARD ───────────────────────────────────────────────── */
 .card {
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
   transition:
     border-color var(--dur-base) var(--ease-soft),
     background   var(--dur-base) var(--ease-soft),
@@ -184,30 +173,12 @@
 }
 
 .card:hover {
-  border-color: rgba(255,255,255,0.11);
-  background: rgba(255,255,255,0.035);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-/* ─── PILL VARIANTS ──────────────────────────────────────── */
-.dark-pill {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
-  color: #fff;
-}
-
-.dark-pill-inactive {
-  color: rgba(255,255,255,0.4);
-  transition: color var(--dur-base) var(--ease-soft), background var(--dur-base) var(--ease-soft);
-}
-
-.dark-pill-inactive:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
 /* ─── ENTER ANIMATIONS ───────────────────────────────────── */
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0);   }
@@ -228,49 +199,21 @@
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* Smoother durations */
-.anim-fade-up    { animation: fadeUp   260ms var(--ease-out) both; }
-.anim-fade-in    { animation: fadeIn   220ms var(--ease-out) both; }
-.anim-scale-in   { animation: scaleIn  200ms var(--ease-out) both; }
-.anim-slide-down { animation: slideDown 220ms var(--ease-out) both; }
+.anim-fade-up    { animation: fadeUp   240ms var(--ease-out) both; }
+.anim-fade-in    { animation: fadeIn   200ms var(--ease-out) both; }
+.anim-scale-in   { animation: scaleIn  180ms var(--ease-out) both; }
+.anim-slide-down { animation: slideDown 200ms var(--ease-out) both; }
 
-.anim-delay-50  { animation-delay: 50ms; }
-.anim-delay-100 { animation-delay: 100ms; }
-.anim-delay-150 { animation-delay: 150ms; }
-.anim-delay-200 { animation-delay: 200ms; }
-.anim-delay-250 { animation-delay: 250ms; }
-.anim-delay-300 { animation-delay: 300ms; }
-
-/* ─── UTILITY ────────────────────────────────────────────── */
-
-/* Label — replaces tiny uppercase mono labels everywhere */
-.label {
-  font-size: 0.6875rem;   /* 11px */
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: rgba(255,255,255,0.35);
-  text-transform: uppercase;
-}
-
-/* Muted text helper */
-.muted { color: rgba(255,255,255,0.35); }
-
-/* Accent banner (soil snapshot, etc.) */
-.accent-banner {
-  background: rgba(124,154,107,0.06);
-  border-left: 2px solid rgba(124,154,107,0.35);
-}
-
-/* ─── Leaflet label ──────────────────────────────────────── */
+/* ─── Leaflet tooltip label ──────────────────────────────── */
 .leaflet-dark-pill-label {
   background: #18191E !important;
   color: #FFFFFF !important;
   border: 1px solid rgba(255,255,255,0.15) !important;
-  border-radius: 6px !important;
+  border-radius: 8px !important;
   padding: 3px 8px !important;
   font-family: 'Inter', sans-serif !important;
   font-size: 11px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
 }
 .leaflet-dark-pill-label::before { display: none !important; }

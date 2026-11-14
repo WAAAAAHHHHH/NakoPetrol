@@ -180,13 +180,13 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
           <div className="p-4 border-b border-white/5 space-y-2">
             <div className="flex items-start justify-between">
               <div>
-                <span className={`text-[10px] font-mono uppercase tracking-widest font-semibold block ${isArable ? 'text-[#A6B58A]' : 'text-[#8E929C]'}`}>
+                <span className={`text-[10px] uppercase tracking-wider font-semibold block ${isArable ? 'text-[#7C9A6B]' : 'text-white/40'}`}>
                   {isArable ? 'Active Surveyed Parcel' : 'Marine Water Surface'}
                 </span>
-                <h3 className="text-sm font-bold text-white tracking-tight leading-tight mt-0.5">
+                <h3 className="text-sm font-semibold text-white tracking-tight leading-tight mt-0.5">
                   {currentName}
                 </h3>
-                <p className="text-xs text-[#8E929C] truncate max-w-[220px] mt-0.5">
+                <p className="text-xs text-white/50 truncate max-w-[220px] mt-0.5">
                   {isArable ? (selectedField?.region || 'Terrestrial Parcel') : 'Open Hydrosphere · Non-Arable'}
                 </p>
               </div>
@@ -199,7 +199,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     const found = demoFields.find(f => f.id === e.target.value);
                     if (found) onSelectField(found);
                   }}
-                  className="bg-[#202229] hover:bg-[#282B33] text-white border border-white/10 rounded-lg px-2.5 py-1 text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer transition-colors"
+                  className="bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/[0.08] rounded-xl px-2.5 py-1 text-xs font-medium focus:outline-none focus:border-[#7C9A6B] cursor-pointer transition-colors"
                 >
                   {demoFields.map((f) => (
                     <option key={f.id} value={f.id} className="bg-[#18191E] text-white">
@@ -210,11 +210,11 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
               </div>
             </div>
 
-            {/* Coordinates in IBM Plex Mono */}
-            <div className="flex items-center space-x-3 text-[11px] font-mono text-[#8E929C] bg-black/30 px-2.5 py-1 rounded-lg border border-white/5">
-              <span>LAT: <strong className="text-white font-semibold">{currentLat.toFixed(4)}°</strong></span>
+            {/* Coordinates */}
+            <div className="flex items-center space-x-3 text-xs text-white/50 bg-black/30 px-3 py-1.5 rounded-xl border border-white/[0.05]">
+              <span>Lat: <strong className="text-white font-medium">{currentLat.toFixed(4)}°</strong></span>
               <span>&bull;</span>
-              <span>LON: <strong className="text-white font-semibold">{currentLon.toFixed(4)}°</strong></span>
+              <span>Lon: <strong className="text-white font-medium">{currentLon.toFixed(4)}°</strong></span>
               <span>&bull;</span>
               <span>{isArable ? `${selectedField?.area_hectares || 35} ha` : 'Open Water'}</span>
             </div>
@@ -241,53 +241,53 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                 {/* 4 Clean Marine Metric Cards */}
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Thermometer size={12} className="text-amber-400" />
                       <span>Air Temp (NASA)</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-white mt-1">
+                    <div className="text-xs font-semibold text-white mt-1">
                       {climate?.summary?.mean_annual_temp_c?.toFixed(1) || 18.2} °C
                     </div>
-                    <div className="text-[10px] text-[#8E929C] mt-0.5">
+                    <div className="text-[10px] text-white/40 mt-0.5">
                       Maritime Atmosphere
                     </div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Waves size={12} className="text-cyan-400" />
                       <span>Precipitation</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-white mt-1">
+                    <div className="text-xs font-semibold text-white mt-1">
                       {climate?.summary?.annual_precipitation_mm || 0} mm
                     </div>
-                    <div className="text-[10px] text-[#8E929C] mt-0.5 truncate">
+                    <div className="text-[10px] text-white/40 mt-0.5 truncate">
                       Annual Marine Rainfall
                     </div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Activity size={12} className="text-cyan-400" />
                       <span>Water NDVI</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-cyan-400 mt-1">
+                    <div className="text-xs font-semibold text-cyan-400 mt-1">
                       -0.22
                     </div>
-                    <div className="text-[10px] text-[#8E929C] mt-0.5">
+                    <div className="text-[10px] text-white/40 mt-0.5">
                       Strong NIR Absorption
                     </div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Droplets size={12} className="text-slate-400" />
                       <span>Arable Horizon</span>
                     </div>
-                    <div className="text-xs font-bold text-slate-300 mt-1">
+                    <div className="text-xs font-semibold text-slate-300 mt-1">
                       Submerged Bed
                     </div>
-                    <div className="text-[10px] text-emerald-400 mt-0.5 font-mono">
+                    <div className="text-[10px] text-[#7C9A6B] mt-0.5 font-medium">
                       0 Crops Cultivable
                     </div>
                   </div>
@@ -304,56 +304,56 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                 <div className="grid grid-cols-2 gap-2">
                   {/* Soil Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Scissors size={12} className="text-amber-400" />
                       <span>Soil Texture</span>
                     </div>
-                    <div className="text-xs font-bold text-white mt-1">
+                    <div className="text-xs font-semibold text-white mt-1">
                       {soil?.properties?.usda_texture || 'Loam'}
                     </div>
-                    <div className="text-[10px] font-mono text-[#8E929C] mt-0.5">
+                    <div className="text-[10px] text-white/40 mt-0.5">
                       pH {soil?.properties?.ph_h2o || 7.2} &bull; {soil?.properties?.clay_pct || 22}% Clay
                     </div>
                   </div>
 
                   {/* Water Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Waves size={12} className="text-cyan-400" />
                       <span>Precipitation</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-white mt-1">
+                    <div className="text-xs font-semibold text-white mt-1">
                       {climate?.summary?.annual_precipitation_mm || 450} mm
                     </div>
-                    <div className="text-[10px] text-[#8E929C] mt-0.5 truncate">
+                    <div className="text-[10px] text-white/40 mt-0.5 truncate">
                       {climate?.summary?.aridity_classification || 'Subhumid'} baseline
                     </div>
                   </div>
 
                   {/* Organic Carbon Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
-                      <Droplets size={12} className="text-emerald-400" />
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Droplets size={12} className="text-[#7C9A6B]" />
                       <span>Soil Carbon (SOC)</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-white mt-1">
+                    <div className="text-xs font-semibold text-white mt-1">
                       {soil?.properties?.soc_g_kg || 18.5} g/kg
                     </div>
-                    <div className="text-[10px] font-mono text-[#8E929C] mt-0.5">
+                    <div className="text-[10px] text-white/40 mt-0.5">
                       CEC: {soil?.properties?.cec_cmolc_kg || 24} cmol/kg
                     </div>
                   </div>
 
                   {/* Canopy Health Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
-                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-[#8E929C] uppercase tracking-wider">
-                      <Activity size={12} className="text-[#22C55E]" />
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Activity size={12} className="text-[#7C9A6B]" />
                       <span>Canopy Health</span>
                     </div>
-                    <div className="text-xs font-bold font-mono text-[#22C55E] mt-1">
+                    <div className="text-xs font-semibold text-[#7C9A6B] mt-1">
                       NDVI {satellite?.current_observation?.mean_field_ndvi || 0.78}
                     </div>
-                    <div className="text-[10px] text-[#8E929C] mt-0.5">
+                    <div className="text-[10px] text-white/40 mt-0.5">
                       Condition (VCI): {satellite?.current_observation?.vegetation_condition_index_pct || 92}%
                     </div>
                   </div>
@@ -361,30 +361,30 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
 
                 {/* Top Recommended Crop Callout */}
                 {topCrop && (
-                  <div className="bg-gradient-to-r from-emerald-950/40 to-slate-900/60 border border-emerald-500/20 rounded-xl p-3">
+                  <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-mono font-bold uppercase text-emerald-400 tracking-wider">
+                      <span className="text-[10px] font-semibold uppercase text-[#7C9A6B] tracking-wider">
                         Primary Agronomic Match
                       </span>
-                      <span className="text-xs font-bold font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-[#7C9A6B]/15 text-[#A8C496] border border-[#7C9A6B]/25">
                         {topCrop.overall_score}/100
                       </span>
                     </div>
 
-                    <div className="text-sm font-bold text-white">
+                    <div className="text-sm font-semibold text-white">
                       {topCrop.name}
                     </div>
-                    <p className="text-[11px] text-[#8E929C] mt-1 line-clamp-2 leading-relaxed">
+                    <p className="text-[11px] text-white/50 mt-1 line-clamp-2 leading-relaxed">
                       {topCrop.reasons[0]}
                     </p>
 
-                    <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-                      <span className="text-[10px] font-mono text-[#8E929C]">
-                        SOWING: {topCrop.recommended_planting_period}
+                    <div className="mt-2.5 pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+                      <span className="text-[10px] text-white/40">
+                        Sowing: {topCrop.recommended_planting_period}
                       </span>
                       <button 
                         onClick={() => onNavigateToTab('crops')}
-                        className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 cursor-pointer"
+                        className="text-[#7C9A6B] hover:text-[#A8C496] font-medium flex items-center gap-1 cursor-pointer transition-colors"
                       >
                         <span>All Crops</span>
                         <ArrowRight size={12} />
@@ -399,7 +399,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
             <div className="bg-[#1C1E24] rounded-xl p-3 border border-white/5 space-y-2">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold text-white text-[11px]">NASA 12-Month Rainfall Curve</span>
-                <span className="font-mono text-[10px] text-[#8E929C]">Jan – Dec (mm)</span>
+                <span className="text-[10px] text-white/40">Jan – Dec (mm)</span>
               </div>
 
               {/* Dynamic Bars */}
@@ -407,7 +407,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                 {climate?.monthly?.map((m) => {
                   const maxP = Math.max(...climate.monthly.map(x => x.precipitation_mm), 80);
                   const heightPct = Math.max(10, Math.round((m.precipitation_mm / maxP) * 100));
-                  const color = m.precipitation_mm > 40 ? 'bg-[#22C55E]' : m.precipitation_mm > 15 ? 'bg-[#EAB308]' : 'bg-[#EF4444]';
+                  const color = m.precipitation_mm > 40 ? 'bg-[#7C9A6B]' : m.precipitation_mm > 15 ? 'bg-[#D9A84C]' : 'bg-[#C47B6A]';
 
                   return (
                     <div 
@@ -415,11 +415,11 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                       className="group/bar relative flex flex-col items-center flex-1 mx-0.5"
                     >
                       <div 
-                        className={`w-full rounded-xs transition-all ${color}`} 
+                        className={`w-full rounded-sm transition-all duration-300 ${color}`} 
                         style={{ height: `${heightPct}%` }}
                       />
                       {/* Tooltip on hover */}
-                      <div className="absolute bottom-full mb-1 hidden group-hover/bar:block bg-[#18191E] border border-white/10 text-[9px] font-mono px-1 py-0.5 rounded text-white whitespace-nowrap z-50 shadow-lg">
+                      <div className="absolute bottom-full mb-1 hidden group-hover/bar:block bg-[#18191E] border border-white/10 text-[10px] px-1.5 py-0.5 rounded-lg text-white whitespace-nowrap z-50 shadow-lg">
                         {m.month}: {m.precipitation_mm}mm
                       </div>
                     </div>
@@ -427,7 +427,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                 })}
               </div>
 
-              <div className="flex justify-between text-[9px] font-mono text-[#8E929C] px-0.5">
+              <div className="flex justify-between text-[10px] text-white/40 px-0.5">
                 <span>Jan</span>
                 <span>Apr</span>
                 <span>Jul</span>
@@ -533,7 +533,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
             <div className="flex-1 overflow-y-auto p-3 space-y-3">
               {layerGroups.map((grp, gIdx) => (
                 <div key={gIdx} className="space-y-1">
-                  <div className="text-[10px] font-mono font-semibold uppercase text-[#8E929C] px-1">
+                  <div className="text-xs font-medium text-white/40 px-1">
                     {grp.group}
                   </div>
                   {grp.layers.map((layer) => {
@@ -544,7 +544,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                         onClick={() => setActiveLayer(layer.id)}
                         className={`flex items-center justify-between p-2 rounded-xl text-xs cursor-pointer transition-all ${
                           isSelected 
-                            ? 'bg-emerald-500/10 border border-emerald-500/30 text-white' 
+                            ? 'bg-[#7C9A6B]/15 border border-[#7C9A6B]/30 text-white' 
                             : 'hover:bg-white/5 border border-transparent text-white/80'
                         }`}
                       >
@@ -552,16 +552,16 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                           <div className="text-xs font-semibold text-white truncate">
                             {layer.name}
                           </div>
-                          <div className="text-[10px] text-[#8E929C] truncate">
+                          <div className="text-[10px] text-white/40 truncate">
                             {layer.desc}
                           </div>
                         </div>
 
                         <div className="flex items-center space-x-1.5 shrink-0">
                           {isSelected && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#7C9A6B]" />
                           )}
-                          <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-[#8E929C]">
+                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-white/50">
                             {layer.badge}
                           </span>
                         </div>
@@ -615,24 +615,24 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[11px] text-[#8E929C] block mb-1">Latitude (-90 to 90)</label>
+                  <label className="text-[11px] text-white/50 block mb-1">Latitude (-90 to 90)</label>
                   <input
                     type="number"
                     step="any"
                     value={customLat}
                     onChange={(e) => setCustomLat(e.target.value)}
-                    className="w-full bg-[#1C1E24] border border-white/10 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-[#1C1E24] border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-[#7C9A6B]"
                     required
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] text-[#8E929C] block mb-1">Longitude (-180 to 180)</label>
+                  <label className="text-[11px] text-white/50 block mb-1">Longitude (-180 to 180)</label>
                   <input
                     type="number"
                     step="any"
                     value={customLon}
                     onChange={(e) => setCustomLon(e.target.value)}
-                    className="w-full bg-[#1C1E24] border border-white/10 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-[#1C1E24] border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-[#7C9A6B]"
                     required
                   />
                 </div>
@@ -640,21 +640,21 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[11px] text-[#8E929C] block mb-1">Area (Hectares)</label>
+                  <label className="text-[11px] text-white/50 block mb-1">Area (Hectares)</label>
                   <input
                     type="number"
                     step="any"
                     value={customArea}
                     onChange={(e) => setCustomArea(e.target.value)}
-                    className="w-full bg-[#1C1E24] border border-white/10 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-[#1C1E24] border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-[#7C9A6B]"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] text-[#8E929C] block mb-1">Irrigation System</label>
+                  <label className="text-[11px] text-white/50 block mb-1">Irrigation System</label>
                   <select
                     value={customIrrig ? 'yes' : 'no'}
                     onChange={(e) => setCustomIrrig(e.target.value === 'yes')}
-                    className="w-full bg-[#1C1E24] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500 cursor-pointer"
+                    className="w-full bg-[#1C1E24] border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-[#7C9A6B] cursor-pointer"
                   >
                     <option value="yes">Irrigated</option>
                     <option value="no">Rainfed (Dryland)</option>
