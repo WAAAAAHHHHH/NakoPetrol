@@ -8,14 +8,16 @@ export const IntroSplash: React.FC<IntroSplashProps> = ({ onDone }) => {
   const [phase, setPhase] = useState<'in' | 'hold' | 'out'>('in');
 
   useEffect(() => {
-    // in → hold at 400ms
-    const t1 = setTimeout(() => setPhase('hold'), 400);
-    // hold → out at 2200ms
-    const t2 = setTimeout(() => setPhase('out'), 2200);
-    // unmount at 2800ms
-    const t3 = setTimeout(() => onDone(), 2800);
+    const t1 = setTimeout(() => setPhase('hold'), 350);
+    const t2 = setTimeout(() => setPhase('out'),  2100);
+    const t3 = setTimeout(() => onDone(),         2650);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onDone]);
+
+  const gone = phase === 'out';
+  const visible = phase !== 'in';
+
+  const ease = 'cubic-bezier(0, 0, 0.2, 1)';
 
   return (
     <div
@@ -30,133 +32,120 @@ export const IntroSplash: React.FC<IntroSplashProps> = ({ onDone }) => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        opacity: phase === 'out' ? 0 : 1,
-        transition: phase === 'out' ? 'opacity 580ms cubic-bezier(0.4,0,1,1)' : 'none',
+        opacity: gone ? 0 : 1,
+        transition: gone ? `opacity 540ms ${ease}` : 'none',
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
         userSelect: 'none',
       }}
     >
-      {/* Top rule */}
+      {/* Expanding rule — top */}
       <div style={{
-        width: phase === 'in' ? 0 : 220,
+        width: visible ? 200 : 0,
         height: 1,
-        background: 'rgba(255,255,255,0.08)',
-        marginBottom: 36,
-        transition: 'width 700ms cubic-bezier(0.19,1,0.22,1)',
-        transitionDelay: '100ms',
+        background: 'rgba(255,255,255,0.07)',
+        marginBottom: 32,
+        transition: `width 700ms ${ease}`,
+        transitionDelay: '80ms',
+        borderRadius: 1,
       }} />
 
       {/* Icon mark */}
       <div style={{
-        width: 44,
-        height: 44,
-        borderRadius: 12,
-        background: '#121A12',
-        border: '1px solid rgba(124,154,107,0.25)',
+        width: 42,
+        height: 42,
+        borderRadius: 11,
+        background: '#111A11',
+        border: '1px solid rgba(124,154,107,0.2)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
-        opacity: phase === 'in' ? 0 : 1,
-        transform: phase === 'in' ? 'scale(0.85)' : 'scale(1)',
-        transition: 'opacity 400ms ease, transform 500ms cubic-bezier(0.19,1,0.22,1)',
-        transitionDelay: '200ms',
+        marginBottom: 18,
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'scale(1)' : 'scale(0.88)',
+        transition: `opacity 380ms ${ease}, transform 480ms ${ease}`,
+        transitionDelay: '160ms',
       }}>
-        {/* leaf SVG */}
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path
-            d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z"
-            fill="#7C9A6B"
-            opacity="0.9"
-          />
-          <path
-            d="M4 16L9 11"
-            stroke="#A8C496"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            opacity="0.6"
-          />
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <path d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z" fill="#7C9A6B" opacity="0.9"/>
+          <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.3" strokeLinecap="round" opacity="0.6"/>
         </svg>
       </div>
 
       {/* Wordmark */}
       <div style={{
-        fontFamily: "'Inter', sans-serif",
-        fontSize: 28,
+        fontSize: 26,
         fontWeight: 600,
         color: '#FFFFFF',
         letterSpacing: '-0.03em',
-        opacity: phase === 'in' ? 0 : 1,
-        transform: phase === 'in' ? 'translateY(10px)' : 'translateY(0)',
-        transition: 'opacity 400ms ease, transform 500ms cubic-bezier(0.19,1,0.22,1)',
-        transitionDelay: '300ms',
+        lineHeight: 1,
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(8px)',
+        transition: `opacity 380ms ${ease}, transform 480ms ${ease}`,
+        transitionDelay: '240ms',
       }}>
         farmelster
       </div>
 
       {/* Tagline */}
       <div style={{
-        fontFamily: "'IBM Plex Mono', monospace",
-        fontSize: 10,
-        color: '#525660',
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-        marginTop: 10,
-        opacity: phase === 'in' ? 0 : 1,
-        transition: 'opacity 500ms ease',
-        transitionDelay: '500ms',
+        fontSize: 11,
+        fontWeight: 400,
+        color: 'rgba(255,255,255,0.22)',
+        letterSpacing: '0.04em',
+        marginTop: 8,
+        opacity: visible ? 1 : 0,
+        transition: `opacity 480ms ${ease}`,
+        transitionDelay: '380ms',
       }}>
         Agricultural Intelligence Platform
       </div>
 
-      {/* Data sources row */}
+      {/* Data sources */}
       <div style={{
         display: 'flex',
-        gap: 8,
-        marginTop: 28,
-        opacity: phase === 'in' ? 0 : 1,
-        transition: 'opacity 500ms ease',
-        transitionDelay: '650ms',
+        gap: 6,
+        marginTop: 24,
+        opacity: visible ? 0.5 : 0,
+        transition: `opacity 480ms ${ease}`,
+        transitionDelay: '500ms',
       }}>
-        {['NASA POWER', 'ISRIC SoilGrids', 'Sentinel-2', 'Natural Earth'].map((s) => (
+        {['NASA POWER', 'SoilGrids', 'Sentinel-2'].map((s) => (
           <span key={s} style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: 9,
-            color: '#3A3D45',
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            padding: '3px 8px',
-            border: '1px solid rgba(255,255,255,0.05)',
-            borderRadius: 4,
+            fontSize: 10,
+            fontWeight: 500,
+            color: 'rgba(255,255,255,0.3)',
+            padding: '3px 9px',
+            border: '1px solid rgba(255,255,255,0.07)',
+            borderRadius: 5,
           }}>
             {s}
           </span>
         ))}
       </div>
 
-      {/* Bottom rule */}
+      {/* Expanding rule — bottom */}
       <div style={{
-        width: phase === 'in' ? 0 : 220,
+        width: visible ? 200 : 0,
         height: 1,
-        background: 'rgba(255,255,255,0.08)',
-        marginTop: 36,
-        transition: 'width 700ms cubic-bezier(0.19,1,0.22,1)',
-        transitionDelay: '100ms',
+        background: 'rgba(255,255,255,0.07)',
+        marginTop: 32,
+        transition: `width 700ms ${ease}`,
+        transitionDelay: '80ms',
+        borderRadius: 1,
       }} />
 
       {/* Skip hint */}
       <div style={{
         position: 'absolute',
-        bottom: 28,
-        fontFamily: "'IBM Plex Mono', monospace",
-        fontSize: 9,
-        color: '#2A2D35',
-        letterSpacing: '0.12em',
-        textTransform: 'uppercase',
+        bottom: 24,
+        fontSize: 11,
+        color: 'rgba(255,255,255,0.15)',
+        letterSpacing: '0.03em',
         opacity: phase === 'hold' ? 1 : 0,
-        transition: 'opacity 400ms ease',
-        transitionDelay: phase === 'hold' ? '600ms' : '0ms',
+        transition: `opacity 400ms ${ease}`,
+        transitionDelay: phase === 'hold' ? '500ms' : '0ms',
       }}>
-        click to skip
+        click anywhere to skip
       </div>
     </div>
   );

@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  ChevronDown,
-  Sprout,
-  Sun,
-  Terminal,
-  ShieldCheck,
-} from 'lucide-react';
+import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck } from 'lucide-react';
 import { DemoField } from '../types/terramind';
 
 export type FarmelsterTab =
@@ -45,15 +39,15 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   ];
 
   const secondaryTabs: Array<{ id: FarmelsterTab; label: string; icon: React.ReactNode }> = [
-    { id: 'climate',  label: 'NASA POWER Climate', icon: <Sun size={12} /> },
-    { id: 'rotation', label: 'Crop Succession',    icon: <Sprout size={12} /> },
-    { id: 'advisor',  label: 'Agronomic Advisor',  icon: <Terminal size={12} /> },
+    { id: 'climate',  label: 'Climate Data',     icon: <Sun size={12} /> },
+    { id: 'rotation', label: 'Crop Succession',  icon: <Sprout size={12} /> },
+    { id: 'advisor',  label: 'Agronomic Advisor',icon: <Terminal size={12} /> },
   ];
 
   const isSecondaryActive = secondaryTabs.some(t => t.id === activeTab);
 
   return (
-    <header className="h-14 bg-[#0E0F12] border-b border-white/[0.06] px-5 flex items-center justify-between shrink-0 z-30 font-sans">
+    <header className="h-14 bg-[#0E0F12] border-b border-white/[0.06] px-5 flex items-center justify-between shrink-0 z-30">
 
       {/* BRAND */}
       <button
@@ -61,50 +55,43 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
         className="btn flex items-center gap-2.5 rounded-lg px-1"
         aria-label="Go to dashboard"
       >
-        <div className="w-6 h-6 rounded-md bg-[#121A12] border border-[#2E4A2E]/60 flex items-center justify-center shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-[#121A12] border border-white/[0.07] flex items-center justify-center shrink-0">
           <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
             <path d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z" fill="#7C9A6B" opacity="0.9"/>
-            <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.2" strokeLinecap="round" opacity="0.6"/>
+            <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.3" strokeLinecap="round" opacity="0.65"/>
           </svg>
         </div>
-        <div className="leading-none">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-[13px] text-white tracking-tight">farmelster</span>
-            <span className="text-[8px] font-mono font-medium uppercase px-1.5 py-0.5 rounded bg-white/[0.04] text-[#525660] border border-white/[0.07]">
-              NASA
-            </span>
+        <div>
+          <div className="text-[13.5px] font-semibold text-white tracking-tight leading-none">
+            farmelster
           </div>
-          <span className="text-[9px] text-[#3A3D45] font-mono block mt-0.5 leading-none">
+          <div className="text-[11px] text-white/25 leading-none mt-0.5">
             Agricultural Intelligence
-          </span>
+          </div>
         </div>
       </button>
 
       {/* CENTER NAV */}
-      <nav className="flex items-center gap-0.5 bg-[#13141A] border border-white/[0.07] p-1 rounded-full">
-        {primaryTabs.map((tab) => {
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`nav-tab ${isActive ? 'nav-tab-active' : 'nav-tab-inactive'}`}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
+      <nav className="flex items-center gap-0.5 bg-white/[0.03] border border-white/[0.07] p-1 rounded-full">
+        {primaryTabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`nav-tab ${activeTab === tab.id ? 'nav-tab-active' : 'nav-tab-inactive'}`}
+          >
+            {tab.label}
+          </button>
+        ))}
 
         {/* More dropdown */}
         <div className="relative">
           <button
-            onClick={() => setShowMoreMenu(!showMoreMenu)}
+            onClick={() => setShowMoreMenu(v => !v)}
             className={`nav-tab flex items-center gap-1 ${
               isSecondaryActive ? 'nav-tab-active' : 'nav-tab-inactive'
             }`}
-            aria-expanded={showMoreMenu}
           >
-            <span>More</span>
+            More
             <ChevronDown
               size={11}
               className={`transition-transform duration-200 ${showMoreMenu ? 'rotate-180' : ''}`}
@@ -114,32 +101,32 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
           {showMoreMenu && (
             <>
               <div className="fixed inset-0 z-40" onClick={() => setShowMoreMenu(false)} />
-              <div className="absolute top-full mt-2 right-0 w-56 dark-glass-panel rounded-xl p-1.5 shadow-2xl z-50 text-xs anim-slide-down">
-                <div className="px-2.5 py-1.5 text-[9px] font-mono uppercase tracking-widest text-[#3A3D45]">
-                  Additional Modules
-                </div>
+              <div className="absolute top-full mt-2 right-0 w-52 dark-glass-panel rounded-xl p-1.5 shadow-2xl z-50 anim-slide-down">
+                <p className="px-3 py-1.5 text-[11px] text-white/25 font-medium">
+                  More modules
+                </p>
                 {secondaryTabs.map((t, i) => (
                   <button
                     key={t.id}
                     onClick={() => { setActiveTab(t.id); setShowMoreMenu(false); }}
-                    style={{ animationDelay: `${i * 40}ms` }}
-                    className={`btn w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-left anim-fade-up ${
+                    style={{ animationDelay: `${i * 35}ms` }}
+                    className={`btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-sm anim-fade-up ${
                       activeTab === t.id
                         ? 'bg-white/[0.07] text-white font-medium'
-                        : 'text-[#8E929C] hover:text-white hover:bg-white/[0.04]'
+                        : 'text-white/50 hover:text-white/90 hover:bg-white/[0.04]'
                     }`}
                   >
-                    <span className="text-white/50">{t.icon}</span>
-                    <span>{t.label}</span>
+                    <span className="opacity-50">{t.icon}</span>
+                    {t.label}
                   </button>
                 ))}
-                <div className="h-px bg-white/[0.06] my-1.5 mx-2" />
+                <div className="h-px bg-white/[0.06] my-1.5 mx-2.5" />
                 <button
                   onClick={() => { onOpenDisclosures(); setShowMoreMenu(false); }}
-                  className="btn w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-left text-[#7C9A6B] hover:bg-white/[0.04] font-medium"
+                  className="btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-sm text-[#7C9A6B] hover:bg-white/[0.04]"
                 >
-                  <ShieldCheck size={12} />
-                  <span>Data Disclosures & Sources</span>
+                  <ShieldCheck size={12} className="opacity-70" />
+                  Data Disclosures
                 </button>
               </div>
             </>
@@ -147,8 +134,8 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
         </div>
       </nav>
 
-      {/* RIGHT — empty intentionally */}
-      <div className="w-[120px]" />
+      {/* RIGHT spacer — keeps brand centred */}
+      <div style={{ width: 140 }} />
     </header>
   );
 };

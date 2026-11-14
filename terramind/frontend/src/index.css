@@ -1,77 +1,100 @@
 @import "tailwindcss";
 
+/* ─── Load Inter ─────────────────────────────────────────
+   Inter is already the body font; we just override Tailwind's
+   font-mono to also use Inter so nothing ever renders in
+   monospace. Numbers still look tabular via font-variant. */
+
 @layer base {
   :root {
-    --tm-bg: #0E0F12;
-    --tm-surface: #17181D;
-    --tm-surface-hover: #1F2128;
-    --tm-border: rgba(255, 255, 255, 0.07);
-    --tm-text: #FFFFFF;
-    --tm-muted: #8E929C;
-    --tm-accent: #7C9A6B;
-    --tm-accent-dim: rgba(124, 154, 107, 0.15);
-    --tm-green: #22C55E;
-    --ease-snap: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --tm-bg:          #0E0F12;
+    --tm-surface:     #15161A;
+    --tm-border:      rgba(255, 255, 255, 0.07);
+    --tm-text:        #FFFFFF;
+    --tm-muted:       #7A7E8A;
+    --tm-accent:      #7C9A6B;
+    --tm-accent-dim:  rgba(124, 154, 107, 0.12);
+
+    /* Smooth, natural easing — no jarring snaps */
+    --ease-soft:  cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out:   cubic-bezier(0, 0, 0.2, 1);
+    --ease-enter: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+
+    /* Base transition duration */
+    --dur-fast:   120ms;
+    --dur-base:   200ms;
+    --dur-slow:   320ms;
+  }
+
+  /* Override Tailwind's font-mono — use Inter everywhere.
+     Tabular numbers on elements that need them. */
+  .font-mono,
+  code, pre,
+  .font-mono-val,
+  .mono-telemetry {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
   }
 
   body {
-    background-color: #0E0F12;
-    color: #FFFFFF;
+    background-color: var(--tm-bg);
+    color: var(--tm-text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, .font-serif-title {
+  /* Normalize heading tracking */
+  h1, h2, h3, h4 {
     font-family: 'Inter', sans-serif;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+    font-weight: 600;
   }
 
-  code, pre, .font-mono-val, .mono-telemetry {
-    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
-    font-feature-settings: "tnum" 1, "zero" 1;
+  /* Smooth all interactive elements by default */
+  button, a, [role="button"] {
+    transition:
+      background-color var(--dur-base) var(--ease-soft),
+      color            var(--dur-base) var(--ease-soft),
+      border-color     var(--dur-base) var(--ease-soft),
+      opacity          var(--dur-base) var(--ease-soft),
+      box-shadow       var(--dur-base) var(--ease-soft);
+  }
+
+  /* Smooth all layout transitions */
+  * {
+    transition-timing-function: var(--ease-soft);
   }
 }
 
-/* ─── Scrollbars ─────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; height: 4px; }
+/* ─── Scrollbars ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2A2D36; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #3B3F4A; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  transition: background var(--dur-base) var(--ease-soft);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
 
-/* ─── Glass Panel ─────────────────────────────────────── */
+/* ─── Glass Panel ────────────────────────────────────────── */
 .dark-glass-panel {
-  background: rgba(18, 19, 23, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(16, 17, 20, 0.97);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255,255,255,0.04) inset;
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255,255,255,0.03) inset;
 }
 
-/* ─── Pill styles ─────────────────────────────────────── */
-.dark-pill {
-  background: #1F2128;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  color: #FFFFFF;
-}
+/* ─── BUTTONS ────────────────────────────────────────────── */
 
-.dark-pill-inactive {
-  color: #8E929C;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.dark-pill-inactive:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* ─── BUTTON ANIMATIONS ───────────────────────────────── */
-
-/* Universal interactive button press */
 .btn {
   position: relative;
   display: inline-flex;
@@ -79,142 +102,114 @@
   justify-content: center;
   gap: 0.375rem;
   cursor: pointer;
-  transition:
-    transform 100ms var(--ease-snap),
-    background-color 150ms ease,
-    color 150ms ease,
-    border-color 150ms ease,
-    box-shadow 150ms ease,
-    opacity 150ms ease;
   user-select: none;
   -webkit-user-select: none;
+  transition:
+    transform     var(--dur-fast)  var(--ease-soft),
+    background    var(--dur-base)  var(--ease-soft),
+    color         var(--dur-base)  var(--ease-soft),
+    border-color  var(--dur-base)  var(--ease-soft),
+    box-shadow    var(--dur-slow)  var(--ease-soft),
+    opacity       var(--dur-base)  var(--ease-soft);
 }
 
-.btn:active {
-  transform: scale(0.955);
-}
+.btn:hover  { opacity: 0.92; }
+.btn:active { transform: scale(0.96); opacity: 1; }
 
 .btn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Ripple on click */
+/* Subtle flash on click */
 .btn::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255,255,255,0.06);
   opacity: 0;
-  transition: opacity 150ms ease;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-soft);
 }
+.btn:active::after { opacity: 1; transition-duration: 0ms; }
 
-.btn:active::after {
-  opacity: 1;
-  transition: none;
-}
+/* ─── NAV TABS ───────────────────────────────────────────── */
 
-/* Nav pill tab button */
 .nav-tab {
   position: relative;
-  padding: 0.375rem 0.875rem;
+  padding: 0.3rem 0.85rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
-  transition:
-    color 150ms ease,
-    background-color 150ms ease,
-    border-color 150ms ease,
-    transform 100ms var(--ease-snap);
+  letter-spacing: -0.01em;
   cursor: pointer;
   user-select: none;
+  transition:
+    color            var(--dur-base) var(--ease-soft),
+    background-color var(--dur-base) var(--ease-soft),
+    border-color     var(--dur-base) var(--ease-soft),
+    transform        var(--dur-fast) var(--ease-soft);
 }
 
-.nav-tab:active { transform: scale(0.95); }
+.nav-tab:active { transform: scale(0.96); }
 
 .nav-tab-active {
-  background: #24262E;
+  background: rgba(255,255,255,0.08);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(255,255,255,0.05) inset;
 }
 
 .nav-tab-inactive {
-  color: #8E929C;
+  color: rgba(255,255,255,0.4);
   border: 1px solid transparent;
 }
 
 .nav-tab-inactive:hover {
-  color: #fff;
+  color: rgba(255,255,255,0.75);
   background: rgba(255,255,255,0.04);
 }
 
-/* Icon button (square/round utility buttons) */
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+/* ─── CARD ───────────────────────────────────────────────── */
+.card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
   transition:
-    background-color 130ms ease,
-    color 130ms ease,
-    transform 100ms var(--ease-snap);
-  cursor: pointer;
+    border-color var(--dur-base) var(--ease-soft),
+    background   var(--dur-base) var(--ease-soft),
+    box-shadow   var(--dur-slow) var(--ease-soft);
 }
 
-.icon-btn:active { transform: scale(0.9); }
-
-/* Mode toggle pill */
-.mode-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  transition:
-    background 180ms ease,
-    color 180ms ease,
-    border-color 180ms ease,
-    transform 100ms var(--ease-snap),
-    box-shadow 180ms ease;
+.card:hover {
+  border-color: rgba(255,255,255,0.11);
+  background: rgba(255,255,255,0.035);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.mode-toggle:active { transform: scale(0.94); }
-
-.mode-toggle-expert {
+/* ─── PILL VARIANTS ──────────────────────────────────────── */
+.dark-pill {
   background: rgba(255,255,255,0.05);
-  color: #8E929C;
-}
-
-.mode-toggle-expert:hover {
-  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.09);
   color: #fff;
 }
 
-.mode-toggle-simple {
-  background: var(--tm-accent-dim);
-  color: #A8C496;
-  border-color: rgba(124,154,107,0.3);
-  box-shadow: 0 0 0 1px rgba(124,154,107,0.12);
+.dark-pill-inactive {
+  color: rgba(255,255,255,0.4);
+  transition: color var(--dur-base) var(--ease-soft), background var(--dur-base) var(--ease-soft);
 }
 
-.mode-toggle-simple:hover {
-  background: rgba(124,154,107,0.22);
-  color: #c3dab4;
+.dark-pill-inactive:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
 }
 
-/* ─── ENTER ANIMATIONS ────────────────────────────────── */
+/* ─── ENTER ANIMATIONS ───────────────────────────────────── */
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0);   }
 }
 
@@ -224,21 +219,21 @@
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
+  from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1);    }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-6px); }
+  from { opacity: 0; transform: translateY(-5px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-.anim-fade-up   { animation: fadeUp  220ms var(--ease-snap) both; }
-.anim-fade-in   { animation: fadeIn  180ms ease both; }
-.anim-scale-in  { animation: scaleIn 160ms var(--ease-snap) both; }
-.anim-slide-down { animation: slideDown 180ms var(--ease-snap) both; }
+/* Smoother durations */
+.anim-fade-up    { animation: fadeUp   260ms var(--ease-out) both; }
+.anim-fade-in    { animation: fadeIn   220ms var(--ease-out) both; }
+.anim-scale-in   { animation: scaleIn  200ms var(--ease-out) both; }
+.anim-slide-down { animation: slideDown 220ms var(--ease-out) both; }
 
-/* Staggered children delay helpers */
 .anim-delay-50  { animation-delay: 50ms; }
 .anim-delay-100 { animation-delay: 100ms; }
 .anim-delay-150 { animation-delay: 150ms; }
@@ -246,36 +241,36 @@
 .anim-delay-250 { animation-delay: 250ms; }
 .anim-delay-300 { animation-delay: 300ms; }
 
-/* ─── Simplified Mode Banner ──────────────────────────── */
-.simplified-banner {
-  background: linear-gradient(90deg, rgba(124,154,107,0.08) 0%, transparent 100%);
-  border-left: 2px solid rgba(124,154,107,0.5);
+/* ─── UTILITY ────────────────────────────────────────────── */
+
+/* Label — replaces tiny uppercase mono labels everywhere */
+.label {
+  font-size: 0.6875rem;   /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
 }
 
-/* ─── Card surface ────────────────────────────────────── */
-.card {
-  background: #15161A;
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 10px;
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+/* Muted text helper */
+.muted { color: rgba(255,255,255,0.35); }
+
+/* Accent banner (soil snapshot, etc.) */
+.accent-banner {
+  background: rgba(124,154,107,0.06);
+  border-left: 2px solid rgba(124,154,107,0.35);
 }
 
-.card:hover {
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-}
-
-/* ─── Leaflet label ───────────────────────────────────── */
+/* ─── Leaflet label ──────────────────────────────────────── */
 .leaflet-dark-pill-label {
   background: #18191E !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
   border-radius: 6px !important;
   padding: 3px 8px !important;
   font-family: 'Inter', sans-serif !important;
   font-size: 11px !important;
   font-weight: 600 !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
 }
-
 .leaflet-dark-pill-label::before { display: none !important; }
