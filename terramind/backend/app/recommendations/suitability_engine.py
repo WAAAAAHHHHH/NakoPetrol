@@ -223,6 +223,59 @@ class CropSuitabilityEngine:
         # Recommended Planting Period
         planting_months = ", ".join(crop["recommended_planting_months"])
 
+        # Explicit Limiting Factors Breakdown
+        limiting_factors = []
+        if water_score < 80:
+            limiting_factors.append({
+                "factor": "Water Deficit",
+                "penalty_pts": round(95.0 - water_score, 1),
+                "description": f"Annual precipitation ({round(annual_precip)}mm) is below optimal moisture need ({min_water_req}-{max_water_req}mm).",
+                "category": "water"
+            })
+        if temp_score < 80:
+            limiting_factors.append({
+                "factor": "Thermal Divergence",
+                "penalty_pts": round(95.0 - temp_score, 1),
+                "description": f"Growing season mean temperature deviates from optimal range ({opt_t_min}-{opt_t_max}°C).",
+                "category": "thermal"
+            })
+        if ph_score < 85:
+            limiting_factors.append({
+                "factor": "Soil pH Constraint",
+                "penalty_pts": round(95.0 - ph_score, 1),
+                "description": f"Field pH of {field_ph} is outside ideal range ({ideal_ph_min}-{ideal_ph_max}), impacting micronutrient availability.",
+                "category": "soil"
+            })
+        if texture_score < 85:
+            limiting_factors.append({
+                "factor": "Texture Compatibility",
+                "penalty_pts": round(95.0 - texture_score, 1),
+                "description": f"{field_texture} texture presents physical rooting or drainage friction for this cultivar.",
+                "category": "soil"
+            })
+        if not limiting_factors:
+            limiting_factors.append({
+                "factor": "Optimal Baseline",
+                "penalty_pts": 0.0,
+                "description": "No major environmental bottlenecks detected for this cultivar under baseline conditions.",
+                "category": "general"
+            })
+
+        # Water Efficiency & Resilience Classification
+        drought_tol = crop.get("drought_tolerance", "Moderate")
+        if drought_tol in ["Exceptional", "Very High"]:
+            water_eff = "Superior Drought Hardiness"
+            resilience_class = "High Resilience"
+        elif drought_tol == "High":
+            water_eff = "Moderate-High Water Efficiency"
+            resilience_class = "Resilient"
+        elif drought_tol == "Moderate":
+            water_eff = "Standard Evapotranspiration Need"
+            resilience_class = "Moderate Resilience"
+        else:
+            water_eff = "High Water Demand (Vulnerable to Drought)"
+            resilience_class = "Drought Vulnerable"
+
         return {
             "crop_id": crop["id"],
             "name": crop["name"],
@@ -236,6 +289,9 @@ class CropSuitabilityEngine:
                 "soil_compatibility": round(soil_score, 1),
                 "climate_risk_safety": round(risk_score, 1)
             },
+            "limiting_factors": limiting_factors,
+            "water_efficiency_rating": water_eff,
+            "resilience_classification": resilience_class,
             "parameters": {
                 "water_required_mm": f"{min_water_req}-{max_water_req} mm",
                 "optimal_temp_c": f"{opt_t_min}-{opt_t_max} °C",

@@ -11,6 +11,7 @@ import { WhatIfSimulatorView } from './components/WhatIfSimulatorView';
 import { CropRotationView } from './components/CropRotationView';
 import { AiAdvisorView } from './components/AiAdvisorView';
 import { DataTransparencyModal } from './components/DataTransparencyModal';
+import { SimplifiedDashboard } from './components/SimplifiedDashboard';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
 import { terramindApi } from './services/api';
@@ -32,6 +33,7 @@ export function App() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [showTransparencyModal, setShowTransparencyModal] = useState<boolean>(false);
+  const [simplified, setSimplified] = useState<boolean>(false);
 
   // Initialize demo fields and load first field analysis
   useEffect(() => {
@@ -199,11 +201,28 @@ export function App() {
         demoFields={demoFields}
         onSelectField={handleSelectField}
         onOpenDisclosures={() => setShowTransparencyModal(true)}
+        simplified={simplified}
+        onToggleSimplified={() => setSimplified(s => !s)}
       />
 
       {/* 2. MAIN ACTIVE VIEWPORT */}
       <main className="flex-1 overflow-hidden relative">
-        {selectedField && (
+
+        {/* ── SIMPLIFIED MODE ── */}
+        {simplified && selectedField && (
+          <SimplifiedDashboard
+            fieldDigitalTwin={fieldDigitalTwin}
+            fieldName={currentFieldName}
+            loading={loading}
+            onNavigateToTab={(tab) => {
+              setSimplified(false);
+              setActiveTab(tab as FarmelsterTab);
+            }}
+          />
+        )}
+
+        {/* ── EXPERT MODE (full tab router) ── */}
+        {!simplified && selectedField && (
           <>
             {/* DASHBOARD -> Real Satellite Map + Left Telemetry + Right Layers */}
             {activeTab === 'dashboard' && (

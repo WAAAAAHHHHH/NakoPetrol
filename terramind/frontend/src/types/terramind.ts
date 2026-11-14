@@ -106,6 +106,11 @@ export interface CropRecommendation {
   reasons: string[];
   identified_risks: string[];
   rotation_advice: string;
+  // Extended fields from suitability engine v2
+  suitability_description?: string;
+  limiting_factors?: string[];
+  water_efficiency_rating?: string;
+  resilience_classification?: string;
 }
 
 export interface VegetationTimeSeriesPoint {

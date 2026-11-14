@@ -5,11 +5,14 @@
     --tm-bg: #0E0F12;
     --tm-surface: #17181D;
     --tm-surface-hover: #1F2128;
-    --tm-border: rgba(255, 255, 255, 0.08);
+    --tm-border: rgba(255, 255, 255, 0.07);
     --tm-text: #FFFFFF;
     --tm-muted: #8E929C;
+    --tm-accent: #7C9A6B;
+    --tm-accent-dim: rgba(124, 154, 107, 0.15);
     --tm-green: #22C55E;
-    --tm-green-glow: rgba(34, 197, 94, 0.25);
+    --ease-snap: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   body {
@@ -34,43 +37,31 @@
   }
 }
 
-/* Sleek dark scrollbars */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
+/* ─── Scrollbars ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2A2D36; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3B3F4A; }
 
-::-webkit-scrollbar-track {
-  background: #121316;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #2A2D36;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3B3F4A;
-}
-
-/* Glass panel effect */
+/* ─── Glass Panel ─────────────────────────────────────── */
 .dark-glass-panel {
-  background: rgba(23, 24, 29, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  background: rgba(18, 19, 23, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255,255,255,0.04) inset;
 }
 
+/* ─── Pill styles ─────────────────────────────────────── */
 .dark-pill {
   background: #1F2128;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: #FFFFFF;
 }
 
 .dark-pill-inactive {
   color: #8E929C;
-  transition: all 0.15s ease-in-out;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .dark-pill-inactive:hover {
@@ -78,11 +69,207 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Leaflet dark pill tooltip */
+/* ─── BUTTON ANIMATIONS ───────────────────────────────── */
+
+/* Universal interactive button press */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  cursor: pointer;
+  transition:
+    transform 100ms var(--ease-snap),
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.955);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Ripple on click */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.07);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.btn:active::after {
+  opacity: 1;
+  transition: none;
+}
+
+/* Nav pill tab button */
+.nav-tab {
+  position: relative;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms var(--ease-snap);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-tab:active { transform: scale(0.95); }
+
+.nav-tab-active {
+  background: #24262E;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.nav-tab-inactive {
+  color: #8E929C;
+  border: 1px solid transparent;
+}
+
+.nav-tab-inactive:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Icon button (square/round utility buttons) */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition:
+    background-color 130ms ease,
+    color 130ms ease,
+    transform 100ms var(--ease-snap);
+  cursor: pointer;
+}
+
+.icon-btn:active { transform: scale(0.9); }
+
+/* Mode toggle pill */
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 100ms var(--ease-snap),
+    box-shadow 180ms ease;
+}
+
+.mode-toggle:active { transform: scale(0.94); }
+
+.mode-toggle-expert {
+  background: rgba(255,255,255,0.05);
+  color: #8E929C;
+}
+
+.mode-toggle-expert:hover {
+  background: rgba(255,255,255,0.09);
+  color: #fff;
+}
+
+.mode-toggle-simple {
+  background: var(--tm-accent-dim);
+  color: #A8C496;
+  border-color: rgba(124,154,107,0.3);
+  box-shadow: 0 0 0 1px rgba(124,154,107,0.12);
+}
+
+.mode-toggle-simple:hover {
+  background: rgba(124,154,107,0.22);
+  color: #c3dab4;
+}
+
+/* ─── ENTER ANIMATIONS ────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.anim-fade-up   { animation: fadeUp  220ms var(--ease-snap) both; }
+.anim-fade-in   { animation: fadeIn  180ms ease both; }
+.anim-scale-in  { animation: scaleIn 160ms var(--ease-snap) both; }
+.anim-slide-down { animation: slideDown 180ms var(--ease-snap) both; }
+
+/* Staggered children delay helpers */
+.anim-delay-50  { animation-delay: 50ms; }
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-150 { animation-delay: 150ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-250 { animation-delay: 250ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+
+/* ─── Simplified Mode Banner ──────────────────────────── */
+.simplified-banner {
+  background: linear-gradient(90deg, rgba(124,154,107,0.08) 0%, transparent 100%);
+  border-left: 2px solid rgba(124,154,107,0.5);
+}
+
+/* ─── Card surface ────────────────────────────────────── */
+.card {
+  background: #15161A;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+/* ─── Leaflet label ───────────────────────────────────── */
 .leaflet-dark-pill-label {
   background: #18191E !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 6px !important;
   padding: 3px 8px !important;
   font-family: 'Inter', sans-serif !important;
@@ -91,6 +278,4 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-.leaflet-dark-pill-label::before {
-  display: none !important;
-}
+.leaflet-dark-pill-label::before { display: none !important; }
