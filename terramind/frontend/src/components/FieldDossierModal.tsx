@@ -354,27 +354,34 @@ export const FieldDossierModal: React.FC<FieldDossierModalProps> = ({
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/[0.04]">
-                      {crops.map((c, i) => (
-                        <tr key={c.crop_id} className={i === 0 ? "bg-[#7C9A6B]/5" : ""}>
-                          <td className="py-2.5 px-3 font-semibold text-[#7C9A6B]">#{c.rank || i + 1}</td>
-                          <td className="py-2.5 px-3">
-                            <strong className="text-white block">{c.name}</strong>
-                            <span className="text-[10px] text-white/40 italic">{c.scientific_name}</span>
-                          </td>
-                          <td className="py-2.5 px-3 text-white/70">{c.category}</td>
-                          <td className="py-2.5 px-3">
-                            <span className="text-sm font-bold text-[#7C9A6B]">{c.overall_score}</span>
-                            <span className="text-[10px] text-white/40">/100</span>
-                          </td>
-                          <td className="py-2.5 px-3 text-[11px] text-white/60">
-                            {c.component_scores.climate_temperature}% / {c.component_scores.water_availability}% / {c.component_scores.soil_compatibility}% / {c.component_scores.climate_risk_safety}%
-                          </td>
-                          <td className="py-2.5 px-3 text-white/80">{c.recommended_planting_period}</td>
-                          <td className="py-2.5 px-3 text-white/50 text-[11px]">
-                            {c.limiting_factors?.[0] || c.identified_risks?.[0] || 'Nominal envelope'}
-                          </td>
-                        </tr>
-                      ))}
+                      {crops.map((c, i) => {
+                        const factorObj = Array.isArray(c.limiting_factors) && c.limiting_factors.length > 0 ? c.limiting_factors[0] : null;
+                        const factorText = factorObj 
+                          ? (typeof factorObj === 'object' ? (factorObj as any).factor || (factorObj as any).description : String(factorObj))
+                          : (c.identified_risks?.[0] ? String(c.identified_risks[0]) : 'Nominal envelope');
+
+                        return (
+                          <tr key={c.crop_id} className={i === 0 ? "bg-[#7C9A6B]/5" : ""}>
+                            <td className="py-2.5 px-3 font-semibold text-[#7C9A6B]">#{c.rank || i + 1}</td>
+                            <td className="py-2.5 px-3">
+                              <strong className="text-white block">{c.name}</strong>
+                              <span className="text-[10px] text-white/40 italic">{c.scientific_name}</span>
+                            </td>
+                            <td className="py-2.5 px-3 text-white/70">{c.category}</td>
+                            <td className="py-2.5 px-3">
+                              <span className="text-sm font-bold text-[#7C9A6B]">{c.overall_score}</span>
+                              <span className="text-[10px] text-white/40">/100</span>
+                            </td>
+                            <td className="py-2.5 px-3 text-[11px] text-white/60">
+                              {c.component_scores?.climate_temperature ?? 0}% / {c.component_scores?.water_availability ?? 0}% / {c.component_scores?.soil_compatibility ?? 0}% / {c.component_scores?.climate_risk_safety ?? 0}%
+                            </td>
+                            <td className="py-2.5 px-3 text-white/80">{c.recommended_planting_period}</td>
+                            <td className="py-2.5 px-3 text-white/50 text-[11px]">
+                              {factorText}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
