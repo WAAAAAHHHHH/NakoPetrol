@@ -49,25 +49,26 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   const isSecondaryActive = secondaryTabs.some(t => t.id === activeTab);
 
   return (
-    <header className="h-14 bg-[#0E0F12] border-b border-white/[0.06] px-5 flex items-center justify-between shrink-0 z-30">
+    <header className="h-16 bg-[#0E0F12] border-b border-white/[0.07] px-5 sm:px-6 flex items-center justify-between shrink-0 z-30">
 
-      {/* BRAND */}
+      {/* BRAND / TITLE */}
       <button
         onClick={() => setActiveTab('dashboard')}
-        className="btn flex items-center gap-2.5 rounded-lg px-1"
+        className="btn flex items-center gap-3 rounded-xl px-2 py-1 hover:bg-white/[0.03] transition-all cursor-pointer"
         aria-label="Go to dashboard"
       >
-        <div className="w-7 h-7 rounded-lg bg-[#121A12] border border-white/[0.07] flex items-center justify-center shrink-0">
-          <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-            <path d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z" fill="#7C9A6B" opacity="0.9"/>
-            <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.3" strokeLinecap="round" opacity="0.65"/>
+        <div className="w-9 h-9 rounded-xl bg-[#141C14] border border-[#7C9A6B]/30 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(124,154,107,0.18)]">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z" fill="#7C9A6B" opacity="0.95"/>
+            <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.4" strokeLinecap="round" opacity="0.85"/>
           </svg>
         </div>
-        <div>
-          <div className="text-[13.5px] font-semibold text-white tracking-tight leading-none">
-            farmelster
+        <div className="flex flex-col text-left">
+          <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none flex items-center gap-1.5">
+            <span>farmelster</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#7C9A6B]" />
           </div>
-          <div className="text-[11px] text-white/25 leading-none mt-0.5">
+          <div className="text-[10px] uppercase font-semibold tracking-widest text-[#7C9A6B] leading-none mt-1">
             Agricultural Intelligence
           </div>
         </div>
@@ -140,10 +141,10 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
       <div className="flex items-center gap-2">
         <button
           onClick={onOpenDossier}
-          className="btn px-3 py-1.5 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:border-white/20"
-          title="Download printable field assessment dossier (PDF)"
+          className="btn px-3.5 py-2 bg-[#7C9A6B]/15 hover:bg-[#7C9A6B]/25 border border-[#7C9A6B]/30 text-white rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/50"
+          title="Open printable scientific field dossier (PDF)"
         >
-          <FileText size={13} className="text-[#7C9A6B]" />
+          <FileText size={14} className="text-[#A8C496]" />
           <span>Export Dossier (PDF)</span>
         </button>
       </div>

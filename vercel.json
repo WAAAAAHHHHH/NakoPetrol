@@ -3,7 +3,8 @@
   "services": {
     "backend": {
       "root": "terramind/backend",
-      "framework": "fastapi"
+      "framework": "fastapi",
+      "entrypoint": "main.py"
     },
     "frontend": {
       "root": "terramind/frontend",
@@ -18,6 +19,24 @@
       }
     },
     {
+      "source": "/health",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/docs",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/openapi.json",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
       "source": "/(.*)",
       "destination": {
         "service": "frontend"
@@ -25,4 +44,3 @@
     }
   ]
 }
-

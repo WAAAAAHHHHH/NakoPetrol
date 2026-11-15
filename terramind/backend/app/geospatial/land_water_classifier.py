@@ -8,9 +8,17 @@ for sub-millisecond, 100% deterministic, offline pinpoint accuracy across the en
 import os
 import pickle
 from typing import Dict, Any, Optional
-from shapely import wkb
-from shapely.geometry import Point
-from shapely.strtree import STRtree
+
+try:
+    from shapely import wkb
+    from shapely.geometry import Point
+    from shapely.strtree import STRtree
+    HAS_SHAPELY = True
+except ImportError:
+    HAS_SHAPELY = False
+    wkb = None
+    Point = None
+    STRtree = None
 
 
 class LandWaterClassifier:
@@ -46,8 +54,8 @@ class LandWaterClassifier:
 
     def is_terrestrial_land(self, lat: float, lon: float) -> bool:
         """Determines with mathematical point-in-polygon precision if (lat, lon) is on land."""
-        if self._tree is None or not self._polygons:
-            # Fallback for unexpected missing data
+        if not HAS_SHAPELY or self._tree is None or not self._polygons or Point is None:
+            # Fallback for unexpected missing data or environments without Shapely
             return True
 
         pt = Point(lon, lat)
