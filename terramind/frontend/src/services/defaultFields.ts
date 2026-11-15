@@ -1,7 +1,8 @@
 import { DemoField, FieldDigitalTwin } from '../types/terramind';
-import baselineJson from './baselineTwin.json';
+import allTwinsData from './allFieldTwins.json';
 
-export const BASELINE_DIGITAL_TWIN = baselineJson as unknown as FieldDigitalTwin;
+export const ALL_FIELD_TWINS = (allTwinsData as any).twins as Record<string, FieldDigitalTwin>;
+export const ALL_FIELD_CALENDARS = (allTwinsData as any).calendars as Record<string, any>;
 
 export const DEFAULT_DEMO_FIELDS: DemoField[] = [
   {
@@ -169,3 +170,4 @@ export const DEFAULT_DEMO_FIELDS: DemoField[] = [
 ];
 
 export const DEFAULT_FIELD = DEFAULT_DEMO_FIELDS[0];
+export const BASELINE_DIGITAL_TWIN = ALL_FIELD_TWINS["field_california"];

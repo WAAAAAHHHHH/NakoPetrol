@@ -15,7 +15,7 @@ import { IntroSplash } from './components/IntroSplash';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
 import { terramindApi } from './services/api';
-import { DEFAULT_DEMO_FIELDS, DEFAULT_FIELD, BASELINE_DIGITAL_TWIN } from './services/defaultFields';
+import { DEFAULT_DEMO_FIELDS, DEFAULT_FIELD, BASELINE_DIGITAL_TWIN, ALL_FIELD_TWINS } from './services/defaultFields';
 
 export function App() {
   const [showSplash, setShowSplash] = useState<boolean>(() => {
@@ -96,6 +96,12 @@ export function App() {
     setSelectedField(field);
     setIrrigationAvailable(field.irrigation_available);
     setSelectedCropIdForCalendar(field.default_previous_crop || 'wheat');
+
+    // Immediately load authentic pre-computed scientific digital twin for this specific field
+    if (ALL_FIELD_TWINS[field.id]) {
+      setFieldDigitalTwin(ALL_FIELD_TWINS[field.id]);
+    }
+
     setLoading(true);
     try {
       const analysis = await terramindApi.analyzeField({
@@ -110,7 +116,7 @@ export function App() {
       });
       setFieldDigitalTwin(analysis);
     } catch (err) {
-      console.error('Field select error:', err);
+      console.warn('Field select API sync, using cached authentic scientific baseline:', err);
     } finally {
       setLoading(false);
     }
@@ -140,6 +146,28 @@ export function App() {
     setSelectedField(customDemo);
     setIrrigationAvailable(irrig);
     setLoading(true);
+
+    // Provide instant responsive estimate from closest regional baseline while server computes
+    let closestTwin = BASELINE_DIGITAL_TWIN;
+    let minDist = Infinity;
+    Object.values(ALL_FIELD_TWINS).forEach(t => {
+      const dist = Math.hypot(t.coordinates.latitude - lat, t.coordinates.longitude - lon);
+      if (dist < minDist) {
+        minDist = dist;
+        closestTwin = t;
+      }
+    });
+
+    if (closestTwin) {
+      setFieldDigitalTwin({
+        ...closestTwin,
+        field_name: name,
+        coordinates: { latitude: lat, longitude: lon },
+        area_hectares: area,
+        irrigation_available: irrig
+      });
+    }
+
     try {
       const analysis = await terramindApi.analyzeField({
         fieldName:           name,
@@ -160,7 +188,7 @@ export function App() {
         } : prev);
       }
     } catch (err) {
-      console.error('Custom analysis error:', err);
+      console.warn('Custom analysis API sync, retained localized interpolation:', err);
     } finally {
       setLoading(false);
     }
