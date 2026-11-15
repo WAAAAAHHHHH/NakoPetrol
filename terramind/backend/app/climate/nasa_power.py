@@ -107,6 +107,45 @@ GLOBAL_FALLBACK_ARCHIVE = {
         "RH2M": {"JAN": 76.5, "FEB": 71.2, "MAR": 62.4, "APR": 54.8, "MAY": 51.2, "JUN": 44.5, "JUL": 38.2, "AUG": 39.1, "SEP": 44.8, "OCT": 56.4, "NOV": 68.2, "DEC": 78.4},
         "WS2M": {"JAN": 2.4, "FEB": 2.8, "MAR": 3.1, "APR": 3.2, "MAY": 2.9, "JUN": 3.0, "JUL": 3.2, "AUG": 2.9, "SEP": 2.6, "OCT": 2.3, "NOV": 2.2, "DEC": 2.3}
     },
+    "harran": {
+        "region_name": "Harran Plain / Southeastern Anatolia (GAP), Turkey",
+        "latitude": 37.16,
+        "longitude": 38.80,
+        "elevation_m": 518.0,
+        "T2M": {"JAN": 6.2, "FEB": 7.8, "MAR": 11.8, "APR": 16.9, "MAY": 22.8, "JUN": 28.9, "JUL": 32.8, "AUG": 32.2, "SEP": 27.4, "OCT": 20.8, "NOV": 13.2, "DEC": 8.1},
+        "T2M_MIN": {"JAN": 2.1, "FEB": 3.2, "MAR": 6.5, "APR": 10.8, "MAY": 15.8, "JUN": 21.2, "JUL": 25.1, "AUG": 24.8, "SEP": 20.2, "OCT": 14.8, "NOV": 8.2, "DEC": 4.1},
+        "T2M_MAX": {"JAN": 10.8, "FEB": 12.9, "MAR": 17.5, "APR": 23.2, "MAY": 29.8, "JUN": 36.5, "JUL": 40.5, "AUG": 39.8, "SEP": 34.6, "OCT": 27.2, "NOV": 18.8, "DEC": 12.8},
+        "PRECTOTCORR": {"JAN": 2.30, "FEB": 1.95, "MAR": 1.85, "APR": 1.45, "MAY": 0.85, "JUN": 0.10, "JUL": 0.02, "AUG": 0.02, "SEP": 0.10, "OCT": 0.85, "NOV": 1.45, "DEC": 2.15},
+        "ALLSKY_SFC_SW_DWN": {"JAN": 8.5, "FEB": 11.4, "MAR": 15.8, "APR": 20.2, "MAY": 24.8, "JUN": 28.2, "JUL": 28.5, "AUG": 26.1, "SEP": 21.5, "OCT": 15.4, "NOV": 10.2, "DEC": 7.8},
+        "RH2M": {"JAN": 72.0, "FEB": 66.0, "MAR": 58.0, "APR": 50.0, "MAY": 40.0, "JUN": 30.0, "JUL": 28.0, "AUG": 32.0, "SEP": 36.0, "OCT": 46.0, "NOV": 60.0, "DEC": 71.0},
+        "WS2M": {"JAN": 2.2, "FEB": 2.5, "MAR": 2.8, "APR": 2.9, "MAY": 3.1, "JUN": 3.6, "JUL": 3.8, "AUG": 3.4, "SEP": 2.8, "OCT": 2.4, "NOV": 2.1, "DEC": 2.0}
+    },
+    "tekirdag": {
+        "region_name": "Tekirdağ / Thrace Grain & Sunflower Belt, Turkey",
+        "latitude": 40.98,
+        "longitude": 27.52,
+        "elevation_m": 85.0,
+        "T2M": {"JAN": 4.8, "FEB": 5.6, "MAR": 8.2, "APR": 12.8, "MAY": 17.8, "JUN": 22.4, "JUL": 25.1, "AUG": 25.2, "SEP": 21.0, "OCT": 16.0, "NOV": 11.2, "DEC": 7.0},
+        "T2M_MIN": {"JAN": 1.8, "FEB": 2.4, "MAR": 4.6, "APR": 8.5, "MAY": 13.2, "JUN": 17.5, "JUL": 20.1, "AUG": 20.5, "SEP": 16.5, "OCT": 12.2, "NOV": 7.8, "DEC": 4.0},
+        "T2M_MAX": {"JAN": 8.2, "FEB": 9.4, "MAR": 12.4, "APR": 17.5, "MAY": 22.8, "JUN": 27.5, "JUL": 30.2, "AUG": 30.4, "SEP": 26.2, "OCT": 20.5, "NOV": 15.1, "DEC": 10.4},
+        "PRECTOTCORR": {"JAN": 2.10, "FEB": 1.80, "MAR": 1.70, "APR": 1.45, "MAY": 1.35, "JUN": 1.25, "JUL": 0.85, "AUG": 0.75, "SEP": 1.20, "OCT": 1.95, "NOV": 2.30, "DEC": 2.45},
+        "ALLSKY_SFC_SW_DWN": {"JAN": 6.2, "FEB": 8.9, "MAR": 13.2, "APR": 17.8, "MAY": 22.4, "JUN": 25.6, "JUL": 26.2, "AUG": 23.8, "SEP": 18.2, "OCT": 12.1, "NOV": 7.4, "DEC": 5.4},
+        "RH2M": {"JAN": 82.0, "FEB": 79.0, "MAR": 76.0, "APR": 72.0, "MAY": 70.0, "JUN": 66.0, "JUL": 64.0, "AUG": 66.0, "SEP": 71.0, "OCT": 78.0, "NOV": 82.0, "DEC": 84.0},
+        "WS2M": {"JAN": 3.8, "FEB": 3.9, "MAR": 3.6, "APR": 3.2, "MAY": 3.0, "JUN": 3.1, "JUL": 3.4, "AUG": 3.5, "SEP": 3.2, "OCT": 3.1, "NOV": 3.4, "DEC": 3.8}
+    },
+    "cukurova": {
+        "region_name": "Çukurova (Adana) Coastal Alluvial Plain, Turkey",
+        "latitude": 36.99,
+        "longitude": 35.33,
+        "elevation_m": 25.0,
+        "T2M": {"JAN": 9.8, "FEB": 11.1, "MAR": 14.2, "APR": 18.4, "MAY": 22.8, "JUN": 26.8, "JUL": 29.5, "AUG": 30.1, "SEP": 27.2, "OCT": 22.5, "NOV": 16.2, "DEC": 11.5},
+        "T2M_MIN": {"JAN": 5.4, "FEB": 6.2, "MAR": 8.8, "APR": 12.5, "MAY": 16.8, "JUN": 21.0, "JUL": 24.2, "AUG": 24.8, "SEP": 21.2, "OCT": 16.5, "NOV": 10.8, "DEC": 7.1},
+        "T2M_MAX": {"JAN": 14.8, "FEB": 16.5, "MAR": 20.0, "APR": 24.5, "MAY": 29.0, "JUN": 33.0, "JUL": 35.2, "AUG": 35.8, "SEP": 33.5, "OCT": 29.0, "NOV": 22.4, "DEC": 16.5},
+        "PRECTOTCORR": {"JAN": 3.40, "FEB": 2.80, "MAR": 2.20, "APR": 1.65, "MAY": 1.20, "JUN": 0.55, "JUL": 0.20, "AUG": 0.25, "SEP": 0.65, "OCT": 1.60, "NOV": 2.40, "DEC": 3.80},
+        "ALLSKY_SFC_SW_DWN": {"JAN": 8.8, "FEB": 11.5, "MAR": 15.6, "APR": 19.8, "MAY": 24.2, "JUN": 27.5, "JUL": 27.8, "AUG": 25.4, "SEP": 21.0, "OCT": 15.6, "NOV": 10.5, "DEC": 8.0},
+        "RH2M": {"JAN": 68.0, "FEB": 66.0, "MAR": 64.0, "APR": 63.0, "MAY": 62.0, "JUN": 64.0, "JUL": 66.0, "AUG": 67.0, "SEP": 63.0, "OCT": 60.0, "NOV": 64.0, "DEC": 69.0},
+        "WS2M": {"JAN": 2.1, "FEB": 2.3, "MAR": 2.5, "APR": 2.6, "MAY": 2.7, "JUN": 2.9, "JUL": 3.0, "AUG": 2.8, "SEP": 2.5, "OCT": 2.2, "NOV": 2.0, "DEC": 2.0}
+    },
 
     # AFRICA
     "kenya": {
@@ -146,25 +185,34 @@ class NasaPowerService:
 
     def __init__(self, cache_dir: str = "terramind/data/cache/climate"):
         self.cache_dir = cache_dir
-        os.makedirs(cache_dir, exist_ok=True)
+        self._mem_cache: Dict[str, Dict[str, Any]] = {}
+        try:
+            os.makedirs(cache_dir, exist_ok=True)
+        except Exception:
+            pass
 
     def _get_cache_key(self, lat: float, lon: float) -> str:
         s = f"{round(lat, 2)}_{round(lon, 2)}"
         return hashlib.md5(s.encode()).hexdigest()
 
     def _read_cache(self, key: str) -> Optional[Dict[str, Any]]:
+        if key in self._mem_cache:
+            return self._mem_cache[key]
         fp = os.path.join(self.cache_dir, f"{key}.json")
-        if os.path.exists(fp):
-            try:
+        try:
+            if os.path.exists(fp):
                 with open(fp, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                return None
+                    data = json.load(f)
+                    self._mem_cache[key] = data
+                    return data
+        except Exception:
+            pass
         return None
 
     def _write_cache(self, key: str, data: Dict[str, Any]):
-        fp = os.path.join(self.cache_dir, f"{key}.json")
+        self._mem_cache[key] = data
         try:
+            fp = os.path.join(self.cache_dir, f"{key}.json")
             with open(fp, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2)
         except Exception:

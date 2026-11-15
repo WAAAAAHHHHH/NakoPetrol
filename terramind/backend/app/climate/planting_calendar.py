@@ -28,8 +28,25 @@ class PlantingCalendarEngine:
         opt_t_min, opt_t_max = crop["optimal_temp_c"]
         base_temp = crop["base_temp_c"]
         heat_threshold = float(crop.get("heat_stress_threshold_c", 35.0))
-        target_planting_months = crop["recommended_planting_months"]
-        target_harvest_months = crop["harvest_months"]
+        target_planting_months = list(crop["recommended_planting_months"])
+        target_harvest_months = list(crop["harvest_months"])
+
+        # Detect hemisphere and climate regime from monthly profile
+        # Southern hemisphere has minimum temperatures around June/July/August
+        june_july_mean = (monthly_climate[5]["temp_mean_c"] + monthly_climate[6]["temp_mean_c"]) / 2.0
+        dec_jan_mean = (monthly_climate[11]["temp_mean_c"] + monthly_climate[0]["temp_mean_c"]) / 2.0
+        is_southern_season = june_july_mean < dec_jan_mean - 3.0
+
+        month_map = {
+            "JAN": 0, "FEB": 1, "MAR": 2, "APR": 3, "MAY": 4, "JUN": 5,
+            "JUL": 6, "AUG": 7, "SEP": 8, "OCT": 9, "NOV": 10, "DEC": 11
+        }
+        inv_map = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+
+        if is_southern_season:
+            # Shift months by 6 for southern hemisphere seasonal phenology
+            target_planting_months = [inv_map[(month_map[m] + 6) % 12] for m in target_planting_months if m in month_map]
+            target_harvest_months = [inv_map[(month_map[m] + 6) % 12] for m in target_harvest_months if m in month_map]
 
         calendar_months = []
 
@@ -88,8 +105,8 @@ class PlantingCalendarEngine:
         return {
             "crop_id": crop["id"],
             "crop_name": crop["name"],
-            "optimal_sowing_window": ", ".join(crop["recommended_planting_months"]),
-            "expected_harvest_window": ", ".join(crop["harvest_months"]),
+            "optimal_sowing_window": ", ".join(target_planting_months),
+            "expected_harvest_window": ", ".join(target_harvest_months),
             "growing_season_duration": f"{crop['growing_season_days']} days (~{round(crop['growing_season_days']/30, 1)} months)",
             "monthly_schedule": calendar_months,
             "planting_risk_analysis": {

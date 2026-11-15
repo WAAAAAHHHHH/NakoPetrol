@@ -384,7 +384,14 @@ def analyze_field(req: FieldAnalyzeRequest):
     soil_data = soil_service.get_soil_profile(lat, lon)
 
     # 3. Satellite Vegetation Profile
-    sat_data = satellite_service.get_field_vegetation_profile(lat, lon, crop_type=req.previous_crop_id)
+    sat_data = satellite_service.get_field_vegetation_profile(
+        lat=lat,
+        lon=lon,
+        crop_type=req.previous_crop_id,
+        monthly_climate=climate_data.get("monthly"),
+        is_irrigated=req.irrigation_available,
+        is_water=False
+    )
 
     # 4. Climate Risk Profile
     risk_data = risk_analyzer.analyze_field_risks(

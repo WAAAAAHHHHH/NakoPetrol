@@ -11,6 +11,7 @@ if current_dir not in sys.path:
 
 from app.main import app
 
-# Export for ASGI servers
-__all__ = ["app"]
+# Export for ASGI servers and AWS Lambda / Vercel handlers
+handler = app
+__all__ = ["app", "handler"]
 

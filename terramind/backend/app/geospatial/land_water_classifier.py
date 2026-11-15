@@ -77,6 +77,15 @@ class LandWaterClassifier:
                 poly = self._polygons[idx]
                 if poly.contains(pt) or poly.touches(pt):
                     return True
+            
+            # Coastal agricultural boundary tolerance (~800m) for coastal fields
+            # Resolves 10m simplified coastline boundary clipping for near-shore parcels
+            coastal_candidates = self._tree.query(pt.buffer(0.008))
+            for idx in coastal_candidates:
+                poly = self._polygons[idx]
+                if poly.distance(pt) <= 0.008:
+                    return True
+
             return False
         except Exception:
             return True
@@ -96,7 +105,9 @@ class LandWaterClassifier:
             elif lat < -55.0:
                 water_name = "Southern Ocean"
             elif 30.0 <= lat <= 46.0 and -6.0 <= lon <= 36.0:
-                if 40.0 <= lat <= 47.0 and 27.0 <= lon <= 42.0:
+                if 40.3 <= lat <= 41.2 and 26.6 <= lon <= 29.9:
+                    water_name = "Sea of Marmara"
+                elif 41.2 <= lat <= 47.0 and 27.0 <= lon <= 42.0:
                     water_name = "Black Sea"
                 elif 36.0 <= lat <= 41.5 and 23.0 <= lon <= 28.5:
                     water_name = "Aegean Sea"
