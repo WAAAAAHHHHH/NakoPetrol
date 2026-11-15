@@ -85,12 +85,14 @@ Farmelster strictly enforces scientific realism:
 
 ## 👥 Project Team & Credits
 
-**Farmelster** was created for the **NASA Space Apps Challenge 2026** (*Field Shift: Adapting Farms with NASA Data*) by a team of 4 dedicated developers:
+**Farmelster** was made by 4 students participating in the **NASA Space Apps Challenge 2026** (*Field Shift: Adapting Farms with NASA Data*):
 
-* 👑 **Mert** — **Team Leader & Lead Systems Architect** (Architecture, Backend Microservices, Scientific Modeling & Project Leadership)
-* 🚀 **Zeynep** — **Full-Stack & UX Engineer** (Agricultural Workstation Interface, State Sync & Component Architecture)
-* 🛰️ **Anka** — **Data & Remote Sensing Specialist** (NASA POWER Agroclimatology Pipelines & Spectral NDVI Analytics)
-* 🗺️ **Aras** — **GIS & Systems QA Engineer** (Geospatial Vector Indexing, Boundary Validation & Telemetry Verification)
+* 👑 **Mert** — **Team Leader** (Led our team, organized the project, backend & calculations)
+* 💻 **Zeynep** — **Student Developer** (Website design, layout & user interface)
+* 📊 **Anka** — **Student Developer** (NASA climate data research & crop info)
+* 🗺️ **Aras** — **Student Developer** (Maps, testing & bug fixing)
+
+*We are still learning and had a lot of fun building this project together! 🎓*
 
 ---
 

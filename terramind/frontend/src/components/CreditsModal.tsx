@@ -21,34 +21,34 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
   const team: TeamMember[] = [
     {
       name: 'Mert',
-      role: 'Team Leader & Lead Systems Architect',
+      role: 'Team Leader',
       badge: 'Team Leader',
       isLeader: true,
-      contribution: 'System architecture, backend microservices, scientific algorithm design, and technical project direction.',
+      contribution: 'Led our team, organized the project, and helped connect the backend and algorithms.',
       color: 'from-[#7C9A6B]/25 to-[#7C9A6B]/5 border-[#7C9A6B]/50'
     },
     {
       name: 'Zeynep',
-      role: 'Full-Stack & UX Engineer',
-      badge: 'Core Developer',
+      role: 'Student Developer',
+      badge: 'Student',
       isLeader: false,
-      contribution: 'Interactive agricultural workstation design, state synchronization, and component architecture.',
+      contribution: 'Worked on the frontend design, buttons, and making the website easy to use.',
       color: 'from-sky-500/15 to-transparent border-sky-500/25'
     },
     {
       name: 'Anka',
-      role: 'Data & Remote Sensing Specialist',
-      badge: 'Core Developer',
+      role: 'Student Developer',
+      badge: 'Student',
       isLeader: false,
-      contribution: 'NASA POWER agroclimatology pipeline, NDVI spectral curves, and pedological data integration.',
+      contribution: 'Helped research NASA climate data, satellite NDVI, and crop information.',
       color: 'from-amber-500/15 to-transparent border-amber-500/25'
     },
     {
       name: 'Aras',
-      role: 'GIS & Systems QA Engineer',
-      badge: 'Core Developer',
+      role: 'Student Developer',
+      badge: 'Student',
       isLeader: false,
-      contribution: 'Geospatial vector mapping, coordinate boundary validation, testing, and production telemetry verification.',
+      contribution: 'Worked on the map coordinates, testing features, and checking for bugs.',
       color: 'from-emerald-500/15 to-transparent border-emerald-500/25'
     }
   ];
@@ -72,12 +72,12 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
         </div>
 
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight">
-          Project Creators &amp; Engineering Team
+          Made by Students 🎓
         </h2>
 
-        <p className="text-white/60 text-xs sm:text-sm mt-2 leading-relaxed">
-          <strong>Farmelster</strong> was conceptualized, designed, and built by a dedicated team of four passionate developers for the 
-          <em> NASA Space Apps Challenge 2026</em> under the theme <strong>"Field Shift: Adapting Farms with NASA Data"</strong>.
+        <p className="text-white/70 text-xs sm:text-sm mt-2 leading-relaxed">
+          We are four students who built <strong>Farmelster</strong> for the <em>NASA Space Apps Challenge 2026</em>. 
+          We tried our best to make something simple and useful for farmers using real NASA satellite data!
         </p>
 
         {/* Team Grid */}
@@ -107,7 +107,7 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
                   <span
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                       member.isLeader
-                        ? 'bg-[#7C9A6B] text-[#0E0F12] shadow-sm'
+                        ? 'bg-[#7C9A6B] text-[#0E0F12] shadow-sm font-bold'
                         : 'bg-white/[0.06] text-white/70 border border-white/[0.08]'
                     }`}
                   >
@@ -119,14 +119,14 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
                   {member.role}
                 </div>
 
-                <p className="text-[11px] text-white/55 leading-relaxed">
+                <p className="text-[11px] text-white/60 leading-relaxed">
                   {member.contribution}
                 </p>
               </div>
 
               {member.isLeader && (
                 <div className="mt-3 pt-2.5 border-t border-[#7C9A6B]/20 flex items-center justify-between text-[10px] text-[#A8C496] font-medium">
-                  <span>Leadership &amp; Technical Direction</span>
+                  <span>Our Team Leader</span>
                   <Sparkles size={12} className="text-[#A8C496]" />
                 </div>
               )}
@@ -134,13 +134,13 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
           ))}
         </div>
 
-        {/* Mission Statement Banner */}
-        <div className="mt-6 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-3 text-xs text-white/60 leading-relaxed">
+        {/* Student Note Banner */}
+        <div className="mt-6 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-3 text-xs text-white/70 leading-relaxed">
           <Heart size={16} className="text-[#C47B6A] shrink-0 mt-0.5 fill-[#C47B6A]/30" />
           <div>
-            <strong className="text-white/80 block font-semibold mb-0.5">Our Shared Mission</strong>
+            <strong className="text-white/90 block font-semibold mb-0.5">Thank You!</strong>
             <span>
-              Built to demonstrate how accessible Earth Observation science can transform climate resilience for farmers worldwide — from Central Anatolia to California and beyond.
+              We are still learning and had a lot of fun making this project together. Thank you for checking out Farmelster!
             </span>
           </div>
         </div>
@@ -159,3 +159,4 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
     </div>
   );
 };
+
