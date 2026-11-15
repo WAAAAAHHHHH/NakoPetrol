@@ -177,22 +177,15 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
       </div>
 
       {/* 2. LEFT FLOATING TELEMETRY & PARCELS PANEL (MINIMALIST & UNDERSTANDABLE) */}
-      <div className="absolute top-4 left-4 bottom-4 w-[350px] z-20 flex flex-col pointer-events-none">
+      <div className="absolute top-4 left-4 bottom-4 w-[350px] sm:w-[370px] z-20 flex flex-col pointer-events-none">
         <div className="dark-glass-panel rounded-2xl flex-1 flex flex-col overflow-hidden pointer-events-auto shadow-2xl">
           {/* Active Parcel Header */}
-          <div className="p-4 border-b border-white/5 space-y-2">
-            <div className="flex items-start justify-between">
-              <div>
-                <span className={`text-[10px] uppercase tracking-wider font-semibold block ${isArable ? 'text-[#7C9A6B]' : 'text-white/40'}`}>
-                  {isArable ? 'Active Surveyed Parcel' : 'Marine Water Surface'}
-                </span>
-                <h3 className="text-sm font-semibold text-white tracking-tight leading-tight mt-0.5">
-                  {currentName}
-                </h3>
-                <p className="text-xs text-white/50 truncate max-w-[220px] mt-0.5">
-                  {isArable ? (selectedField?.region || 'Terrestrial Parcel') : 'Open Hydrosphere · Non-Arable'}
-                </p>
-              </div>
+          <div className="p-4 border-b border-white/5 space-y-2.5">
+            {/* Top row: Status Tag & Field Switcher Dropdown */}
+            <div className="flex items-center justify-between gap-2">
+              <span className={`text-[10px] uppercase tracking-wider font-semibold block ${isArable ? 'text-[#7C9A6B]' : 'text-white/40'}`}>
+                {isArable ? 'Active Surveyed Parcel' : 'Marine Water Surface'}
+              </span>
 
               {/* Region Switcher Select */}
               <div className="relative shrink-0">
@@ -202,15 +195,31 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     const found = demoFields.find(f => f.id === e.target.value);
                     if (found) onSelectField(found);
                   }}
-                  className="bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/[0.08] rounded-xl px-2.5 py-1 text-xs font-medium focus:outline-none focus:border-[#7C9A6B] cursor-pointer transition-colors"
+                  className="bg-white/[0.05] hover:bg-white/[0.1] text-[#A8C496] border border-[#7C9A6B]/30 hover:border-[#7C9A6B]/60 rounded-xl px-2.5 py-1 text-xs font-semibold focus:outline-none cursor-pointer transition-colors max-w-[170px]"
+                  title="Switch agricultural field parcel"
                 >
+                  {selectedField && !demoFields.some(f => f.id === selectedField.id) && (
+                    <option value={selectedField.id} className="bg-[#18191E] text-white">
+                      Custom Location
+                    </option>
+                  )}
                   {demoFields.map((f) => (
                     <option key={f.id} value={f.id} className="bg-[#18191E] text-white">
-                      {f.name.split(' ')[0]} ({f.region.split(',')[0]})
+                      {f.region.split(',')[0]}
                     </option>
                   ))}
                 </select>
               </div>
+            </div>
+
+            {/* Farm Title & Region Subtitle (Full width with zero horizontal collision) */}
+            <div>
+              <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-tight">
+                {currentName}
+              </h3>
+              <p className="text-xs text-white/50 truncate mt-0.5">
+                {isArable ? (selectedField?.region || 'Terrestrial Parcel') : 'Open Hydrosphere · Non-Arable'}
+              </p>
             </div>
 
             {/* Coordinates */}
@@ -423,7 +432,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
       </div>
 
       {/* 3. BOTTOM NASA DATA SOURCE BADGE (Clean, Minimal, No Neon) */}
-      <div className="absolute bottom-4 left-[380px] z-20 pointer-events-none">
+      <div className="absolute bottom-4 left-[370px] sm:left-[390px] z-20 pointer-events-none">
         <div className="dark-glass-panel rounded-xl px-3.5 py-1.5 flex items-center space-x-3 pointer-events-auto border border-white/10 shadow-xl">
           <div className="flex items-center space-x-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#A6B58A]" />
