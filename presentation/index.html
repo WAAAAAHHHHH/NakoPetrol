@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Farmelster — NASA Space Apps Challenge 2026 Presentation</title>
+  <title>Farmelster — NASA Space Apps Challenge 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090B0E;
-      --card-bg: rgba(18, 22, 28, 0.75);
+      --card-bg: rgba(18, 22, 28, 0.85);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #7C9A6B;
       --accent-light: #A8C496;
-      --accent-glow: rgba(124, 154, 107, 0.25);
+      --accent-glow: rgba(124, 154, 107, 0.2);
       --nasa-blue: #0B3D91;
-      --nasa-red: #FC3D21;
       --text: #F1F5F9;
       --text-muted: #94A3B8;
       --text-dim: #64748B;
@@ -41,39 +40,38 @@
       position: relative;
     }
 
-    /* Ambient Space Lighting */
+    /* Ambient Lighting */
     .space-backdrop {
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 15% 15%, rgba(124, 154, 107, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(11, 61, 145, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(20, 24, 33, 0.6) 0%, transparent 100%);
+        radial-gradient(circle at 10% 15%, rgba(124, 154, 107, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(11, 61, 145, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(20, 24, 33, 0.7) 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Subtle grid overlay */
     .grid-overlay {
       position: absolute;
       inset: 0;
       background-image: 
         linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 48px 48px;
+      background-size: 40px 40px;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Top presentation navigation bar */
+    /* Header */
     header {
-      height: 56px;
-      padding: 0 32px;
+      height: 54px;
+      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--card-border);
-      background: rgba(9, 11, 14, 0.85);
+      background: rgba(9, 11, 14, 0.9);
       backdrop-filter: blur(12px);
       z-index: 10;
       shrink: 0;
@@ -86,21 +84,20 @@
     }
 
     .brand-logo {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
       background: #141C14;
       border: 1px solid rgba(124, 154, 107, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     .brand-title {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 16px;
       letter-spacing: -0.02em;
       color: #FFF;
       display: flex;
@@ -108,27 +105,34 @@
       gap: 6px;
     }
 
+    .brand-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
     .nasa-pill {
       background: rgba(11, 61, 145, 0.25);
       border: 1px solid rgba(11, 61, 145, 0.5);
-      color: #60A5FA;
-      font-size: 11px;
+      color: #93C5FD;
+      font-size: 10px;
       font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 9999px;
-      letter-spacing: 0.03em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     .header-controls {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .slide-counter {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
       background: rgba(255, 255, 255, 0.04);
       padding: 4px 10px;
@@ -140,14 +144,15 @@
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
       color: var(--text);
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 5px 12px;
+      border-radius: 7px;
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
+      text-decoration: none;
       transition: all 0.2s ease;
     }
 
@@ -166,7 +171,7 @@
       background: var(--accent-light);
     }
 
-    /* Main Slide Deck Canvas */
+    /* Main Slide Canvas */
     main {
       flex: 1;
       position: relative;
@@ -175,19 +180,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px 48px;
+      padding: 20px 36px;
     }
 
     .slide {
       position: absolute;
-      inset: 24px 48px;
+      inset: 20px 36px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       opacity: 0;
-      transform: translateY(20px) scale(0.98);
+      transform: translateY(16px) scale(0.985);
       pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .slide.active {
@@ -196,221 +200,280 @@
       pointer-events: auto;
     }
 
-    /* Slide Card Box */
     .slide-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 24px;
+      border-radius: 20px;
       backdrop-filter: blur(20px);
-      padding: 40px 48px;
+      padding: 32px 36px;
       height: 100%;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(124, 154, 107, 0.04);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
     }
 
-    /* Header tags & titles */
-    .slide-badge {
-      display: inline-flex;
+    /* Section badges */
+    .badge-bar {
+      display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .slide-badge {
+      font-size: 11px;
       font-weight: 700;
       color: var(--accent-light);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 12px;
     }
 
     .slide-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 34px;
+      font-size: 30px;
       font-weight: 700;
       color: #FFFFFF;
       letter-spacing: -0.02em;
       line-height: 1.15;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .slide-subtitle {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text-muted);
       line-height: 1.5;
-      max-width: 900px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
-    /* Multi-column grid */
-    .grid-2 {
+    /* Split layout: Text left, Real Photo right */
+    .split-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 28px;
       flex: 1;
-      align-items: stretch;
+      align-items: center;
+      min-height: 0;
     }
 
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      min-height: 0;
+    }
+
+    /* Screenshot device frame */
+    .screenshot-frame {
+      width: 100%;
+      height: 100%;
+      max-height: 480px;
+      background: #0B0E14;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 154, 107, 0.08);
+      position: relative;
+    }
+
+    .frame-bar {
+      height: 24px;
+      background: #12161F;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      shrink: 0;
+    }
+
+    .dot-circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .frame-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-left: 8px;
+    }
+
+    .screenshot-img {
+      width: 100%;
+      height: calc(100% - 24px);
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      background: #0B0E14;
+    }
+
+    /* Feature block */
+    .info-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+    }
+
+    .info-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(124, 154, 107, 0.25);
+    }
+
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .info-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFF;
+    }
+
+    .info-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--accent-light);
+      background: rgba(124, 154, 107, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .info-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Science Banner */
+    .code-banner {
+      background: #0B0E14;
+      border: 1px solid rgba(124, 154, 107, 0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #A8C496;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Grid layout for Slide 2 and Slide 7 */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
       flex: 1;
       align-items: stretch;
+      min-height: 0;
     }
 
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
       flex: 1;
       align-items: stretch;
+      min-height: 0;
     }
 
-    /* Feature Cards */
-    .feature-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-    }
-
-    .feature-box:hover {
-      background: rgba(255, 255, 255, 0.035);
-      border-color: rgba(124, 154, 107, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(124, 154, 107, 0.12);
-      border: 1px solid rgba(124, 154, 107, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      margin-bottom: 14px;
-    }
-
-    .feature-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: #FFF;
-      margin-bottom: 6px;
-    }
-
-    .feature-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .feature-stat {
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--accent-light);
-    }
-
-    /* Formula & Science code callout */
-    .science-banner {
-      background: #0D1117;
-      border: 1px solid rgba(124, 154, 107, 0.3);
-      border-radius: 14px;
-      padding: 16px 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: #A8C496;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .pill-tag {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* Student Badge Cards (Slide 7) */
-    .student-card {
+    .student-box {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 18px;
-      padding: 22px;
+      border-radius: 14px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
     }
 
-    .student-card.leader {
+    .student-box.leader {
       border-color: rgba(124, 154, 107, 0.4);
-      background: linear-gradient(135deg, rgba(124, 154, 107, 0.12) 0%, rgba(18, 22, 28, 0.8) 100%);
+      background: linear-gradient(135deg, rgba(124, 154, 107, 0.1) 0%, rgba(18, 22, 28, 0.8) 100%);
     }
 
-    .leader-badge {
-      position: absolute;
-      top: 14px;
-      right: 14px;
+    .role-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .role-badge.leader-badge {
       background: var(--accent);
       color: #0E0F12;
-      font-weight: 700;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      text-transform: uppercase;
     }
 
-    /* Footer timeline / slide dots */
+    .role-badge.student-badge {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+    }
+
+    /* Footer */
     footer {
-      height: 48px;
-      padding: 0 48px;
+      height: 46px;
+      padding: 0 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(9, 11, 14, 0.9);
+      background: rgba(9, 11, 14, 0.95);
       border-top: 1px solid var(--card-border);
       z-index: 10;
     }
 
     .dots-container {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
     .dot {
-      width: 28px;
+      width: 24px;
       height: 4px;
       border-radius: 2px;
       background: rgba(255, 255, 255, 0.12);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     .dot.active {
       background: var(--accent);
-      width: 48px;
+      width: 44px;
     }
 
     .footer-hints {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-dim);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
     .key-hint {
@@ -433,91 +496,150 @@
   <header>
     <div class="brand">
       <div class="brand-logo">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
           <path d="M4 16C4 16 6 8 14 5C14 5 14 13 6 15L4 16Z" fill="#7C9A6B" opacity="0.95"/>
           <path d="M4 16L9 11" stroke="#A8C496" strokeWidth="1.4" strokeLinecap="round" opacity="0.85"/>
         </svg>
       </div>
       <div class="brand-title">
         <span>farmelster</span>
+        <span class="brand-dot"></span>
       </div>
       <div class="nasa-pill">NASA Space Apps Challenge 2026</div>
     </div>
 
     <div class="header-controls">
       <span class="slide-counter" id="slideNum">1 / 7</span>
-      <button class="nav-btn" onclick="prevSlide()">← Prev</button>
-      <button class="nav-btn primary" onclick="nextSlide()">Next →</button>
-      <button class="nav-btn" onclick="toggleFullScreen()" title="Fullscreen mode (F)">⛶ Fullscreen</button>
-      <a href="https://farmelster.com" target="_blank" class="nav-btn" style="text-decoration:none;">🚀 Live Site</a>
+      <button class="nav-btn" onclick="prevSlide()">Prev</button>
+      <button class="nav-btn primary" onclick="nextSlide()">Next</button>
+      <button class="nav-btn" onclick="toggleFullScreen()" title="Toggle Fullscreen (F)">Fullscreen</button>
+      <a href="https://farmelster.com" target="_blank" class="nav-btn">Live Site ↗</a>
     </div>
   </header>
 
-  <!-- Main Slide Arena -->
+  <!-- Slide Canvas -->
   <main>
 
-    <!-- SLIDE 1: Title & Challenge Hook -->
+    <!-- SLIDE 1: Title & Platform Overview -->
     <div class="slide active" id="slide-0">
-      <div class="slide-card" style="justify-content: center; text-align: center; align-items: center;">
-        <div class="slide-badge" style="justify-content: center;">
-          <span>🛰️ NASA Space Apps Challenge 2026 &bull; Challenge: Field Shift</span>
+      <div class="slide-card">
+        <div class="badge-bar">
+          <span class="slide-badge">NASA Space Apps Challenge 2026 &bull; Challenge: Field Shift</span>
         </div>
-        <h1 class="slide-title" style="font-size: 46px; max-width: 950px; margin-bottom: 16px;">
-          FARMELSTER
-        </h1>
-        <p class="slide-subtitle" style="font-size: 19px; max-width: 820px; margin-bottom: 36px; color: #E2E8F0;">
+        <h1 class="slide-title">FARMELSTER</h1>
+        <p class="slide-subtitle">
           Global Agricultural Intelligence & Remote Sensing Platform.<br/>
           Bridging NASA Earth Observations, Soil Physics, and Climate Modeling for Smallholder Resilience.
         </p>
 
-        <div style="display: flex; gap: 16px; margin-bottom: 40px;">
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px 24px; border-radius: 12px; text-align: left;">
-            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Challenge</div>
-            <div style="font-weight: 600; color: #FFF; font-size: 14px;">Field Shift: Adapting Farms with NASA Data</div>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Challenge Mission</span>
+                <span class="info-card-tag">FIELD SHIFT</span>
+              </div>
+              <p class="info-card-desc">
+                Adapting agricultural fields to shifting climates by transforming raw satellite telemetry into hyper-localized agronomic guidance.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Core Science Pillars</span>
+                <span class="info-card-tag">PHYSICS BASED</span>
+              </div>
+              <p class="info-card-desc">
+                Couples NASA POWER MERRA-2 30-year climatology with ISRIC SoilGrids 250m soil chemistry and Sentinel-2 optical NDVI.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Engineering Squad</span>
+                <span class="info-card-tag">STUDENT TEAM</span>
+              </div>
+              <p class="info-card-desc">
+                Built by 4 students: <strong>Mert</strong> (Team Leader), <strong>Zeynep</strong>, <strong>Anka</strong>, and <strong>Aras</strong>.
+              </p>
+            </div>
+
+            <div class="code-banner">
+              <span>Production URL: https://farmelster.com</span>
+              <span style="color: var(--accent-light);">200 OK</span>
+            </div>
           </div>
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px 24px; border-radius: 12px; text-align: left;">
-            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Creators</div>
-            <div style="font-weight: 600; color: var(--accent-light); font-size: 14px;">4-Student Engineering Team (Led by Mert)</div>
-          </div>
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px 24px; border-radius: 12px; text-align: left;">
-            <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Production Web</div>
-            <div style="font-weight: 600; color: #60A5FA; font-size: 14px;">https://farmelster.com</div>
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">farmelster.com &bull; Global GIS Workstation</span>
+              </div>
+              <img src="assets/shot_dashboard.png" alt="Farmelster Dashboard" class="screenshot-img" />
+            </div>
           </div>
         </div>
-
-        <button class="nav-btn primary" onclick="nextSlide()" style="padding: 12px 32px; font-size: 15px; border-radius: 12px;">
-          Begin Presentation →
-        </button>
       </div>
     </div>
 
-    <!-- SLIDE 2: The Problem -->
+    <!-- SLIDE 2: The Global Agricultural Crisis -->
     <div class="slide" id="slide-1">
       <div class="slide-card">
-        <div class="slide-badge">01 &bull; The Global Agricultural Crisis</div>
+        <div class="badge-bar">
+          <span class="slide-badge">01 &bull; The Global Crisis</span>
+        </div>
         <h2 class="slide-title">The Challenge: Blind Farming in a Volatile Climate</h2>
         <p class="slide-subtitle">
-          Over 500 million smallholder farmers face shifting rainfall patterns, sudden heatwaves, and groundwater exhaustion. Yet critical Earth science data remains locked behind complex scientific portals.
+          Over 500 million smallholders worldwide face accelerating thermal stress and groundwater depletion, while Earth Observation data remains locked inside specialized scientific archives.
         </p>
 
         <div class="grid-3">
-          <div class="feature-box">
-            <div class="feature-icon">📉</div>
-            <div class="feature-name">Static Agronomic Advice</div>
-            <div class="feature-desc">Farmers rely on legacy generational habits or national averages that no longer match altered 2026 microclimates, leading to catastrophic crop failures.</div>
-            <div class="feature-stat">FAO: 28% yield reduction risk by 2030</div>
+          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="info-card-header">
+                <span class="info-card-title">Static Historical Habit</span>
+                <span class="info-card-tag">OBSOLETE</span>
+              </div>
+              <p class="info-card-desc" style="margin-top: 8px;">
+                Generational planting calendars fail under sudden microclimate shifts. Farmers plant during unseasonal warm spells only to lose seedlings to late spring freezes.
+              </p>
+            </div>
+            <div class="code-banner" style="margin-top: 14px;">
+              <span>Yield loss risk: +28% by 2030</span>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">📡</div>
-            <div class="feature-name">Data Fragmentation</div>
-            <div class="feature-desc">NASA POWER climate grids, ISRIC soil profiles, and Copernicus Sentinel optical bands live in isolated data silos requiring specialized GIS software to decipher.</div>
-            <div class="feature-stat">Zero unified open-access tools</div>
+
+          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="info-card-header">
+                <span class="info-card-title">Fragmented Data Silos</span>
+                <span class="info-card-tag">ACCESSIBILITY</span>
+              </div>
+              <p class="info-card-desc" style="margin-top: 8px;">
+                NASA POWER atmospheric grids, ISRIC soil profiles, and Copernicus Sentinel optical bands require advanced GIS workstations, python scripts, and HDF5 decoders.
+              </p>
+            </div>
+            <div class="code-banner" style="margin-top: 14px;">
+              <span>No unified open-access tools</span>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">💧</div>
-            <div class="feature-name">Water & Stress Blindspots</div>
-            <div class="feature-desc">Without real-time vapor pressure deficit, soil moisture curves, and frost windows, irrigation regimes are either wasteful or fatally late.</div>
-            <div class="feature-stat">70% global freshwater used in ag</div>
+
+          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="info-card-header">
+                <span class="info-card-title">Water & Stress Blindspots</span>
+                <span class="info-card-tag">DEPLETION</span>
+              </div>
+              <p class="info-card-desc" style="margin-top: 8px;">
+                Without real-time vapor pressure deficit, root-zone moisture holding capacity, and frost windows, irrigation regimes are either heavily wasteful or fatally late.
+              </p>
+            </div>
+            <div class="code-banner" style="margin-top: 14px;">
+              <span>70% of global freshwater</span>
+            </div>
           </div>
         </div>
       </div>
@@ -526,35 +648,62 @@
     <!-- SLIDE 3: The Data Pipeline -->
     <div class="slide" id="slide-2">
       <div class="slide-card">
-        <div class="slide-badge">02 &bull; NASA & Earth Observation Architecture</div>
+        <div class="badge-bar">
+          <span class="slide-badge">02 &bull; Earth Observation Architecture</span>
+        </div>
         <h2 class="slide-title">Instant Digital Twins from Orbit to Subsoil</h2>
         <p class="slide-subtitle">
-          Farmelster pulls real-time telemetry from NASA POWER MERRA-2 and European Space Agency orbits to synthesize a living agronomic digital twin for any coordinate on Earth.
+          Farmelster pulls real-time telemetry from NASA POWER MERRA-2 and European Space Agency orbits to synthesize an instant agronomic digital twin for any coordinate on Earth.
         </p>
 
-        <div class="science-banner">
-          <span>DATA PIPELINE: NASA MERRA-2 (T2M, PRECTOTCORR, ALLSKY_SW) &bull; ISRIC SoilGrids 250m &bull; Sentinel-2 Spectral NIR/Red</span>
-          <span class="pill-tag">Zero Synthetics / Pure Physics</span>
-        </div>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="code-banner">
+              <span>PIPELINE: NASA MERRA-2 &bull; ISRIC SoilGrids &bull; Sentinel-2</span>
+              <span style="color: var(--accent-light);">LIVE API</span>
+            </div>
 
-        <div class="grid-3">
-          <div class="feature-box">
-            <div class="feature-icon">☀️</div>
-            <div class="feature-name">NASA POWER Engine</div>
-            <div class="feature-desc">Daily & 30-year climatological normals: 2m temperatures, precipitation, solar insolation, relative humidity, and wind speed for microclimate modeling.</div>
-            <div class="feature-stat">MERRA-2 atmospheric assimilation</div>
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">NASA POWER Engine</span>
+                <span class="info-card-tag">MERRA-2</span>
+              </div>
+              <p class="info-card-desc">
+                Daily & 30-year climatological normals: 2m temperatures, precipitation, solar insolation, relative humidity, and wind speed.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">ISRIC SoilGrids 250m</span>
+                <span class="info-card-tag">200CM DEPTH</span>
+              </div>
+              <p class="info-card-desc">
+                Deep profile: pH, USDA soil texture triangle (clay/sand/silt), cation exchange capacity (CEC), bulk density, and organic carbon.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Sentinel-2 & MODIS NDVI</span>
+                <span class="info-card-tag">SPECTRAL</span>
+              </div>
+              <p class="info-card-desc">
+                Optical surface reflectance computing true NDVI = (NIR - Red) / (NIR + Red) tracking photosynthetic canopy vigor.
+              </p>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">🌱</div>
-            <div class="feature-name">ISRIC SoilGrids 250m</div>
-            <div class="feature-desc">Physical and geochemical properties down to 200cm depth: soil pH, USDA texture triangle (clay/sand/silt), CEC, bulk density, and organic carbon.</div>
-            <div class="feature-stat">Global 250m spatial resolution</div>
-          </div>
-          <div class="feature-box">
-            <div class="feature-icon">🛰️</div>
-            <div class="feature-name">Sentinel-2 & MODIS NDVI</div>
-            <div class="feature-desc">Optical surface reflectance computing true NDVI = (NIR - Red) / (NIR + Red) to track canopy density, chlorophyll absorption, and moisture deficit.</div>
-            <div class="feature-stat">B04 (Red) & B08 (NIR) 10m resolution</div>
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">Sentinel-2 Optical NDVI & Surface Reflectance</span>
+              </div>
+              <img src="assets/shot_satellite.png" alt="Sentinel-2 Satellite Analysis" class="screenshot-img" />
+            </div>
           </div>
         </div>
       </div>
@@ -563,33 +712,62 @@
     <!-- SLIDE 4: Crop Suitability & Scientific Scoring -->
     <div class="slide" id="slide-3">
       <div class="slide-card">
-        <div class="slide-badge">03 &bull; Multi-Attribute Utility Theory (MAUT)</div>
+        <div class="badge-bar">
+          <span class="slide-badge">03 &bull; Multi-Attribute Utility Theory (MAUT)</span>
+        </div>
         <h2 class="slide-title">Scientific Crop Suitability Engine</h2>
         <p class="slide-subtitle">
-          Instead of arbitrary guesses or hallucinated rankings, Farmelster applies strict Multi-Attribute Utility Theory grounded in peer-reviewed FAO EcoCrop physiological thresholds.
+          Instead of arbitrary AI rankings, Farmelster applies strict Multi-Attribute Utility Theory grounded in peer-reviewed FAO EcoCrop physiological thresholds.
         </p>
 
-        <div class="science-banner">
-          <span>MATHEMATICAL FORMULA: Suitability Score = wT · Ctemp + wW · Cwater + wS · Csoil + wR · Crisk</span>
-          <span class="pill-tag">Default: 0.30T / 0.30W / 0.25S / 0.15R</span>
-        </div>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="code-banner">
+              <span>Suitability = wT·Ctemp + wW·Cwater + wS·Csoil + wR·Crisk</span>
+              <span style="color: var(--accent-light);">FAO ECOCROP</span>
+            </div>
 
-        <div class="grid-2">
-          <div class="feature-box">
-            <div class="feature-icon">🌾</div>
-            <div class="feature-name">11 Evaluated Global Crops</div>
-            <div class="feature-desc">
-              Comprehensive biological profiles evaluating Wheat, Barley, Maize, Sunflower, Chickpea, Cotton, Soybeans, Olive, Grape, Lentil, and Potato against local soil salinity, thermal optimums, and water requirements.
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">11 Core Food Crops</span>
+                <span class="info-card-tag">BIOLOGICAL</span>
+              </div>
+              <p class="info-card-desc">
+                Wheat, Barley, Maize, Sunflower, Chickpea, Cotton, Soybeans, Olive, Grape, Lentil, and Potato evaluated against local thermal limits and soil salinity.
+              </p>
             </div>
-            <div class="feature-stat">FAO EcoCrop Biological Validation</div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Rigorous Spatial Isolation</span>
+                <span class="info-card-tag">LOCATION AWARE</span>
+              </div>
+              <p class="info-card-desc">
+                Scores genuinely shift across regions: Arid Harran favors Cotton & Chickpea, Semi-Arid Konya favors Wheat & Barley, Coastal Thrace favors Sunflower.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Weight Sensitivity</span>
+                <span class="info-card-tag">CONFIGURABLE</span>
+              </div>
+              <p class="info-card-desc">
+                Farmers can customize weights (Temperature 0.30, Water 0.30, Soil 0.25, Risk 0.15) to match their personal irrigation and capital tolerance.
+              </p>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">⚖️</div>
-            <div class="feature-name">Dynamic Coordinate Isolation</div>
-            <div class="feature-desc">
-              Scores genuinely shift across climates: Arid Harran favors heat-tolerant Cotton & Chickpea, Semi-Arid Konya favors Wheat & Barley, Coastal Thrace favors Sunflower, and Mediterranean Çukurova favors Soybeans & Maize.
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">Multi-Attribute Crop Planning & Suitability Rankings</span>
+              </div>
+              <img src="assets/shot_crops.png" alt="Crop Suitability Interface" class="screenshot-img" />
             </div>
-            <div class="feature-stat">100% Spatially Isolated Telemetry</div>
           </div>
         </div>
       </div>
@@ -598,30 +776,62 @@
     <!-- SLIDE 5: Phenological Planting Calendar -->
     <div class="slide" id="slide-4">
       <div class="slide-card">
-        <div class="slide-badge">04 &bull; Phenology & Frost Protection</div>
+        <div class="badge-bar">
+          <span class="slide-badge">04 &bull; Phenology & Frost Protection</span>
+        </div>
         <h2 class="slide-title">Thermal Planting & Harvest Calendar</h2>
         <p class="slide-subtitle">
-          Agriculture depends on biological thermal clocks, not fixed calendar months. Farmelster calculates Growing Degree Days (GDD) and frost probabilities to chart exact phenological phases.
+          Agriculture depends on biological thermal accumulation, not fixed calendar months. Farmelster calculates Growing Degree Days (GDD) and NASA frost probabilities to chart exact phenological phases.
         </p>
 
-        <div class="grid-3">
-          <div class="feature-box">
-            <div class="feature-icon">🌡️</div>
-            <div class="feature-name">Growing Degree Days (GDD)</div>
-            <div class="feature-desc">Thermal accumulation tracking heat units above biological base temperature (T_base) to ensure plants achieve physiological maturity before autumn frosts.</div>
-            <div class="feature-stat">GDD = Σ max(0, T_mean - T_base)</div>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="code-banner">
+              <span>GDD = &Sigma; max(0, T_mean - T_base)</span>
+              <span style="color: var(--accent-light);">NASA 30-YR FROST</span>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Growing Degree Days (GDD)</span>
+                <span class="info-card-tag">HEAT UNITS</span>
+              </div>
+              <p class="info-card-desc">
+                Calculates thermal accumulation above base temperature to guarantee crops reach physiological maturity before autumn freezes.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">NASA 30-Year Frost Window</span>
+                <span class="info-card-tag">SAFETY MARGIN</span>
+              </div>
+              <p class="info-card-desc">
+                Pinpoints the last expected spring freeze and first autumn frost date using 30-year MERRA-2 daily minimums with 90% statistical safety.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">4 Phenological Stages</span>
+                <span class="info-card-tag">TIMELINE</span>
+              </div>
+              <p class="info-card-desc">
+                Dynamic month-by-month progress bars for Sowing, Vegetative Expansion, Flowering (Critical Pollination Window), and Harvest.
+              </p>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">❄️</div>
-            <div class="feature-name">NASA 30-Year Frost Risk</div>
-            <div class="feature-desc">Pinpoints the last expected spring frost date and first autumn freeze using 30-year MERRA-2 daily minimums, protecting fragile seedlings and late harvests.</div>
-            <div class="feature-stat">90% Frost-Free Safety Window</div>
-          </div>
-          <div class="feature-box">
-            <div class="feature-icon">📅</div>
-            <div class="feature-name">4 Phenological Stages</div>
-            <div class="feature-desc">Automatically graphs optimal Sowing, Vegetative Canopy Expansion, Flowering / Pollination Critical Window, and Harvest for the selected crop.</div>
-            <div class="feature-stat">Crop-specific phenology curves</div>
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">Phenological Sowing & Harvest Calendar</span>
+              </div>
+              <img src="assets/shot_calendar.png" alt="Planting Calendar Interface" class="screenshot-img" />
+            </div>
           </div>
         </div>
       </div>
@@ -630,84 +840,130 @@
     <!-- SLIDE 6: What-If Simulator & Field Dossier -->
     <div class="slide" id="slide-5">
       <div class="slide-card">
-        <div class="slide-badge">05 &bull; Resilience Simulation & Export</div>
+        <div class="badge-bar">
+          <span class="slide-badge">05 &bull; Resilience Simulation & Export</span>
+        </div>
         <h2 class="slide-title">What-If Climate Lab & Export Dossier</h2>
         <p class="slide-subtitle">
           Empowering agronomists to stress-test their acreage against future IPCC climate anomalies and export publication-ready agronomic dossiers in one click.
         </p>
 
-        <div class="grid-2">
-          <div class="feature-box">
-            <div class="feature-icon">🎛️</div>
-            <div class="feature-name">What-If Scenario Simulator</div>
-            <div class="feature-desc">
-              Interactive sliders for Rainfall Anomalies (-50% to +50%), Temperature Spikes (-3°C to +5°C), Sowing Date Shifts, and Irrigation Regimes (Rainfed, Deficit, Full). Immediately re-calculates yield risks and crop rankings.
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="code-banner">
+              <span>SIMULATION: -50% to +50% Rain &bull; -3&deg;C to +5&deg;C Temp</span>
+              <span style="color: var(--accent-light);">IPCC STRESS TEST</span>
             </div>
-            <div class="feature-stat">Dynamic Sensitivity Recalculation</div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">What-If Climate Simulator</span>
+                <span class="info-card-tag">DYNAMIC</span>
+              </div>
+              <p class="info-card-desc">
+                Interactive sliders for precipitation anomalies, temperature spikes, sowing date shifts, and irrigation regimes with instant suitability recalculations.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Crop Succession & Rotation</span>
+                <span class="info-card-tag">AGRONOMY</span>
+              </div>
+              <p class="info-card-desc">
+                Alternates deep-taproot legumes with shallow-root grains to fix biological nitrogen and break soil-borne pathogen cycles.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Printable Field Dossier (PDF)</span>
+                <span class="info-card-tag">ONE CLICK</span>
+              </div>
+              <p class="info-card-desc">
+                Exports a comprehensive report bundling 12-month NASA climate waveforms, ISRIC soil horizons, and crop advisories for bank loans and extension agents.
+              </p>
+            </div>
           </div>
-          <div class="feature-box">
-            <div class="feature-icon">📄</div>
-            <div class="feature-name">Comprehensive Field Dossier (PDF)</div>
-            <div class="feature-desc">
-              A comprehensive report bundling full NASA POWER 12-month temperature/rainfall curves, ISRIC soil horizons, ranked suitability tables, and agronomic rotation guidance for field dissemination.
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">What-If Climate Simulator & Scenario Lab</span>
+              </div>
+              <img src="assets/shot_scenario.png" alt="What-If Simulator" class="screenshot-img" />
             </div>
-            <div class="feature-stat">Instant Printable Dossier Ready</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 7: Global Scalability & Student Creators -->
+    <!-- SLIDE 7: Production Deployment & Student Team -->
     <div class="slide" id="slide-6">
       <div class="slide-card">
-        <div class="slide-badge">06 &bull; Production Ready & The Team</div>
+        <div class="badge-bar">
+          <span class="slide-badge">06 &bull; Production Architecture & Creators</span>
+        </div>
         <h2 class="slide-title">Built by Students, Designed for the Planet</h2>
         <p class="slide-subtitle">
           Farmelster is live in production today on Vercel Serverless with open-access geospatial boundaries, full marine/land classification, and zero proprietary lock-in.
         </p>
 
-        <div class="grid-4" style="margin-bottom: 24px;">
-          <div class="student-card leader">
-            <span class="leader-badge">Leader</span>
+        <div class="grid-4" style="margin-bottom: 20px;">
+          <div class="student-box leader">
+            <span class="role-badge leader-badge">Team Leader</span>
             <div>
-              <div style="font-size: 24px; margin-bottom: 8px;">👑</div>
-              <div class="feature-name">Mert</div>
-              <div class="feature-desc" style="font-size: 12px; color: var(--accent-light);">Team Leader</div>
-              <div class="feature-desc" style="margin-top: 6px;">Led our team, organized the project architecture, connected backend microservices & algorithms.</div>
+              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Mert</div>
+              <p class="info-card-desc">
+                Led the engineering team, designed the microservices architecture, and implemented scientific scoring algorithms.
+              </p>
             </div>
+            <div class="info-card-tag" style="margin-top: 10px;">Backend & Algorithms</div>
           </div>
-          <div class="student-card">
+
+          <div class="student-box">
+            <span class="role-badge student-badge">Student Developer</span>
             <div>
-              <div style="font-size: 24px; margin-bottom: 8px;">💻</div>
-              <div class="feature-name">Zeynep</div>
-              <div class="feature-desc" style="font-size: 12px; color: #94A3B8;">Student Developer</div>
-              <div class="feature-desc" style="margin-top: 6px;">Crafted the responsive frontend interface, interactive views, and intuitive user experience.</div>
+              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Zeynep</div>
+              <p class="info-card-desc">
+                Architected the React 19 interface, workstation layout, and interactive responsive components.
+              </p>
             </div>
+            <div class="info-card-tag" style="margin-top: 10px;">Frontend & UI/UX</div>
           </div>
-          <div class="student-card">
+
+          <div class="student-box">
+            <span class="role-badge student-badge">Student Developer</span>
             <div>
-              <div style="font-size: 24px; margin-bottom: 8px;">📊</div>
-              <div class="feature-name">Anka</div>
-              <div class="feature-desc" style="font-size: 12px; color: #94A3B8;">Student Developer</div>
-              <div class="feature-desc" style="margin-top: 6px;">Researched NASA POWER climatology datasets, NDVI formulas, and crop agronomic profiles.</div>
+              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Anka</div>
+              <p class="info-card-desc">
+                Researched NASA POWER climatological parameters, NDVI spectral formulas, and crop agronomic profiles.
+              </p>
             </div>
+            <div class="info-card-tag" style="margin-top: 10px;">NASA Data & Research</div>
           </div>
-          <div class="student-card">
+
+          <div class="student-box">
+            <span class="role-badge student-badge">Student Developer</span>
             <div>
-              <div style="font-size: 24px; margin-bottom: 8px;">🗺️</div>
-              <div class="feature-name">Aras</div>
-              <div class="feature-desc" style="font-size: 12px; color: #94A3B8;">Student Developer</div>
-              <div class="feature-desc" style="margin-top: 6px;">Configured global map coordinate indexing, QA testing, and edge-case bug hunting.</div>
+              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Aras</div>
+              <p class="info-card-desc">
+                Configured global map coordinate indexing, QA testing, and edge-case boundary verification.
+              </p>
             </div>
+            <div class="info-card-tag" style="margin-top: 10px;">GIS & Systems QA</div>
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 14px 20px; border-radius: 14px; border: 1px solid var(--card-border);">
-          <div style="font-size: 13px; color: var(--text-muted);">
-            🌐 Production Site: <strong style="color: #FFF;">https://farmelster.com</strong> &bull; Open-source on GitHub
+        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 12px 18px; border-radius: 12px; border: 1px solid var(--card-border);">
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Production Platform: <strong style="color: #FFF;">https://farmelster.com</strong> &bull; Open-source on GitHub
           </div>
-          <div style="font-size: 13px; color: var(--accent-light); font-weight: 600;">
-            Thank you, NASA Space Apps 2026 Committee! 🚀
+          <div style="font-size: 12px; color: var(--accent-light); font-weight: 600;">
+            NASA Space Apps Challenge 2026 Submission
           </div>
         </div>
       </div>
@@ -715,21 +971,19 @@
 
   </main>
 
-  <!-- Footer Navigation Controls -->
+  <!-- Footer Navigation -->
   <footer>
     <div class="footer-hints">
-      <span>Navigate:</span>
-      <span class="key-hint">←</span>
-      <span class="key-hint">→</span>
+      <span>Controls:</span>
+      <span class="key-hint">&larr;</span>
+      <span class="key-hint">&rarr;</span>
       <span class="key-hint">Space</span>
       <span class="key-hint">F (Fullscreen)</span>
     </div>
 
-    <div class="dots-container" id="dotsContainer">
-      <!-- Dots injected dynamically -->
-    </div>
+    <div class="dots-container" id="dotsContainer"></div>
 
-    <div style="font-size: 12px; color: var(--text-dim);">
+    <div style="font-size: 11px; color: var(--text-dim);">
       Farmelster Presentation &bull; NASA Space Apps Challenge 2026
     </div>
   </footer>
