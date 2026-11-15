@@ -398,47 +398,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
               </>
             )}
 
-            {/* NASA 12-Month Rainfall Waveform Bar Graphic */}
-            <div className="bg-[#1C1E24] rounded-xl p-3 border border-white/5 space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-white text-[11px]">NASA 12-Month Rainfall Curve</span>
-                <span className="text-[10px] text-white/40">Jan – Dec (mm)</span>
-              </div>
-
-              {/* Dynamic Bars */}
-              <div className="flex items-end justify-between h-12 px-1 py-1 bg-black/30 rounded-lg">
-                {climate?.monthly?.map((m) => {
-                  const maxP = Math.max(...climate.monthly.map(x => x.precipitation_mm), 80);
-                  const heightPct = Math.max(10, Math.round((m.precipitation_mm / maxP) * 100));
-                  const color = m.precipitation_mm > 40 ? 'bg-[#7C9A6B]' : m.precipitation_mm > 15 ? 'bg-[#D9A84C]' : 'bg-[#C47B6A]';
-
-                  return (
-                    <div 
-                      key={m.month_index} 
-                      className="group/bar relative flex flex-col items-center flex-1 mx-0.5"
-                    >
-                      <div 
-                        className={`w-full rounded-sm transition-all duration-300 ${color}`} 
-                        style={{ height: `${heightPct}%` }}
-                      />
-                      {/* Tooltip on hover */}
-                      <div className="absolute bottom-full mb-1 hidden group-hover/bar:block bg-[#18191E] border border-white/10 text-[10px] px-1.5 py-0.5 rounded-lg text-white whitespace-nowrap z-50 shadow-lg">
-                        {m.month}: {m.precipitation_mm}mm
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="flex justify-between text-[10px] text-white/40 px-0.5">
-                <span>Jan</span>
-                <span>Apr</span>
-                <span>Jul</span>
-                <span>Oct</span>
-                <span>Dec</span>
-              </div>
-            </div>
-
             {/* Add Custom Parcel Action */}
             <div className="space-y-2 pt-1">
               <button
