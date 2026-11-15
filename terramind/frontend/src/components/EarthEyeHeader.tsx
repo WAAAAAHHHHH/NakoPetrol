@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck, FileText, Users } from 'lucide-react';
+import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck, FileText, Users, Compass } from 'lucide-react';
 import { DemoField } from '../types/terramind';
 
 export type FarmelsterTab =
@@ -22,6 +22,7 @@ interface FarmelsterHeaderProps {
   onOpenDisclosures: () => void;
   onOpenDossier: () => void;
   onOpenCredits: () => void;
+  onOpenTutorial?: () => void;
 }
 
 export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
@@ -30,6 +31,7 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   onOpenDisclosures,
   onOpenDossier,
   onOpenCredits,
+  onOpenTutorial,
 }) => {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
@@ -127,8 +129,15 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
                 ))}
                 <div className="h-px bg-white/[0.06] my-1.5 mx-2.5" />
                 <button
-                  onClick={() => { onOpenDisclosures(); setShowMoreMenu(false); }}
+                  onClick={() => { onOpenTutorial?.(); setShowMoreMenu(false); }}
                   className="btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-sm text-[#7C9A6B] hover:bg-white/[0.04]"
+                >
+                  <Compass size={12} className="opacity-80 text-[#7C9A6B]" />
+                  Interactive Tour
+                </button>
+                <button
+                  onClick={() => { onOpenDisclosures(); setShowMoreMenu(false); }}
+                  className="btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-sm text-white/80 hover:text-white hover:bg-white/[0.04]"
                 >
                   <ShieldCheck size={12} className="opacity-70" />
                   Data Disclosures
@@ -146,11 +155,20 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
         </div>
       </nav>
 
-      {/* RIGHT: Credits & Export Dossier (PDF) Actions */}
+      {/* RIGHT: Tour, Credits & Export Dossier (PDF) Actions */}
       <div className="flex items-center gap-2">
         <button
+          onClick={onOpenTutorial}
+          className="btn px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/40"
+          title="Start interactive platform tour"
+        >
+          <Compass size={14} className="text-[#7C9A6B]" />
+          <span>Tour</span>
+        </button>
+
+        <button
           onClick={onOpenCredits}
-          className="btn px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/40"
+          className="btn px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/40"
           title="View project creators and engineering team (Zeynep, Anka, Mert, Aras)"
         >
           <Users size={14} className="text-[#7C9A6B]" />

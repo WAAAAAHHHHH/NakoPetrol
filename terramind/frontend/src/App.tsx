@@ -12,6 +12,7 @@ import { AiAdvisorView } from './components/AiAdvisorView';
 import { DataTransparencyModal } from './components/DataTransparencyModal';
 import { FieldDossierModal } from './components/FieldDossierModal';
 import { CreditsModal } from './components/CreditsModal';
+import { TutorialTourModal } from './components/TutorialTourModal';
 import { IntroSplash } from './components/IntroSplash';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
@@ -54,6 +55,33 @@ export function App() {
   const [showTransparencyModal, setShowTransparencyModal] = useState<boolean>(false);
   const [showDossierModal, setShowDossierModal]           = useState<boolean>(false);
   const [showCreditsModal, setShowCreditsModal]           = useState<boolean>(false);
+  const [showTutorialModal, setShowTutorialModal]         = useState<boolean>(false);
+
+  // Auto-launch tutorial once forcefully on first visit after splash dismisses
+  useEffect(() => {
+    if (!showSplash) {
+      try {
+        const hasSeenTutorial = localStorage.getItem('farmelster_tutorial_seen');
+        if (!hasSeenTutorial) {
+          const timer = setTimeout(() => {
+            setShowTutorialModal(true);
+          }, 450);
+          return () => clearTimeout(timer);
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }, [showSplash]);
+
+  const handleCloseTutorial = useCallback(() => {
+    setShowTutorialModal(false);
+    try {
+      localStorage.setItem('farmelster_tutorial_seen', 'true');
+    } catch {
+      // ignore
+    }
+  }, []);
 
   // ── Init: load demo fields + first analysis ──────────────────────────────
   useEffect(() => {
@@ -243,6 +271,7 @@ export function App() {
           onOpenDisclosures={() => setShowTransparencyModal(true)}
           onOpenDossier={() => setShowDossierModal(true)}
           onOpenCredits={() => setShowCreditsModal(true)}
+          onOpenTutorial={() => setShowTutorialModal(true)}
         />
 
         <main className="flex-1 overflow-hidden relative">
@@ -388,6 +417,14 @@ export function App() {
         <CreditsModal
           isOpen={showCreditsModal}
           onClose={() => setShowCreditsModal(false)}
+        />
+
+        <TutorialTourModal
+          isOpen={showTutorialModal}
+          onClose={handleCloseTutorial}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          onOpenDossier={() => setShowDossierModal(true)}
         />
       </div>
     </>
