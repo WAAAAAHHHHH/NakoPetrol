@@ -35,6 +35,7 @@
 
 ### SLIDE 2: The Global Agricultural Crisis
 * **Title**: **The Challenge: Blind Farming in a Volatile Climate**
+* **Visual**: Live Climate Intelligence & 30-Year Historical Risk Waveforms screenshot (`assets/shot_climate.png`).
 * **Key Pillars**:
   1. **Static Historical Habit**: Generational planting calendars fail under sudden microclimate shifts.
   2. **Fragmented Data Silos**: NASA POWER atmospheric grids, ISRIC soil profiles, and Copernicus Sentinel optical bands require specialized GIS workstations and Python scripts.
@@ -94,6 +95,7 @@
 
 ### SLIDE 7: Production Deployment & The Student Team
 * **Title**: **Built by Students, Designed for the Planet**
+* **Visual**: Live One-Click Printable Field Dossier (PDF) screenshot (`assets/shot_dossier.png`).
 * **Architecture & Open Science**:
   - Live in production on Vercel Serverless with FastAPI Python backends.
   - Natural Earth deterministic spatial index: accurately distinguishes terrestrial agricultural soil from open marine waters (e.g. Aegean, Mediterranean, Sea of Marmara).

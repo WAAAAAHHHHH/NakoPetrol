@@ -383,6 +383,12 @@
     }
 
     /* Grid layout for Slide 2 and Slide 7 */
+    .grid-2-students {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -596,49 +602,53 @@
           Over 500 million smallholders worldwide face accelerating thermal stress and groundwater depletion, while Earth Observation data remains locked inside specialized scientific archives.
         </p>
 
-        <div class="grid-3">
-          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-            <div>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Static Historical Habit</span>
+                <span class="info-card-title">Static Generational Habits</span>
                 <span class="info-card-tag">OBSOLETE</span>
               </div>
-              <p class="info-card-desc" style="margin-top: 8px;">
-                Generational planting calendars fail under sudden microclimate shifts. Farmers plant during unseasonal warm spells only to lose seedlings to late spring freezes.
+              <p class="info-card-desc">
+                Traditional planting calendars fail under sudden microclimate shifts. Farmers plant during false spring warm spells only to lose young crops to late seasonal freezes.
               </p>
             </div>
-            <div class="code-banner" style="margin-top: 14px;">
-              <span>Yield loss risk: +28% by 2030</span>
-            </div>
-          </div>
 
-          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-            <div>
+            <div class="info-card">
               <div class="info-card-header">
                 <span class="info-card-title">Fragmented Data Silos</span>
-                <span class="info-card-tag">ACCESSIBILITY</span>
+                <span class="info-card-tag">INACCESSIBLE</span>
               </div>
-              <p class="info-card-desc" style="margin-top: 8px;">
-                NASA POWER atmospheric grids, ISRIC soil profiles, and Copernicus Sentinel optical bands require advanced GIS workstations, python scripts, and HDF5 decoders.
+              <p class="info-card-desc">
+                NASA POWER climate grids, ISRIC soil profiles, and Copernicus optical bands require advanced GIS workstations, Python scripts, and HDF5 decoders out of reach for growers.
               </p>
             </div>
-            <div class="code-banner" style="margin-top: 14px;">
-              <span>No unified open-access tools</span>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Groundwater & Moisture Blindspots</span>
+                <span class="info-card-tag">DEPLETION</span>
+              </div>
+              <p class="info-card-desc">
+                Without real-time vapor pressure deficit and root-zone water retention curves, irrigation regimes are either heavily wasteful or fatally late.
+              </p>
+            </div>
+
+            <div class="code-banner">
+              <span>NASA POWER & MERRA-2: 30-Year Thermal & Precipitation Extremes</span>
+              <span style="color: var(--accent-light);">EMPIRICAL PROOF</span>
             </div>
           </div>
 
-          <div class="info-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-            <div>
-              <div class="info-card-header">
-                <span class="info-card-title">Water & Stress Blindspots</span>
-                <span class="info-card-tag">DEPLETION</span>
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">Climate Intelligence & 30-Year Historical Risk Waveforms</span>
               </div>
-              <p class="info-card-desc" style="margin-top: 8px;">
-                Without real-time vapor pressure deficit, root-zone moisture holding capacity, and frost windows, irrigation regimes are either heavily wasteful or fatally late.
-              </p>
-            </div>
-            <div class="code-banner" style="margin-top: 14px;">
-              <span>70% of global freshwater</span>
+              <img src="assets/shot_climate.png" alt="Climate Intelligence View" class="screenshot-img" />
             </div>
           </div>
         </div>
@@ -912,58 +922,71 @@
           Farmelster is live in production today on Vercel Serverless with open-access geospatial boundaries, full marine/land classification, and zero proprietary lock-in.
         </p>
 
-        <div class="grid-4" style="margin-bottom: 20px;">
-          <div class="student-box leader">
-            <span class="role-badge leader-badge">Team Leader</span>
-            <div>
-              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Mert</div>
-              <p class="info-card-desc">
-                Led the engineering team, designed the microservices architecture, and implemented scientific scoring algorithms.
-              </p>
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="grid-2-students">
+              <div class="student-box leader">
+                <span class="role-badge leader-badge">Team Leader</span>
+                <div class="info-card-title" style="font-size: 15px; margin-bottom: 2px;">Mert</div>
+                <p class="info-card-desc" style="font-size: 11px;">
+                  Led project architecture, Python FastAPI backend, and scientific scoring algorithms.
+                </p>
+                <div class="info-card-tag" style="margin-top: 8px;">Backend & Modeling</div>
+              </div>
+
+              <div class="student-box">
+                <span class="role-badge student-badge">Student Developer</span>
+                <div class="info-card-title" style="font-size: 15px; margin-bottom: 2px;">Zeynep</div>
+                <p class="info-card-desc" style="font-size: 11px;">
+                  Architected the React 19 interface, responsive workstation layout, and interactive UX.
+                </p>
+                <div class="info-card-tag" style="margin-top: 8px;">Frontend & UI/UX</div>
+              </div>
+
+              <div class="student-box">
+                <span class="role-badge student-badge">Student Developer</span>
+                <div class="info-card-title" style="font-size: 15px; margin-bottom: 2px;">Anka</div>
+                <p class="info-card-desc" style="font-size: 11px;">
+                  Researched NASA POWER climatology parameters, NDVI formulas, and crop profiles.
+                </p>
+                <div class="info-card-tag" style="margin-top: 8px;">NASA Data & Research</div>
+              </div>
+
+              <div class="student-box">
+                <span class="role-badge student-badge">Student Developer</span>
+                <div class="info-card-title" style="font-size: 15px; margin-bottom: 2px;">Aras</div>
+                <p class="info-card-desc" style="font-size: 11px;">
+                  Configured global map coordinate indexing, QA testing, and boundary verification.
+                </p>
+                <div class="info-card-tag" style="margin-top: 8px;">GIS & Systems QA</div>
+              </div>
             </div>
-            <div class="info-card-tag" style="margin-top: 10px;">Backend & Algorithms</div>
+
+            <div class="code-banner">
+              <span>STACK: React 19 &bull; FastAPI &bull; NASA POWER &bull; SoilGrids 250m &bull; Sentinel-2</span>
+              <span style="color: var(--accent-light);">OPEN SOURCE</span>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--card-border);">
+              <div style="font-size: 11px; color: var(--text-muted);">
+                Live: <strong style="color: #FFF;">https://farmelster.com</strong>
+              </div>
+              <div style="font-size: 11px; color: var(--accent-light); font-weight: 600;">
+                NASA Space Apps Challenge 2026
+              </div>
+            </div>
           </div>
 
-          <div class="student-box">
-            <span class="role-badge student-badge">Student Developer</span>
-            <div>
-              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Zeynep</div>
-              <p class="info-card-desc">
-                Architected the React 19 interface, workstation layout, and interactive responsive components.
-              </p>
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">One-Click Printable Field Dossier & Diagnostic Report</span>
+              </div>
+              <img src="assets/shot_dossier.png" alt="Field Dossier Modal" class="screenshot-img" />
             </div>
-            <div class="info-card-tag" style="margin-top: 10px;">Frontend & UI/UX</div>
-          </div>
-
-          <div class="student-box">
-            <span class="role-badge student-badge">Student Developer</span>
-            <div>
-              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Anka</div>
-              <p class="info-card-desc">
-                Researched NASA POWER climatological parameters, NDVI spectral formulas, and crop agronomic profiles.
-              </p>
-            </div>
-            <div class="info-card-tag" style="margin-top: 10px;">NASA Data & Research</div>
-          </div>
-
-          <div class="student-box">
-            <span class="role-badge student-badge">Student Developer</span>
-            <div>
-              <div class="info-card-title" style="font-size: 16px; margin-bottom: 4px;">Aras</div>
-              <p class="info-card-desc">
-                Configured global map coordinate indexing, QA testing, and edge-case boundary verification.
-              </p>
-            </div>
-            <div class="info-card-tag" style="margin-top: 10px;">GIS & Systems QA</div>
-          </div>
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 12px 18px; border-radius: 12px; border: 1px solid var(--card-border);">
-          <div style="font-size: 12px; color: var(--text-muted);">
-            Production Platform: <strong style="color: #FFF;">https://farmelster.com</strong> &bull; Open-source on GitHub
-          </div>
-          <div style="font-size: 12px; color: var(--accent-light); font-weight: 600;">
-            NASA Space Apps Challenge 2026 Submission
           </div>
         </div>
       </div>
