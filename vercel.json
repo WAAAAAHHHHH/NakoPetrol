@@ -4,7 +4,7 @@
     "backend": {
       "root": "terramind/backend",
       "framework": "fastapi",
-      "entrypoint": "main.py"
+      "entrypoint": "main:app"
     },
     "frontend": {
       "root": "terramind/frontend",

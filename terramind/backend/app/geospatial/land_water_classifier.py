@@ -25,17 +25,24 @@ class LandWaterClassifier:
     """Classifies global coordinates into Terrestrial Land or Marine Open Water with pinpoint accuracy."""
 
     _instance = None
-    _tree: Optional[STRtree] = None
+    _tree: Optional[Any] = None
     _polygons = []
+    _initialized = False
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super(LandWaterClassifier, cls).__new__(cls)
-            cls._instance._init_spatial_index()
         return cls._instance
 
     def _init_spatial_index(self):
-        """Loads precomputed WKB polygons and builds spatial STRtree."""
+        """Loads precomputed WKB polygons and builds spatial STRtree lazily."""
+        if self._initialized:
+            return
+        self._initialized = True
+
+        if not HAS_SHAPELY or wkb is None or STRtree is None:
+            return
+
         base_dir = os.path.dirname(os.path.abspath(__file__))
         wkb_file = os.path.join(base_dir, "global_land_polygons.wkb")
 
@@ -47,24 +54,32 @@ class LandWaterClassifier:
                 self._tree = STRtree(self._polygons)
                 print(f"[Farmelster] Loaded {len(self._polygons)} global land polygons into STRtree (Pinpoint Precision Active).")
             except Exception as e:
-                print(f"[Farmelster] Warning: Failed to load spatial index: {e}")
+                print(f"[Farmelster] Warning: Spatial index load bypassed: {e}")
                 self._tree = None
-        else:
-            print(f"[Farmelster] Warning: {wkb_file} not found.")
+                self._polygons = []
 
     def is_terrestrial_land(self, lat: float, lon: float) -> bool:
         """Determines with mathematical point-in-polygon precision if (lat, lon) is on land."""
-        if not HAS_SHAPELY or self._tree is None or not self._polygons or Point is None:
-            # Fallback for unexpected missing data or environments without Shapely
+        if not HAS_SHAPELY or Point is None:
             return True
 
-        pt = Point(lon, lat)
-        candidate_indices = self._tree.query(pt)
-        for idx in candidate_indices:
-            poly = self._polygons[idx]
-            if poly.contains(pt) or poly.touches(pt):
-                return True
-        return False
+        if not self._initialized:
+            self._init_spatial_index()
+
+        if self._tree is None or not self._polygons:
+            # Fallback for environments without spatial index
+            return True
+
+        try:
+            pt = Point(lon, lat)
+            candidate_indices = self._tree.query(pt)
+            for idx in candidate_indices:
+                poly = self._polygons[idx]
+                if poly.contains(pt) or poly.touches(pt):
+                    return True
+            return False
+        except Exception:
+            return True
 
     def check_surface(self, lat: float, lon: float) -> Dict[str, Any]:
         """

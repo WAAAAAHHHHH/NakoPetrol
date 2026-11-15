@@ -15,25 +15,7 @@ import { IntroSplash } from './components/IntroSplash';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
 import { terramindApi } from './services/api';
-
-const DEFAULT_DEMO_FIELD: DemoField = {
-  id: 'field_california',
-  name: 'San Joaquin Valley Farm',
-  region: 'Central Valley, California, USA',
-  latitude: 36.8025,
-  longitude: -119.8145,
-  area_hectares: 52.0,
-  elevation_m: 82.0,
-  default_previous_crop: 'tomatoes',
-  irrigation_available: true,
-  description: 'High-value Mediterranean agricultural basin; intensive drip fertigation, high solar insolation, and managed alluvial soils.',
-  polygon_coordinates: [
-    [36.8040, -119.8170],
-    [36.8040, -119.8120],
-    [36.8010, -119.8120],
-    [36.8010, -119.8170],
-  ],
-};
+import { DEFAULT_DEMO_FIELDS, DEFAULT_FIELD, BASELINE_DIGITAL_TWIN } from './services/defaultFields';
 
 export function App() {
   const [showSplash, setShowSplash] = useState<boolean>(() => {
@@ -54,9 +36,9 @@ export function App() {
   }, []);
 
   const [activeTab, setActiveTab]             = useState<FarmelsterTab>('dashboard');
-  const [demoFields, setDemoFields]           = useState<DemoField[]>([DEFAULT_DEMO_FIELD]);
-  const [selectedField, setSelectedField]     = useState<DemoField | null>(DEFAULT_DEMO_FIELD);
-  const [fieldDigitalTwin, setFieldDigitalTwin] = useState<FieldDigitalTwin | null>(null);
+  const [demoFields, setDemoFields]           = useState<DemoField[]>(DEFAULT_DEMO_FIELDS);
+  const [selectedField, setSelectedField]     = useState<DemoField | null>(DEFAULT_FIELD);
+  const [fieldDigitalTwin, setFieldDigitalTwin] = useState<FieldDigitalTwin | null>(BASELINE_DIGITAL_TWIN);
 
   const [irrigationAvailable, setIrrigationAvailable]           = useState<boolean>(true);
   const [selectedCropIdForCalendar, setSelectedCropIdForCalendar] = useState<string>('tomatoes');

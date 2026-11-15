@@ -11,3 +11,4 @@ if current_dir not in sys.path:
 from app.main import app
 
 __all__ = ["app"]
+

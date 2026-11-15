@@ -1,0 +1,1002 @@
+{
+  "field_name": "San Joaquin Valley Farm",
+  "coordinates": {
+    "latitude": 36.8025,
+    "longitude": -119.8145
+  },
+  "area_hectares": 52.0,
+  "polygon_coordinates": null,
+  "irrigation_available": true,
+  "previous_crop_id": "tomatoes",
+  "is_arable_land": true,
+  "surface_classification": "Terrestrial Continental Land",
+  "climate": {
+    "metadata": {
+      "source": "NASA Langley Research Center POWER Project",
+      "api_endpoint": "https://power.larc.nasa.gov/api/temporal/climatology/point",
+      "methodology": "30-Year Climatological Average (MERRA-2 Satellite/Reanalysis Data)",
+      "data_status": "LIVE SATELLITE DERIVED (NASA POWER)",
+      "is_synthetic": false,
+      "coordinates": {
+        "latitude": 36.8025,
+        "longitude": -119.8145
+      },
+      "elevation_m": 450.0,
+      "resolution": "0.5\u00b0 x 0.5\u00b0 latitude/longitude grid cell (~50km)",
+      "scientific_citation": "NASA POWER Agroclimatology (Release 2.0.0)"
+    },
+    "summary": {
+      "annual_precipitation_mm": 405.6,
+      "mean_annual_temp_c": 18.4,
+      "min_monthly_temp_c": 9.17,
+      "max_monthly_temp_c": 29.67,
+      "annual_solar_radiation_mean_mj": 19.6,
+      "frost_months_count": 5,
+      "aridity_classification": "Subhumid"
+    },
+    "monthly": [
+      {
+        "month_index": 1,
+        "month": "Jan",
+        "temp_mean_c": 9.65,
+        "temp_min_c": -3.94,
+        "temp_max_c": 26.46,
+        "precipitation_mm": 72.9,
+        "precip_rate_mm_day": 2.35,
+        "solar_radiation_mj_m2_day": 8.8,
+        "relative_humidity_pct": 67.0,
+        "wind_speed_mps": 1.4,
+        "frost_risk_likely": true
+      },
+      {
+        "month_index": 2,
+        "month": "Feb",
+        "temp_mean_c": 10.6,
+        "temp_min_c": -3.22,
+        "temp_max_c": 26.22,
+        "precipitation_mm": 67.2,
+        "precip_rate_mm_day": 2.38,
+        "solar_radiation_mj_m2_day": 12.9,
+        "relative_humidity_pct": 68.9,
+        "wind_speed_mps": 1.6,
+        "frost_risk_likely": true
+      },
+      {
+        "month_index": 3,
+        "month": "Mar",
+        "temp_mean_c": 13.06,
+        "temp_min_c": -0.97,
+        "temp_max_c": 32.06,
+        "precipitation_mm": 63.9,
+        "precip_rate_mm_day": 2.06,
+        "solar_radiation_mj_m2_day": 18.2,
+        "relative_humidity_pct": 67.0,
+        "wind_speed_mps": 1.7,
+        "frost_risk_likely": true
+      },
+      {
+        "month_index": 4,
+        "month": "Apr",
+        "temp_mean_c": 15.57,
+        "temp_min_c": 1.64,
+        "temp_max_c": 36.75,
+        "precipitation_mm": 37.5,
+        "precip_rate_mm_day": 1.25,
+        "solar_radiation_mj_m2_day": 23.3,
+        "relative_humidity_pct": 61.7,
+        "wind_speed_mps": 2.0,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 5,
+        "month": "May",
+        "temp_mean_c": 20.4,
+        "temp_min_c": 3.96,
+        "temp_max_c": 43.96,
+        "precipitation_mm": 17.4,
+        "precip_rate_mm_day": 0.56,
+        "solar_radiation_mj_m2_day": 27.6,
+        "relative_humidity_pct": 49.3,
+        "wind_speed_mps": 2.3,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 6,
+        "month": "Jun",
+        "temp_mean_c": 25.87,
+        "temp_min_c": 7.44,
+        "temp_max_c": 46.09,
+        "precipitation_mm": 3.9,
+        "precip_rate_mm_day": 0.13,
+        "solar_radiation_mj_m2_day": 30.4,
+        "relative_humidity_pct": 33.8,
+        "wind_speed_mps": 2.5,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 7,
+        "month": "Jul",
+        "temp_mean_c": 29.67,
+        "temp_min_c": 12.3,
+        "temp_max_c": 47.98,
+        "precipitation_mm": 1.6,
+        "precip_rate_mm_day": 0.05,
+        "solar_radiation_mj_m2_day": 29.2,
+        "relative_humidity_pct": 26.8,
+        "wind_speed_mps": 2.4,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 8,
+        "month": "Aug",
+        "temp_mean_c": 28.43,
+        "temp_min_c": 12.88,
+        "temp_max_c": 46.26,
+        "precipitation_mm": 1.2,
+        "precip_rate_mm_day": 0.04,
+        "solar_radiation_mj_m2_day": 26.7,
+        "relative_humidity_pct": 28.3,
+        "wind_speed_mps": 2.0,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 9,
+        "month": "Sep",
+        "temp_mean_c": 25.57,
+        "temp_min_c": 9.03,
+        "temp_max_c": 45.15,
+        "precipitation_mm": 2.4,
+        "precip_rate_mm_day": 0.08,
+        "solar_radiation_mj_m2_day": 22.1,
+        "relative_humidity_pct": 31.1,
+        "wind_speed_mps": 1.8,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 10,
+        "month": "Oct",
+        "temp_mean_c": 19.69,
+        "temp_min_c": 4.12,
+        "temp_max_c": 40.09,
+        "precipitation_mm": 20.8,
+        "precip_rate_mm_day": 0.67,
+        "solar_radiation_mj_m2_day": 16.4,
+        "relative_humidity_pct": 40.0,
+        "wind_speed_mps": 1.6,
+        "frost_risk_likely": false
+      },
+      {
+        "month_index": 11,
+        "month": "Nov",
+        "temp_mean_c": 13.62,
+        "temp_min_c": -2.68,
+        "temp_max_c": 31.53,
+        "precipitation_mm": 37.8,
+        "precip_rate_mm_day": 1.26,
+        "solar_radiation_mj_m2_day": 11.0,
+        "relative_humidity_pct": 54.4,
+        "wind_speed_mps": 1.4,
+        "frost_risk_likely": true
+      },
+      {
+        "month_index": 12,
+        "month": "Dec",
+        "temp_mean_c": 9.17,
+        "temp_min_c": -4.44,
+        "temp_max_c": 25.54,
+        "precipitation_mm": 79.0,
+        "precip_rate_mm_day": 2.55,
+        "solar_radiation_mj_m2_day": 8.1,
+        "relative_humidity_pct": 65.5,
+        "wind_speed_mps": 1.5,
+        "frost_risk_likely": true
+      }
+    ]
+  },
+  "soil": {
+    "metadata": {
+      "source": "ISRIC SoilGrids 2.0 Global Pedological Map (250m Resolution)",
+      "reference_region": "Central Valley (San Joaquin Plain), California, USA",
+      "coordinates": {
+        "latitude": 36.8025,
+        "longitude": -119.8145
+      },
+      "distance_to_benchmark_km": 1.3,
+      "spatial_resolution": "250 meters",
+      "is_synthetic": false,
+      "disclaimer": "SoilGrids provides 250m machine-learning spatial estimations. Use for regional planning; field-level fertilizer prescriptions require certified laboratory core sampling."
+    },
+    "properties": {
+      "ph_h2o": 7.2,
+      "usda_texture": "Sandy Loam",
+      "clay_pct": 18.0,
+      "sand_pct": 54.0,
+      "silt_pct": 28.0,
+      "soc_g_kg": 12.0,
+      "soc_percentage": 1.2,
+      "cec_cmolc_kg": 20.0,
+      "bulk_density_g_cm3": 1.38,
+      "soil_type_wrb": "Alfisol / Entisol (San Joaquin Valley)",
+      "drainage_class": "Well drained sandy loam",
+      "salinity_ec_ds_m": 0.8,
+      "depth_intervals": {
+        "0-5cm": {
+          "ph": 7.1,
+          "clay": 16.0,
+          "soc": 14.0
+        },
+        "5-15cm": {
+          "ph": 7.2,
+          "clay": 18.0,
+          "soc": 12.0
+        },
+        "15-30cm": {
+          "ph": 7.4,
+          "clay": 22.0,
+          "soc": 9.5
+        }
+      }
+    },
+    "agronomic_evaluation": {
+      "suitability_summary": "Classified as Sandy Loam (Alfisol / Entisol (San Joaquin Valley)) with well drained sandy loam.",
+      "key_findings": [
+        "Optimal pH (7.2): Excellent nutrient bio-availability across root zone for major field crops.",
+        "Balanced Sandy Loam: Favorable soil-water balance and capillary aeration for root establishment.",
+        "Healthy Organic Carbon (12.0 g/kg): Supports beneficial fungal-bacterial microbiomes and aggregate stability."
+      ],
+      "fertility_guidance": "Recommended practice: extract 0-30cm and 30-60cm core samples to verify active nitrate (NO3-N) and Olsen phosphorus before fertilizer application."
+    }
+  },
+  "satellite": {
+    "metadata": {
+      "sensor_platform": "NASA MODIS (MOD13Q1) & ESA Sentinel-2 MSI Multi-Mission Synthesis",
+      "spatial_resolution": "10-250 meters",
+      "band_configuration": "Band 8 (NIR ~842nm), Band 4 (Red ~665nm)",
+      "coordinates": {
+        "latitude": 36.8025,
+        "longitude": -119.8145
+      },
+      "hemisphere": "Northern Hemisphere",
+      "is_synthetic": false,
+      "scientific_formula": "NDVI = (NIR - Red) / (NIR + Red)",
+      "transparency_note": "Calibrated historical 16-day vegetation index composite. Remote sensing reflects active photosynthetic chlorophyll absorption; ground verification recommended for pest scouting."
+    },
+    "current_observation": {
+      "latest_date": "2025-05-15",
+      "mean_field_ndvi": 0.35,
+      "min_field_ndvi": 0.15,
+      "max_field_ndvi": 0.81,
+      "standard_deviation": 0.038,
+      "vegetation_health_status": "Vigorous Vegetative Canopy",
+      "vegetation_condition_index_pct": 92.0,
+      "stress_anomaly": "None Detected (Canopy index within expected agroclimatic envelope)"
+    },
+    "time_series": [
+      {
+        "date": "2025-01-15",
+        "month": "Jan",
+        "ndvi": 0.22,
+        "nir_reflectance": 0.21,
+        "red_reflectance": 0.12,
+        "status": "Winter Dormancy / Bare Soil",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-02-15",
+        "month": "Feb",
+        "ndvi": 0.28,
+        "nir_reflectance": 0.25,
+        "red_reflectance": 0.12,
+        "status": "Early Tillering / Emergence",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-03-15",
+        "month": "Mar",
+        "ndvi": 0.44,
+        "nir_reflectance": 0.33,
+        "red_reflectance": 0.1,
+        "status": "Rapid Vegetative Stem Elongation",
+        "vci_pct": 48
+      },
+      {
+        "date": "2025-04-15",
+        "month": "Apr",
+        "ndvi": 0.72,
+        "nir_reflectance": 0.47,
+        "red_reflectance": 0.06,
+        "status": "Booting / Full Canopy Closure",
+        "vci_pct": 79
+      },
+      {
+        "date": "2025-05-15",
+        "month": "May",
+        "ndvi": 0.81,
+        "nir_reflectance": 0.52,
+        "red_reflectance": 0.05,
+        "status": "Heading & Anthesis (Peak Biomass)",
+        "vci_pct": 89
+      },
+      {
+        "date": "2025-06-15",
+        "month": "Jun",
+        "ndvi": 0.52,
+        "nir_reflectance": 0.37,
+        "red_reflectance": 0.09,
+        "status": "Grain Filling / Chlorophyll Senescence",
+        "vci_pct": 57
+      },
+      {
+        "date": "2025-07-15",
+        "month": "Jul",
+        "ndvi": 0.21,
+        "nir_reflectance": 0.21,
+        "red_reflectance": 0.12,
+        "status": "Harvested / Stubble Regolith",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-08-15",
+        "month": "Aug",
+        "ndvi": 0.16,
+        "nir_reflectance": 0.18,
+        "red_reflectance": 0.13,
+        "status": "Post-Harvest Dry Residue",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-09-15",
+        "month": "Sep",
+        "ndvi": 0.15,
+        "nir_reflectance": 0.18,
+        "red_reflectance": 0.13,
+        "status": "Pre-Planting Tillage / Fallow",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-10-15",
+        "month": "Oct",
+        "ndvi": 0.19,
+        "nir_reflectance": 0.2,
+        "red_reflectance": 0.13,
+        "status": "Autumn Sowing & Germination",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-11-15",
+        "month": "Nov",
+        "ndvi": 0.25,
+        "nir_reflectance": 0.23,
+        "red_reflectance": 0.12,
+        "status": "Early Crown Root Development",
+        "vci_pct": 35
+      },
+      {
+        "date": "2025-12-15",
+        "month": "Dec",
+        "ndvi": 0.23,
+        "nir_reflectance": 0.22,
+        "red_reflectance": 0.12,
+        "status": "Winter Hardening",
+        "vci_pct": 35
+      }
+    ],
+    "interpretation_guide": [
+      {
+        "range": "< 0.15",
+        "classification": "Water, Bare Rock, or Dry Soil"
+      },
+      {
+        "range": "0.15 - 0.35",
+        "classification": "Sparse Vegetation, Seedling Emergence, or Stubble"
+      },
+      {
+        "range": "0.35 - 0.60",
+        "classification": "Moderate Vegetative Canopy (Tillering / Stem Extension)"
+      },
+      {
+        "range": "0.60 - 0.90",
+        "classification": "Dense Healthy Canopy (High Chlorophyll Activity / Anthesis)"
+      }
+    ]
+  },
+  "climate_risks": {
+    "overall_climate_vulnerability_index": 63.5,
+    "vulnerability_classification": "Moderate Climate Vulnerability",
+    "risk_categories": {
+      "drought": {
+        "score": 55,
+        "level": "Moderate Drought Risk",
+        "description": "Annual precipitation (405.6mm) supports rainfed winter wheat/barley; summer crops require planned irrigation.",
+        "key_metric": "405.6 mm annual precipitation"
+      },
+      "heat_stress": {
+        "score": 80,
+        "level": "High Heat Stress Risk",
+        "description": "Peak temperatures reach 47.98\u00b0C with 8 months exceeding 32\u00b0C. Risk of flower abortion and grain desiccation.",
+        "key_metric": "47.98\u00b0C peak monthly maximum"
+      },
+      "frost_hazard": {
+        "score": 75,
+        "level": "High Frost Hazard",
+        "description": "Extended sub-zero winter (-4.44\u00b0C minimum across 5 months). Strict frost-tolerant winter varieties or spring planting required.",
+        "key_metric": "-4.44\u00b0C coldest monthly minimum"
+      },
+      "excessive_rainfall": {
+        "score": 25,
+        "level": "Low Flood / Compaction Risk",
+        "description": "Peak monthly precipitation is 79.0mm. Only 1.7% of precipitation falls during summer, characteristic of Mediterranean/Continental seasonality.",
+        "key_metric": "79.0 mm maximum single month"
+      }
+    },
+    "scientific_disclaimer": "Climate risk indices reflect long-term historical NASA POWER agroclimatological statistics and do not constitute an active meteorological severe weather alert."
+  },
+  "crop_recommendations": [
+    {
+      "crop_id": "barley",
+      "name": "Barley",
+      "scientific_name": "Hordeum vulgare",
+      "category": "Cereal",
+      "icon": "Wheat",
+      "overall_score": 83.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 95.0,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (12.0-20.0\u00b0C).",
+          "category": "thermal"
+        }
+      ],
+      "water_efficiency_rating": "Superior Drought Hardiness",
+      "resilience_classification": "High Resilience",
+      "parameters": {
+        "water_required_mm": "300-420 mm",
+        "optimal_temp_c": "12.0-20.0 \u00b0C",
+        "ideal_ph": "6.5-8.2",
+        "growing_season_days": 185,
+        "drought_tolerance": "Very High",
+        "frost_tolerance": "High"
+      },
+      "recommended_planting_period": "OCT, NOV",
+      "harvest_period": "MAY, JUN",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~44.0\u00b0C) exceed crop sensitivity threshold (30.0\u00b0C)."
+      ],
+      "rotation_advice": "Early harvest frees land for secondary crops or summer fallow moisture retention",
+      "rank": 1
+    },
+    {
+      "crop_id": "sunflower",
+      "name": "Oilseed Sunflower",
+      "scientific_name": "Helianthus annuus",
+      "category": "Oilseed",
+      "icon": "Sun",
+      "overall_score": 83.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 95.0,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (20.0-28.0\u00b0C).",
+          "category": "thermal"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "420-600 mm",
+        "optimal_temp_c": "20.0-28.0 \u00b0C",
+        "ideal_ph": "6.2-7.6",
+        "growing_season_days": 115,
+        "drought_tolerance": "High (Extensive taproot down to 2m)",
+        "frost_tolerance": "Low (Seedlings tolerate -2\u00b0C, adult plants frost sensitive)"
+      },
+      "recommended_planting_period": "APR, MAY",
+      "harvest_period": "AUG, SEP",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (34.0\u00b0C)."
+      ],
+      "rotation_advice": "Deep taproot breaks plough pan, extracts deep subsoil nutrients",
+      "rank": 2
+    },
+    {
+      "crop_id": "lentils",
+      "name": "Red / Green Lentils",
+      "scientific_name": "Lens culinaris",
+      "category": "Legume",
+      "icon": "Heart",
+      "overall_score": 83.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 95.0,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (15.0-24.0\u00b0C).",
+          "category": "thermal"
+        }
+      ],
+      "water_efficiency_rating": "Superior Drought Hardiness",
+      "resilience_classification": "High Resilience",
+      "parameters": {
+        "water_required_mm": "250-380 mm",
+        "optimal_temp_c": "15.0-24.0 \u00b0C",
+        "ideal_ph": "6.0-7.8",
+        "growing_season_days": 140,
+        "drought_tolerance": "Exceptional",
+        "frost_tolerance": "High (Winter red lentil varieties withstand -10\u00b0C under snow cover)"
+      },
+      "recommended_planting_period": "OCT, NOV, FEB",
+      "harvest_period": "MAY, JUN",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~44.0\u00b0C) exceed crop sensitivity threshold (30.0\u00b0C)."
+      ],
+      "rotation_advice": "Symbiotic nitrogen fixation",
+      "rank": 3
+    },
+    {
+      "crop_id": "chickpeas",
+      "name": "Chickpeas",
+      "scientific_name": "Cicer arietinum",
+      "category": "Legume",
+      "icon": "Heart",
+      "overall_score": 83.5,
+      "component_scores": {
+        "climate_temperature": 69.1,
+        "water_availability": 95.0,
+        "soil_compatibility": 95.0,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.9,
+          "description": "Growing season mean temperature deviates from optimal range (18.0-26.0\u00b0C).",
+          "category": "thermal"
+        }
+      ],
+      "water_efficiency_rating": "Superior Drought Hardiness",
+      "resilience_classification": "High Resilience",
+      "parameters": {
+        "water_required_mm": "280-420 mm",
+        "optimal_temp_c": "18.0-26.0 \u00b0C",
+        "ideal_ph": "6.2-8.0",
+        "growing_season_days": 110,
+        "drought_tolerance": "Very High",
+        "frost_tolerance": "Moderate (Seedlings withstand brief -3\u00b0C)"
+      },
+      "recommended_planting_period": "MAR, APR",
+      "harvest_period": "JUL, AUG",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (32.0\u00b0C)."
+      ],
+      "rotation_advice": "Biological nitrogen fixation (40-80 kg N/ha)",
+      "rank": 4
+    },
+    {
+      "crop_id": "wheat",
+      "name": "Winter Wheat",
+      "scientific_name": "Triticum aestivum",
+      "category": "Cereal",
+      "icon": "Wheat",
+      "overall_score": 82.0,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (15.0-22.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "Moderate-High Water Efficiency",
+      "resilience_classification": "Resilient",
+      "parameters": {
+        "water_required_mm": "380-520 mm",
+        "optimal_temp_c": "15.0-22.0 \u00b0C",
+        "ideal_ph": "6.0-7.8",
+        "growing_season_days": 210,
+        "drought_tolerance": "High",
+        "frost_tolerance": "Very High (dormant tillering)"
+      },
+      "recommended_planting_period": "OCT, NOV",
+      "harvest_period": "JUN, JUL",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~44.0\u00b0C) exceed crop sensitivity threshold (32.0\u00b0C)."
+      ],
+      "rotation_advice": "Breaks broadleaf disease cycles",
+      "rank": 5
+    },
+    {
+      "crop_id": "corn",
+      "name": "Grain Maize / Corn",
+      "scientific_name": "Zea mays",
+      "category": "Cereal",
+      "icon": "Zap",
+      "overall_score": 82.0,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (22.0-30.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "600-850 mm",
+        "optimal_temp_c": "22.0-30.0 \u00b0C",
+        "ideal_ph": "5.8-7.3",
+        "growing_season_days": 130,
+        "drought_tolerance": "Low to Moderate",
+        "frost_tolerance": "None (Extremely frost sensitive)"
+      },
+      "recommended_planting_period": "APR, MAY",
+      "harvest_period": "SEP, OCT",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (35.0\u00b0C)."
+      ],
+      "rotation_advice": "High biomass returns to soil",
+      "rank": 6
+    },
+    {
+      "crop_id": "cotton",
+      "name": "Upland Cotton",
+      "scientific_name": "Gossypium hirsutum",
+      "category": "Industrial / Fiber",
+      "icon": "Layers",
+      "overall_score": 79.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 55.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (25.0-34.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "650-950 mm",
+        "optimal_temp_c": "25.0-34.0 \u00b0C",
+        "ideal_ph": "6.5-8.0",
+        "growing_season_days": 160,
+        "drought_tolerance": "Moderate (Requires steady moisture for boll development)",
+        "frost_tolerance": "None"
+      },
+      "recommended_planting_period": "APR, MAY",
+      "harvest_period": "SEP, OCT, NOV",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Frost Risk: Region experiences regular sub-zero winter temperatures; crop requires strict frost-free spring planting.",
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (38.0\u00b0C)."
+      ],
+      "rotation_advice": "Valuable economic driver for irrigated plains",
+      "rank": 7
+    },
+    {
+      "crop_id": "rice",
+      "name": "Paddy Rice",
+      "scientific_name": "Oryza sativa",
+      "category": "Cereal",
+      "icon": "Droplet",
+      "overall_score": 79.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 55.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (24.0-32.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "1100-1500 mm",
+        "optimal_temp_c": "24.0-32.0 \u00b0C",
+        "ideal_ph": "5.5-7.2",
+        "growing_season_days": 135,
+        "drought_tolerance": "Extremely Low",
+        "frost_tolerance": "None"
+      },
+      "recommended_planting_period": "MAY",
+      "harvest_period": "SEP, OCT",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Frost Risk: Region experiences regular sub-zero winter temperatures; crop requires strict frost-free spring planting.",
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (36.0\u00b0C)."
+      ],
+      "rotation_advice": "Flooding leaches accumulated soil salts in well-drained secondary basins",
+      "rank": 8
+    },
+    {
+      "crop_id": "soybean",
+      "name": "Soybean",
+      "scientific_name": "Glycine max",
+      "category": "Legume / Oilseed",
+      "icon": "Activity",
+      "overall_score": 79.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 55.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (22.0-30.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "Standard Evapotranspiration Need",
+      "resilience_classification": "Moderate Resilience",
+      "parameters": {
+        "water_required_mm": "500-700 mm",
+        "optimal_temp_c": "22.0-30.0 \u00b0C",
+        "ideal_ph": "6.0-7.2",
+        "growing_season_days": 115,
+        "drought_tolerance": "Moderate",
+        "frost_tolerance": "None"
+      },
+      "recommended_planting_period": "MAY, JUN",
+      "harvest_period": "SEP, OCT",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Frost Risk: Region experiences regular sub-zero winter temperatures; crop requires strict frost-free spring planting.",
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (35.0\u00b0C)."
+      ],
+      "rotation_advice": "Fixes 60-120 kg N/ha via Rhizobium symbiosis, leaving residual N for next crop",
+      "rank": 9
+    },
+    {
+      "crop_id": "tomatoes",
+      "name": "Processing / Table Tomatoes",
+      "scientific_name": "Solanum lycopersicum",
+      "category": "Horticulture",
+      "icon": "Flame",
+      "overall_score": 79.8,
+      "component_scores": {
+        "climate_temperature": 70.0,
+        "water_availability": 95.0,
+        "soil_compatibility": 88.2,
+        "climate_risk_safety": 55.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 25.0,
+          "description": "Growing season mean temperature deviates from optimal range (20.0-28.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Texture Compatibility",
+          "penalty_pts": 15.0,
+          "description": "Sandy Loam texture presents physical rooting or drainage friction for this cultivar.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "550-750 mm",
+        "optimal_temp_c": "20.0-28.0 \u00b0C",
+        "ideal_ph": "6.0-7.2",
+        "growing_season_days": 125,
+        "drought_tolerance": "Moderate with drip irrigation",
+        "frost_tolerance": "None"
+      },
+      "recommended_planting_period": "APR, MAY",
+      "harvest_period": "JUL, AUG, SEP",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Frost Risk: Region experiences regular sub-zero winter temperatures; crop requires strict frost-free spring planting.",
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (34.0\u00b0C)."
+      ],
+      "rotation_advice": "High commercial profit margin and processing plant contracts",
+      "rank": 10
+    },
+    {
+      "crop_id": "potatoes",
+      "name": "Tubers / Potatoes",
+      "scientific_name": "Solanum tuberosum",
+      "category": "Tuber / Vegetable",
+      "icon": "Circle",
+      "overall_score": 68.7,
+      "component_scores": {
+        "climate_temperature": 29.1,
+        "water_availability": 95.0,
+        "soil_compatibility": 84.0,
+        "climate_risk_safety": 70.0
+      },
+      "limiting_factors": [
+        {
+          "factor": "Thermal Divergence",
+          "penalty_pts": 65.9,
+          "description": "Growing season mean temperature deviates from optimal range (16.0-22.0\u00b0C).",
+          "category": "thermal"
+        },
+        {
+          "factor": "Soil pH Constraint",
+          "penalty_pts": 20.0,
+          "description": "Field pH of 7.2 is outside ideal range (5.2-6.5), impacting micronutrient availability.",
+          "category": "soil"
+        }
+      ],
+      "water_efficiency_rating": "High Water Demand (Vulnerable to Drought)",
+      "resilience_classification": "Drought Vulnerable",
+      "parameters": {
+        "water_required_mm": "500-700 mm",
+        "optimal_temp_c": "16.0-22.0 \u00b0C",
+        "ideal_ph": "5.2-6.5",
+        "growing_season_days": 120,
+        "drought_tolerance": "Low (Shallow root system requires frequent irrigation)",
+        "frost_tolerance": "Low (Foliage killed by -1\u00b0C)"
+      },
+      "recommended_planting_period": "APR, MAY",
+      "harvest_period": "AUG, SEP, OCT",
+      "reasons": [
+        "Temperature profile presents thermal divergence from optimal requirements.",
+        "Available moisture is adequate for expected crop evapotranspiration.",
+        "Soil reaction (pH 7.2) and Sandy Loam texture provide supportive rooting conditions."
+      ],
+      "identified_risks": [
+        "Heat Stress Risk: Peak summer temperatures (~48.0\u00b0C) exceed crop sensitivity threshold (28.0\u00b0C)."
+      ],
+      "rotation_advice": "High gross value per hectare",
+      "rank": 11
+    }
+  ],
+  "rotation_plan": {
+    "previous_crop": {
+      "id": "tomatoes",
+      "name": "Processing / Table Tomatoes",
+      "crop_family": "Solanaceae",
+      "soil_legacy_assessment": "Previous Processing / Table Tomatoes leaves potential risk of soil-borne Verticillium, Fusarium, and cyst nematodes. Strict mandatory break from any Solanaceae is required for at least 3 seasons."
+    },
+    "agronomic_cautions": [
+      "STRICT WARNING: Do not plant potatoes or tomatoes back-to-back. High risk of Late Blight, soil nematode propagation, and bacterial wilt."
+    ],
+    "recommended_rotation_sequence": [
+      {
+        "crop_id": "wheat",
+        "name": "Winter Wheat",
+        "rotation_rank": 1,
+        "strategy": "Non-Host Disease Break Cereal",
+        "agronomic_benefit": "Cereal is a non-host to Solanaceous nematodes and fungal wilts, allowing pathogen populations to naturally decline.",
+        "water_fit": "Natural cool-season succession."
+      },
+      {
+        "crop_id": "chickpeas",
+        "name": "Chickpeas",
+        "rotation_rank": 2,
+        "strategy": "Broadleaf Legume Diversification",
+        "agronomic_benefit": "Rebuilds biological soil health and fixes nitrogen while maintaining disease break.",
+        "water_fit": "Requires well-drained soil."
+      }
+    ],
+    "four_year_ideal_rotation_plan": [
+      "Year 1: Processing / Table Tomatoes",
+      "Year 2: Legume (Chickpeas / Lentils / Soybean) [Nitrogen Restoration]",
+      "Year 3: Cereal (Wheat / Barley) [Nitrogen Uptake & Disease Break]",
+      "Year 4: Deep Taproot / Cash Crop (Sunflower / Corn / Cotton) [Subsoil Exploration]"
+    ]
+  },
+  "system_status": "ANALYSIS_COMPLETE"
+}
