@@ -55,6 +55,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
   const [searchingLocation, setSearchingLocation] = useState<boolean>(false);
   const [zoomLevel, setZoomLevel] = useState<number>(14);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const [mobileTelemetryOpen, setMobileTelemetryOpen] = useState<boolean>(false);
 
   // Custom coordinate modal state
   const [customName, setCustomName] = useState<string>('Surveyed Farm Parcel');
@@ -176,8 +177,8 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
         />
       </div>
 
-      {/* 2. LEFT FLOATING TELEMETRY & PARCELS PANEL (MINIMALIST & UNDERSTANDABLE) */}
-      <div className="absolute top-4 left-4 bottom-4 w-[350px] sm:w-[370px] z-20 flex flex-col pointer-events-none">
+      {/* 2. LEFT FLOATING TELEMETRY PANEL (DESKTOP) */}
+      <div className="hidden md:flex absolute top-4 left-4 bottom-4 w-[350px] sm:w-[370px] z-20 flex-col pointer-events-none">
         <div className="dark-glass-panel rounded-2xl flex-1 flex flex-col overflow-hidden pointer-events-auto shadow-2xl">
           {/* Active Parcel Header */}
           <div className="p-4 border-b border-white/5 space-y-2.5">
@@ -212,7 +213,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
               </div>
             </div>
 
-            {/* Farm Title & Region Subtitle (Full width with zero horizontal collision) */}
+            {/* Farm Title & Region Subtitle */}
             <div>
               <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-tight">
                 {currentName}
@@ -232,10 +233,9 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
             </div>
           </div>
 
-          {/* Core Telemetry Body (Understandable Cards) */}
+          {/* Core Telemetry Body */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
             {!isArable ? (
-              /* Dedicated Marine Surface Diagnostic */
               <div className="space-y-3">
                 <div className="bg-cyan-950/30 border border-cyan-500/20 rounded-xl p-3 space-y-2">
                   <div className="flex items-center space-x-2 text-cyan-400 text-xs font-semibold">
@@ -250,7 +250,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                   </div>
                 </div>
 
-                {/* 4 Clean Marine Metric Cards */}
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
                     <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
@@ -260,9 +259,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     <div className="text-xs font-semibold text-white mt-1">
                       {climate?.summary?.mean_annual_temp_c?.toFixed(1) || 18.2} °C
                     </div>
-                    <div className="text-[10px] text-white/40 mt-0.5">
-                      Maritime Atmosphere
-                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5">Maritime Atmosphere</div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
@@ -273,9 +270,7 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     <div className="text-xs font-semibold text-white mt-1">
                       {climate?.summary?.annual_precipitation_mm || 0} mm
                     </div>
-                    <div className="text-[10px] text-white/40 mt-0.5 truncate">
-                      Annual Marine Rainfall
-                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5 truncate">Annual Marine Rainfall</div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
@@ -283,12 +278,8 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                       <Activity size={12} className="text-cyan-400" />
                       <span>Water NDVI</span>
                     </div>
-                    <div className="text-xs font-semibold text-cyan-400 mt-1">
-                      -0.22
-                    </div>
-                    <div className="text-[10px] text-white/40 mt-0.5">
-                      Strong NIR Absorption
-                    </div>
+                    <div className="text-xs font-semibold text-cyan-400 mt-1">-0.22</div>
+                    <div className="text-[10px] text-white/40 mt-0.5">Strong NIR Absorption</div>
                   </div>
 
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
@@ -296,12 +287,8 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                       <Droplets size={12} className="text-slate-400" />
                       <span>Arable Horizon</span>
                     </div>
-                    <div className="text-xs font-semibold text-slate-300 mt-1">
-                      Submerged Bed
-                    </div>
-                    <div className="text-[10px] text-[#7C9A6B] mt-0.5 font-medium">
-                      0 Crops Cultivable
-                    </div>
+                    <div className="text-xs font-semibold text-slate-300 mt-1">Submerged Bed</div>
+                    <div className="text-[10px] text-[#7C9A6B] mt-0.5 font-medium">0 Crops Cultivable</div>
                   </div>
                 </div>
 
@@ -310,11 +297,8 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                 </div>
               </div>
             ) : (
-              /* Terrestrial Agricultural Telemetry */
               <>
-                {/* 4 Clean Primary Metric Cards */}
                 <div className="grid grid-cols-2 gap-2">
-                  {/* Soil Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
                     <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Scissors size={12} className="text-amber-400" />
@@ -328,7 +312,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Water Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
                     <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Waves size={12} className="text-cyan-400" />
@@ -342,7 +325,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Organic Carbon Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
                     <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Droplets size={12} className="text-[#7C9A6B]" />
@@ -356,7 +338,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Canopy Health Card */}
                   <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
                     <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
                       <Activity size={12} className="text-[#7C9A6B]" />
@@ -371,7 +352,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                   </div>
                 </div>
 
-                {/* Top Recommended Crop Callout */}
                 {topCrop && (
                   <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3">
                     <div className="flex items-center justify-between mb-1">
@@ -407,7 +387,6 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
               </>
             )}
 
-            {/* Add Custom Parcel Action */}
             <div className="space-y-2 pt-1">
               <button
                 onClick={() => setShowAddModal(true)}
@@ -431,8 +410,309 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
         </div>
       </div>
 
-      {/* 3. BOTTOM NASA DATA SOURCE BADGE (Clean, Minimal, No Neon) */}
-      <div className="absolute bottom-4 left-[370px] sm:left-[390px] z-20 pointer-events-none">
+      {/* MOBILE FLOATING SUMMARY PILL (When drawer closed) */}
+      {!mobileTelemetryOpen && (
+        <div className="md:hidden absolute bottom-16 left-3 right-3 z-30 pointer-events-auto">
+          <div 
+            onClick={() => setMobileTelemetryOpen(true)}
+            className="dark-glass-panel rounded-2xl p-3 border border-white/10 shadow-2xl flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform"
+          >
+            <div className="min-w-0 flex-1 pr-2">
+              <div className="flex items-center space-x-1.5">
+                <span className={`w-2 h-2 rounded-full ${isArable ? 'bg-[#7C9A6B]' : 'bg-cyan-400'}`} />
+                <span className="text-[10px] uppercase font-semibold text-white/50 tracking-wider">
+                  {isArable ? 'Active Parcel' : 'Marine Water'}
+                </span>
+                {topCrop && isArable && (
+                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#7C9A6B]/20 text-[#A8C496] font-semibold truncate max-w-[120px]">
+                    {topCrop.name} ({topCrop.overall_score})
+                  </span>
+                )}
+              </div>
+              <h4 className="text-sm font-bold text-white truncate mt-0.5">
+                {currentName}
+              </h4>
+              <div className="flex items-center gap-2 text-[10px] text-white/50 mt-0.5">
+                <span>{isArable ? `${selectedField?.area_hectares || 35} ha` : 'Open Water'}</span>
+                <span>&bull;</span>
+                <span>{currentLat.toFixed(2)}°, {currentLon.toFixed(2)}°</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMobileTelemetryOpen(true);
+                }}
+                className="px-2.5 py-1.5 rounded-xl bg-[#7C9A6B]/20 text-[#A8C496] border border-[#7C9A6B]/30 text-xs font-semibold flex items-center gap-1 cursor-pointer"
+              >
+                <span>Telemetry</span>
+                <ChevronUp size={13} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MOBILE SLIDE-UP TELEMETRY DRAWER (When open) */}
+      {mobileTelemetryOpen && (
+        <div className="md:hidden fixed inset-x-0 bottom-14 top-14 z-40 bg-[#0E0F12]/98 backdrop-blur-2xl rounded-t-3xl border-t border-white/15 flex flex-col pointer-events-auto shadow-2xl animate-in slide-in-from-bottom duration-200">
+          <div className="px-4 pt-3 pb-2 flex items-center justify-between border-b border-white/5">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-1 bg-white/20 rounded-full mr-1" />
+              <span className="text-xs font-semibold text-white">Parcel Telemetry & Pedology</span>
+            </div>
+            <button
+              onClick={() => setMobileTelemetryOpen(false)}
+              className="p-1 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              aria-label="Close telemetry sheet"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
+            {/* Header row in mobile sheet */}
+            <div className="space-y-2 border-b border-white/5 pb-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className={`text-[10px] uppercase tracking-wider font-semibold block ${isArable ? 'text-[#7C9A6B]' : 'text-white/40'}`}>
+                  {isArable ? 'Active Surveyed Parcel' : 'Marine Water Surface'}
+                </span>
+
+                <select
+                  value={selectedField?.id || ''}
+                  onChange={(e) => {
+                    const found = demoFields.find(f => f.id === e.target.value);
+                    if (found) {
+                      onSelectField(found);
+                      setMobileTelemetryOpen(false);
+                    }
+                  }}
+                  className="bg-white/[0.05] hover:bg-white/[0.1] text-[#A8C496] border border-[#7C9A6B]/30 hover:border-[#7C9A6B]/60 rounded-xl px-2.5 py-1 text-xs font-semibold focus:outline-none cursor-pointer max-w-[170px]"
+                >
+                  {selectedField && !demoFields.some(f => f.id === selectedField.id) && (
+                    <option value={selectedField.id} className="bg-[#18191E] text-white">
+                      Custom Location
+                    </option>
+                  )}
+                  {demoFields.map((f) => (
+                    <option key={f.id} value={f.id} className="bg-[#18191E] text-white">
+                      {f.region.split(',')[0]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <h3 className="text-base font-bold text-white tracking-tight leading-tight">
+                  {currentName}
+                </h3>
+                <p className="text-xs text-white/50 mt-0.5">
+                  {isArable ? (selectedField?.region || 'Terrestrial Parcel') : 'Open Hydrosphere · Non-Arable'}
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-3 text-xs text-white/50 bg-black/30 px-3 py-1.5 rounded-xl border border-white/[0.05]">
+                <span>Lat: <strong className="text-white font-medium">{currentLat.toFixed(4)}°</strong></span>
+                <span>&bull;</span>
+                <span>Lon: <strong className="text-white font-medium">{currentLon.toFixed(4)}°</strong></span>
+                <span>&bull;</span>
+                <span>{isArable ? `${selectedField?.area_hectares || 35} ha` : 'Open Water'}</span>
+              </div>
+            </div>
+
+            {!isArable ? (
+              <div className="space-y-3">
+                <div className="bg-cyan-950/30 border border-cyan-500/20 rounded-xl p-3 space-y-2">
+                  <div className="flex items-center space-x-2 text-cyan-400 text-xs font-semibold">
+                    <Waves size={15} />
+                    <span>Open Marine Water Body</span>
+                  </div>
+                  <p className="text-[11px] text-[#A0AEC0] leading-relaxed">
+                    Selected coordinate is situated on an open marine water body ({marineBodyName}). Terrestrial soil pedology (ISRIC SoilGrids) and agricultural cultivars (FAO EcoCrop) apply solely to land parcels.
+                  </p>
+                  <div className="text-[10px] font-mono text-cyan-300/80 bg-black/40 px-2 py-1 rounded border border-cyan-500/10">
+                    NASA POWER atmospheric reanalysis active: Oceanic air temp & maritime precipitation live.
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Thermometer size={12} className="text-amber-400" />
+                      <span>Air Temp (NASA)</span>
+                    </div>
+                    <div className="text-xs font-semibold text-white mt-1">
+                      {climate?.summary?.mean_annual_temp_c?.toFixed(1) || 18.2} °C
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Waves size={12} className="text-cyan-400" />
+                      <span>Precipitation</span>
+                    </div>
+                    <div className="text-xs font-semibold text-white mt-1">
+                      {climate?.summary?.annual_precipitation_mm || 0} mm
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Activity size={12} className="text-cyan-400" />
+                      <span>Water NDVI</span>
+                    </div>
+                    <div className="text-xs font-semibold text-cyan-400 mt-1">-0.22</div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Droplets size={12} className="text-slate-400" />
+                      <span>Arable Horizon</span>
+                    </div>
+                    <div className="text-xs font-semibold text-slate-300 mt-1">Submerged</div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Scissors size={12} className="text-amber-400" />
+                      <span>Soil Texture</span>
+                    </div>
+                    <div className="text-xs font-semibold text-white mt-1">
+                      {soil?.properties?.usda_texture || 'Loam'}
+                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5">
+                      pH {soil?.properties?.ph_h2o || 7.2} &bull; {soil?.properties?.clay_pct || 22}% Clay
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Waves size={12} className="text-cyan-400" />
+                      <span>Precipitation</span>
+                    </div>
+                    <div className="text-xs font-semibold text-white mt-1">
+                      {climate?.summary?.annual_precipitation_mm || 450} mm
+                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5 truncate">
+                      {climate?.summary?.aridity_classification || 'Subhumid'}
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Droplets size={12} className="text-[#7C9A6B]" />
+                      <span>Soil Carbon</span>
+                    </div>
+                    <div className="text-xs font-semibold text-white mt-1">
+                      {soil?.properties?.soc_g_kg || 18.5} g/kg
+                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5">
+                      CEC: {soil?.properties?.cec_cmolc_kg || 24} cmol/kg
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1C1E24] rounded-xl p-2.5 border border-white/5">
+                    <div className="flex items-center space-x-1.5 text-[10px] font-medium text-white/40 uppercase tracking-wider">
+                      <Activity size={12} className="text-[#7C9A6B]" />
+                      <span>Canopy Health</span>
+                    </div>
+                    <div className="text-xs font-semibold text-[#7C9A6B] mt-1">
+                      NDVI {satellite?.current_observation?.mean_field_ndvi || 0.78}
+                    </div>
+                    <div className="text-[10px] text-white/40 mt-0.5">
+                      VCI: {satellite?.current_observation?.vegetation_condition_index_pct || 92}%
+                    </div>
+                  </div>
+                </div>
+
+                {topCrop && (
+                  <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-semibold uppercase text-[#7C9A6B] tracking-wider">
+                        Primary Agronomic Match
+                      </span>
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-[#7C9A6B]/15 text-[#A8C496] border border-[#7C9A6B]/25">
+                        {topCrop.overall_score}/100
+                      </span>
+                    </div>
+
+                    <div className="text-sm font-semibold text-white">
+                      {topCrop.name}
+                    </div>
+                    <p className="text-[11px] text-white/50 mt-1 line-clamp-2 leading-relaxed">
+                      {topCrop.reasons[0]}
+                    </p>
+
+                    <div className="mt-2.5 pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+                      <span className="text-[10px] text-white/40">
+                        Sowing: {topCrop.recommended_planting_period}
+                      </span>
+                      <button 
+                        onClick={() => {
+                          setMobileTelemetryOpen(false);
+                          onNavigateToTab('crops');
+                        }}
+                        className="text-[#7C9A6B] hover:text-[#A8C496] font-medium flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>All Crops</span>
+                        <ArrowRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            <div className="space-y-2 pt-1 pb-4">
+              <button
+                onClick={() => {
+                  setMobileTelemetryOpen(false);
+                  setShowAddModal(true);
+                }}
+                className="w-full py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 cursor-pointer border border-white/10"
+              >
+                <Plus size={13} className="text-[#7C9A6B]" />
+                <span>Analyze Custom Coordinates</span>
+              </button>
+
+              {onOpenDossier && (
+                <button
+                  onClick={() => {
+                    setMobileTelemetryOpen(false);
+                    onOpenDossier();
+                  }}
+                  className="w-full py-2.5 bg-[#7C9A6B]/15 hover:bg-[#7C9A6B]/25 text-[#A8C496] rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 cursor-pointer border border-[#7C9A6B]/25 shadow-sm"
+                >
+                  <FileText size={13} className="text-[#7C9A6B]" />
+                  <span>Download Scientific Dossier (PDF)</span>
+                </button>
+              )}
+
+              <div className="pt-2 text-center">
+                <button
+                  onClick={() => {
+                    setMobileTelemetryOpen(false);
+                    onOpenDisclosures();
+                  }}
+                  className="text-[11px] text-[#A6B58A] hover:text-white inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>NASA POWER & ISRIC Methodology</span>
+                  <ExternalLink size={11} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3. BOTTOM NASA DATA SOURCE BADGE (Desktop Only) */}
+      <div className="hidden md:flex absolute bottom-4 left-[370px] sm:left-[390px] z-20 pointer-events-none">
         <div className="dark-glass-panel rounded-xl px-3.5 py-1.5 flex items-center space-x-3 pointer-events-auto border border-white/10 shadow-xl">
           <div className="flex items-center space-x-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#A6B58A]" />
@@ -451,8 +731,9 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
         </div>
       </div>
 
-      {/* 4. MAP ZOOM CONTROLS */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-[315px] z-20 flex flex-col gap-1 dark-glass-panel p-1 rounded-lg border border-white/10 shadow-lg">
+      {/* 4. MAP ZOOM CONTROLS (Responsive) */}
+      {/* Desktop Zoom */}
+      <div className={`hidden sm:flex absolute top-1/2 -translate-y-1/2 ${showRightPanel ? 'right-[310px]' : 'right-4'} z-20 flex-col gap-1 dark-glass-panel p-1 rounded-lg border border-white/10 shadow-lg transition-all`}>
         <button 
           onClick={() => setZoomLevel(prev => Math.min(prev + 1, 18))}
           className="w-7 h-7 flex items-center justify-center text-white hover:bg-white/10 rounded font-bold text-sm cursor-pointer transition-colors"
@@ -470,9 +751,29 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
         </button>
       </div>
 
+      {/* Mobile Zoom Controls */}
+      <div className="sm:hidden absolute top-14 right-3 z-20 flex flex-col gap-1 dark-glass-panel p-1 rounded-lg border border-white/10 shadow-lg">
+        <button 
+          onClick={() => setZoomLevel(prev => Math.min(prev + 1, 18))}
+          className="w-7 h-7 flex items-center justify-center text-white hover:bg-white/10 rounded font-bold text-sm cursor-pointer"
+          title="Zoom in"
+        >
+          +
+        </button>
+        <div className="w-full h-px bg-white/10" />
+        <button 
+          onClick={() => setZoomLevel(prev => Math.max(prev - 1, 3))}
+          className="w-7 h-7 flex items-center justify-center text-white hover:bg-white/10 rounded font-bold text-sm cursor-pointer"
+          title="Zoom out"
+        >
+          &minus;
+        </button>
+      </div>
+
       {/* 5. RIGHT FLOATING PANEL: "MAP LAYERS & SPATIAL DATA" */}
-      {showRightPanel ? (
-        <div className="absolute top-4 right-4 bottom-4 w-[290px] z-20 flex flex-col pointer-events-none">
+      {/* Desktop Layers Panel */}
+      {showRightPanel && (
+        <div className="hidden md:flex absolute top-4 right-4 bottom-4 w-[290px] z-20 flex-col pointer-events-none">
           <div className="dark-glass-panel rounded-2xl flex-1 flex flex-col overflow-hidden pointer-events-auto shadow-2xl">
             {/* Header */}
             <div className="p-3.5 border-b border-white/5 flex items-center justify-between">
@@ -502,10 +803,10 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                   onChange={(e) => setSearchLocationQuery(e.target.value)}
                   placeholder="Search city, region, or lat,lon..." 
                   disabled={searchingLocation}
-                  className="w-full bg-[#1C1E24] border border-white/10 rounded-lg pl-7 pr-7 py-1.5 text-[11px] text-white placeholder-[#8E929C] focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1C1E24] border border-white/10 rounded-lg pl-7 pr-7 py-1.5 text-[11px] text-white placeholder-[#8E929C] focus:outline-none focus:border-[#7C9A6B]"
                 />
                 {searchingLocation && (
-                  <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[9px] text-emerald-400 animate-pulse">
+                  <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[9px] text-[#7C9A6B] animate-pulse">
                     ...
                   </span>
                 )}
@@ -519,35 +820,36 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
                   <div className="text-xs font-medium text-white/40 px-1">
                     {grp.group}
                   </div>
-                  {grp.layers.map((layer) => {
-                    const isSelected = activeLayer === layer.id;
+                  {grp.layers.map((l) => {
+                    const active = activeLayer === l.id;
                     return (
                       <div
-                        key={layer.id}
-                        onClick={() => setActiveLayer(layer.id)}
-                        className={`flex items-center justify-between p-2 rounded-xl text-xs cursor-pointer transition-all ${
-                          isSelected 
-                            ? 'bg-[#7C9A6B]/15 border border-[#7C9A6B]/30 text-white' 
-                            : 'hover:bg-white/5 border border-transparent text-white/80'
+                        key={l.id}
+                        onClick={() => setActiveLayer(l.id)}
+                        className={`p-2 rounded-xl text-left transition-all cursor-pointer border flex items-center justify-between ${
+                          active
+                            ? 'bg-[#7C9A6B]/15 border-[#7C9A6B]/40 text-white shadow-sm'
+                            : 'bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/[0.05] hover:text-white'
                         }`}
                       >
-                        <div className="min-w-0 pr-1">
-                          <div className="text-xs font-semibold text-white truncate">
-                            {layer.name}
-                          </div>
-                          <div className="text-[10px] text-white/40 truncate">
-                            {layer.desc}
+                        <div className="flex items-center space-x-2">
+                          
+                          <div>
+                            <div className="text-xs font-semibold leading-none">
+                              {l.name}
+                            </div>
+                            <div className="text-[10px] text-white/40 mt-0.5">
+                              {l.desc}
+                            </div>
                           </div>
                         </div>
-
-                        <div className="flex items-center space-x-1.5 shrink-0">
-                          {isSelected && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#7C9A6B]" />
-                          )}
-                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-white/50">
-                            {layer.badge}
-                          </span>
-                        </div>
+                        <span
+                          className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
+                            active ? 'bg-[#7C9A6B] text-black font-bold' : 'bg-white/5 text-white/40'
+                          }`}
+                        >
+                          {l.badge}
+                        </span>
                       </div>
                     );
                   })}
@@ -556,14 +858,111 @@ export const EarthEyeDashboardView: React.FC<EarthEyeDashboardViewProps> = ({
             </div>
           </div>
         </div>
-      ) : (
+      )}
+
+      {/* Desktop Layers Toggle Button */}
+      {!showRightPanel && (
         <button
           onClick={() => setShowRightPanel(true)}
-          className="absolute top-4 right-4 z-20 dark-glass-panel text-white p-2.5 rounded-xl text-xs flex items-center space-x-1.5 cursor-pointer shadow-lg hover:bg-white/10 transition-colors"
+          className="hidden md:flex absolute top-4 right-4 z-20 dark-glass-panel text-white p-2.5 rounded-xl text-xs items-center space-x-1.5 cursor-pointer shadow-lg hover:bg-white/10 transition-colors"
         >
-          <Layers size={14} className="text-emerald-400" />
+          <Layers size={14} className="text-[#7C9A6B]" />
           <span>Map Layers</span>
         </button>
+      )}
+
+      {/* Mobile Layers Toggle Button */}
+      {!showRightPanel && (
+        <button
+          onClick={() => setShowRightPanel(true)}
+          className="md:hidden absolute top-3 right-3 z-20 dark-glass-panel text-white px-2.5 py-1.5 rounded-xl text-xs flex items-center space-x-1 cursor-pointer shadow-lg hover:bg-white/10 transition-colors border border-white/10"
+          title="Map Layers"
+        >
+          <Layers size={13} className="text-[#7C9A6B]" />
+          <span className="text-[11px] font-medium">Layers</span>
+        </button>
+      )}
+
+      {/* Mobile Layers Full Sheet */}
+      {showRightPanel && (
+        <div className="md:hidden fixed inset-x-3 bottom-16 top-16 z-40 bg-[#0E0F12]/98 backdrop-blur-2xl rounded-2xl border border-white/15 flex flex-col pointer-events-auto shadow-2xl overflow-hidden animate-in fade-in duration-150">
+          <div className="p-3.5 border-b border-white/5 flex items-center justify-between">
+            <div>
+              <h3 className="text-xs font-semibold text-white">
+                Map Layers & Earth Data
+              </h3>
+              <p className="text-[10px] text-[#8E929C]">
+                Tap any layer to activate on satellite map
+              </p>
+            </div>
+            <button 
+              onClick={() => setShowRightPanel(false)}
+              className="p-1 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            >
+              <X size={16} />
+            </button>
+          </div>
+
+          <div className="p-3 border-b border-white/5">
+            <form onSubmit={(e) => { handleLocationSearch(e); setShowRightPanel(false); }} className="relative">
+              <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#8E929C]" />
+              <input 
+                type="text" 
+                value={searchLocationQuery}
+                onChange={(e) => setSearchLocationQuery(e.target.value)}
+                placeholder="Search city, region, or lat,lon..." 
+                disabled={searchingLocation}
+                className="w-full bg-[#1C1E24] border border-white/10 rounded-lg pl-7 pr-7 py-2 text-xs text-white placeholder-[#8E929C] focus:outline-none focus:border-[#7C9A6B]"
+              />
+            </form>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-3 space-y-3">
+            {layerGroups.map((grp, gIdx) => (
+              <div key={gIdx} className="space-y-1">
+                <div className="text-xs font-medium text-white/40 px-1">
+                  {grp.group}
+                </div>
+                {grp.layers.map((l) => {
+                  const active = activeLayer === l.id;
+                  return (
+                    <div
+                      key={l.id}
+                      onClick={() => {
+                        setActiveLayer(l.id);
+                        setShowRightPanel(false);
+                      }}
+                      className={`p-2.5 rounded-xl text-left transition-all cursor-pointer border flex items-center justify-between ${
+                        active
+                          ? 'bg-[#7C9A6B]/15 border-[#7C9A6B]/40 text-white shadow-sm'
+                          : 'bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/[0.05] hover:text-white'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-2">
+                        
+                        <div>
+                          <div className="text-xs font-semibold leading-none">
+                            {l.name}
+                          </div>
+                          <div className="text-[10px] text-white/40 mt-0.5">
+                            {l.desc}
+                          </div>
+                        </div>
+                      </div>
+                      <span
+                        className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${
+                          active ? 'bg-[#7C9A6B] text-black font-bold' : 'bg-white/5 text-white/40'
+                        }`}
+                      >
+                        {l.badge}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       {/* 6. CUSTOM FIELD COORDINATES MODAL */}

@@ -294,7 +294,7 @@ export function App() {
 
               {/* CROPS */}
               {activeTab === 'crops' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <CropRecommendationsView
                     crops={fieldDigitalTwin?.crop_recommendations || []}
                     weights={customWeights}
@@ -310,7 +310,7 @@ export function App() {
 
               {/* SOIL */}
               {activeTab === 'soil' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <SoilIntelligenceView
                     soil={fieldDigitalTwin?.soil || null}
                     fieldName={currentFieldName}
@@ -320,7 +320,7 @@ export function App() {
 
               {/* CALENDAR */}
               {activeTab === 'calendar' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <PlantingCalendarView
                     crops={fieldDigitalTwin?.crop_recommendations || []}
                     selectedCropId={selectedCropIdForCalendar}
@@ -335,7 +335,7 @@ export function App() {
 
               {/* SATELLITE */}
               {activeTab === 'satellite' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <SatelliteIntelligenceView
                     satellite={fieldDigitalTwin?.satellite || null}
                     fieldName={currentFieldName}
@@ -345,7 +345,7 @@ export function App() {
 
               {/* SCENARIO */}
               {activeTab === 'scenario' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <WhatIfSimulatorView
                     crops={fieldDigitalTwin?.crop_recommendations || []}
                     latitude={currentFieldLat}
@@ -359,7 +359,7 @@ export function App() {
 
               {/* CLIMATE */}
               {activeTab === 'climate' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <ClimateIntelligenceView
                     climate={fieldDigitalTwin?.climate || null}
                     risks={fieldDigitalTwin?.climate_risks || null}
@@ -370,7 +370,7 @@ export function App() {
 
               {/* ROTATION */}
               {activeTab === 'rotation' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <CropRotationView
                     currentCropId={selectedCropIdForCalendar}
                     latitude={currentFieldLat}
@@ -383,7 +383,7 @@ export function App() {
 
               {/* ADVISOR */}
               {activeTab === 'advisor' && (
-                <div className="h-full overflow-y-auto p-6 bg-[#0E0F12] anim-fade-in">
+                <div className="h-full overflow-y-auto p-3.5 sm:p-6 pb-20 md:pb-6 bg-[#0E0F12] anim-fade-in">
                   <AiAdvisorView
                     fieldDigitalTwin={fieldDigitalTwin}
                     rankedCrops={fieldDigitalTwin?.crop_recommendations || []}
