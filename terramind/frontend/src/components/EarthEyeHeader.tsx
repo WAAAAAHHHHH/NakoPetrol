@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck, FileText } from 'lucide-react';
+import { ChevronDown, Sprout, Sun, Terminal, ShieldCheck, FileText, Users } from 'lucide-react';
 import { DemoField } from '../types/terramind';
 
 export type FarmelsterTab =
@@ -21,6 +21,7 @@ interface FarmelsterHeaderProps {
   onSelectField: (f: DemoField) => void;
   onOpenDisclosures: () => void;
   onOpenDossier: () => void;
+  onOpenCredits: () => void;
 }
 
 export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
@@ -28,6 +29,7 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
   setActiveTab,
   onOpenDisclosures,
   onOpenDossier,
+  onOpenCredits,
 }) => {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
@@ -131,14 +133,30 @@ export const FarmelsterHeader: React.FC<FarmelsterHeaderProps> = ({
                   <ShieldCheck size={12} className="opacity-70" />
                   Data Disclosures
                 </button>
+                <button
+                  onClick={() => { onOpenCredits(); setShowMoreMenu(false); }}
+                  className="btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-sm text-white/80 hover:text-white hover:bg-white/[0.04]"
+                >
+                  <Users size={12} className="text-[#7C9A6B]" />
+                  Team Credits
+                </button>
               </div>
             </>
           )}
         </div>
       </nav>
 
-      {/* RIGHT: Export Dossier (PDF) Action */}
+      {/* RIGHT: Credits & Export Dossier (PDF) Actions */}
       <div className="flex items-center gap-2">
+        <button
+          onClick={onOpenCredits}
+          className="btn px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white/90 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/40"
+          title="View project creators and engineering team (Zeynep, Anka, Mert, Aras)"
+        >
+          <Users size={14} className="text-[#7C9A6B]" />
+          <span>Credits</span>
+        </button>
+
         <button
           onClick={onOpenDossier}
           className="btn px-3.5 py-2 bg-[#7C9A6B]/15 hover:bg-[#7C9A6B]/25 border border-[#7C9A6B]/30 text-white rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#7C9A6B]/50"

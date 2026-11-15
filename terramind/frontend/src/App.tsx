@@ -11,6 +11,7 @@ import { CropRotationView } from './components/CropRotationView';
 import { AiAdvisorView } from './components/AiAdvisorView';
 import { DataTransparencyModal } from './components/DataTransparencyModal';
 import { FieldDossierModal } from './components/FieldDossierModal';
+import { CreditsModal } from './components/CreditsModal';
 import { IntroSplash } from './components/IntroSplash';
 
 import { DemoField, FieldDigitalTwin, ScoringWeights } from './types/terramind';
@@ -52,6 +53,7 @@ export function App() {
   const [loading, setLoading]                         = useState<boolean>(false);
   const [showTransparencyModal, setShowTransparencyModal] = useState<boolean>(false);
   const [showDossierModal, setShowDossierModal]           = useState<boolean>(false);
+  const [showCreditsModal, setShowCreditsModal]           = useState<boolean>(false);
 
   // ── Init: load demo fields + first analysis ──────────────────────────────
   useEffect(() => {
@@ -240,6 +242,7 @@ export function App() {
           onSelectField={handleSelectField}
           onOpenDisclosures={() => setShowTransparencyModal(true)}
           onOpenDossier={() => setShowDossierModal(true)}
+          onOpenCredits={() => setShowCreditsModal(true)}
         />
 
         <main className="flex-1 overflow-hidden relative">
@@ -380,6 +383,11 @@ export function App() {
           onClose={() => setShowDossierModal(false)}
           selectedField={selectedField}
           fieldDigitalTwin={fieldDigitalTwin}
+        />
+
+        <CreditsModal
+          isOpen={showCreditsModal}
+          onClose={() => setShowCreditsModal(false)}
         />
       </div>
     </>

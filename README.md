@@ -83,6 +83,17 @@ Farmelster strictly enforces scientific realism:
 
 ---
 
+## 👥 Project Team & Credits
+
+**Farmelster** was created for the **NASA Space Apps Challenge 2026** (*Field Shift: Adapting Farms with NASA Data*) by a team of 4 dedicated developers:
+
+* 👑 **Mert** — **Team Leader & Lead Systems Architect** (Architecture, Backend Microservices, Scientific Modeling & Project Leadership)
+* 🚀 **Zeynep** — **Full-Stack & UX Engineer** (Agricultural Workstation Interface, State Sync & Component Architecture)
+* 🛰️ **Anka** — **Data & Remote Sensing Specialist** (NASA POWER Agroclimatology Pipelines & Spectral NDVI Analytics)
+* 🗺️ **Aras** — **GIS & Systems QA Engineer** (Geospatial Vector Indexing, Boundary Validation & Telemetry Verification)
+
+---
+
 ## License
 MIT License. Developed for the NASA Space Apps Challenge 2026.
 
