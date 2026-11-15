@@ -1,24 +1,24 @@
 # FARMELSTER — NASA SPACE APPS CHALLENGE 2026
-## 7-Page Application Walkthrough & Pitch Guide
+## Official 7-Page Presentation Deck & Judge Pitch Guide
 
 > **Challenge**: Field Shift: Adapting Farms with NASA Data  
 > **Platform**: [farmelster.com](https://farmelster.com)  
 > **Source Code**: [github.com/WAAAAAHHHHH/NakoPetrol](https://github.com/WAAAAAHHHHH/NakoPetrol)  
 > **Interactive Slide Deck**: Open [`presentation/index.html`](./index.html) in any browser (Supports Fullscreen with `F`, Arrow Keys `<-` `->`, Spacebar)  
+> **Structure**: Exactly 7 Pages Total (Pages 1-6: App Features, Page 7: Team Credits & Field Dossier)  
 > **Team**: 4-Student Engineering Group (Mert, Zeynep, Anka, Aras)
 
 ---
 
-### The 7 Core Application Walkthrough Pages
+### The 7 Pages Overview
 
-1. **Page 1: Global Agricultural GIS & Interactive Digital Twin** (`assets/shot_dashboard.png`)
-2. **Page 2: NASA POWER 30-Year Climatology & Historical Risk Matrix** (`assets/shot_climate.png`)
-3. **Page 3: ISRIC SoilGrids 250m Deep Subsurface Profiling** (`assets/shot_soil.png`)
-4. **Page 4: Sentinel-2 & MODIS Optical Vegetation Index (NDVI)** (`assets/shot_satellite.png`)
-5. **Page 5: Scientific Crop Suitability Engine (Multi-Attribute Utility Theory)** (`assets/shot_crops.png`)
-6. **Page 6: Thermal Planting Calendar & Growing Degree Days (GDD)** (`assets/shot_calendar.png`)
-7. **Page 7: What-If Climate Simulator & Printable Field Dossier (PDF)** (`assets/shot_scenario.png`)
-* **Bonus Slide 8: Student Engineering Team & NASA Challenge Submission** (`assets/shot_dossier.png`)
+1. **Page 1**: **Global Agricultural GIS & Interactive Digital Twin** (`assets/shot_dashboard.png`)
+2. **Page 2**: **NASA POWER 30-Year Climatology & Historical Risk Matrix** (`assets/shot_climate.png`)
+3. **Page 3**: **ISRIC SoilGrids 250m Deep Subsurface Profiling** (`assets/shot_soil.png`)
+4. **Page 4**: **Sentinel-2 & MODIS Optical Vegetation Index (NDVI)** (`assets/shot_satellite.png`)
+5. **Page 5**: **Scientific Crop Suitability Engine (Multi-Attribute Utility Theory)** (`assets/shot_crops.png`)
+6. **Page 6**: **Thermal Planting Calendar & What-If Climate Simulator** (`assets/shot_calendar.png`)
+7. **Page 7**: **Built by Students, Designed for the Planet (Credits & Printable Field Dossier)** (`assets/shot_dossier.png`)
 
 ---
 
@@ -64,24 +64,21 @@
 
 ---
 
-### PAGE 6: Thermal Planting Calendar & Growing Degree Days (GDD)
-* **Title**: **Thermal Planting Calendar & Growing Degree Days**
+### PAGE 6: Thermal Planting Calendar & What-If Climate Simulator
+* **Title**: **Thermal Planting Calendar & Scenario Simulator**
 * **Visual**: Live Phenological Sowing & Harvest Calendar screenshot (`assets/shot_calendar.png`).
 * **Speaker Script**:
-  > "Plants don't follow calendar months; they follow thermal degree days. Farmelster calculates Growing Degree Days (GDD) above base temperature and combines them with 30-year NASA frost probability curves. This generates a four-stage phenological timeline—Sowing, Vegetative Growth, Flowering (Critical Pollination Window), and Harvest—protecting crops from false spring warm spells and early autumn freezes."
+  > "Plants don't follow calendar months; they follow thermal degree days. Farmelster calculates Growing Degree Days (GDD) above base temperature and combines them with 30-year NASA frost probability curves to graph optimal Sowing, Vegetative, Flowering, and Harvest windows. Simultaneously, growers can stress-test their acreage against future IPCC climate anomalies using our What-If Climate Simulator—adjusting rainfall by -50% to +50% and testing temperature spikes to evaluate crop resilience before planting a single seed."
 
 ---
 
-### PAGE 7: What-If Climate Simulator & Printable Field Dossier (PDF)
-* **Title**: **What-If Climate Simulator & Printable Field Dossier**
-* **Visual**: Live What-If Climate Simulator & Scenario Lab screenshot (`assets/shot_scenario.png`).
-* **Speaker Script**:
-  > "Farmelster empowers farmers to test future resilience. With our What-If Climate Simulator, agronomists can stress-test fields against IPCC climate anomalies—sliding rainfall between -50% and +50%, testing temperature spikes up to +5°C, and toggling irrigation regimes—to immediately observe how crop viability responds. Once satisfied, a single click on 'Export Dossier' compiles the complete NASA climatology, soil horizons, and crop advisories into a printable PDF report for extension workers and agricultural banks."
-
----
-
-### BONUS SLIDE 8: Student Team & NASA Space Apps Submission
+### PAGE 7: Built by Students, Designed for the Planet (Credits & Field Dossier)
 * **Title**: **Built by Students, Designed for the Planet**
 * **Visual**: Live Field Dossier Diagnostic Report modal (`assets/shot_dossier.png`).
+* **Team**:
+  - **Mert** — **Team Leader**: Overall architecture, Python FastAPI backend, and scientific scoring algorithms.
+  - **Zeynep** — **Student Developer**: React 19 interface, responsive workstation layout, and interactive UX.
+  - **Anka** — **Student Developer**: NASA POWER climatology research, NDVI spectral equations, and crop databases.
+  - **Aras** — **Student Developer**: GIS coordinate indexing, boundary validation, and end-to-end bug hunting.
 * **Speaker Script**:
-  > "Farmelster was built for the NASA Space Apps Challenge 2026 by a team of four students: Mert as Team Leader and Systems Architect, Zeynep on Frontend UI/UX, Anka on NASA Data Research, and Aras on GIS QA. Farmelster is live in production today at farmelster.com, completely free and open-source. Thank you, NASA Space Apps committee!"
+  > "Farmelster was conceived and crafted for the NASA Space Apps Challenge 2026 by a team of four students led by Mert. With a single click on 'Export Dossier', agronomists and farmers can compile all of this intelligence into an official printable PDF report. Farmelster is live in production today at farmelster.com, completely open-source and free for all growers worldwide. Thank you, NASA Space Apps committee!"

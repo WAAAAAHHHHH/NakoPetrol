@@ -382,7 +382,7 @@
       justify-content: space-between;
     }
 
-    /* 2x2 Student Grid for Slide 8 */
+    /* 2x2 Student Grid for Slide 7 Credits */
     .grid-2-students {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -439,11 +439,11 @@
 
     .dots-container {
       display: flex;
-      gap: 7px;
+      gap: 8px;
     }
 
     .dot {
-      width: 22px;
+      width: 24px;
       height: 4px;
       border-radius: 2px;
       background: rgba(255, 255, 255, 0.12);
@@ -453,7 +453,7 @@
 
     .dot.active {
       background: var(--accent);
-      width: 38px;
+      width: 44px;
     }
 
     .footer-hints {
@@ -505,10 +505,10 @@
     </div>
   </header>
 
-  <!-- Slide Canvas: 7 Core App Walkthrough Pages + Slide 8 Team/Credits -->
+  <!-- Slide Canvas: Exactly 7 Pages Including Credits -->
   <main>
 
-    <!-- SLIDE 1: Global Agricultural GIS & Interactive Digital Twin -->
+    <!-- PAGE 1: Global Agricultural GIS & Interactive Digital Twin -->
     <div class="slide active" id="slide-0">
       <div class="slide-card">
         <div class="badge-bar">
@@ -516,7 +516,7 @@
         </div>
         <h1 class="slide-title">Global GIS & Interactive Field Digital Twin</h1>
         <p class="slide-subtitle">
-          Pick preset agricultural regions across Turkey and Europe or click anywhere on Earth to generate an instant agronomic digital twin with automatic land vs. marine water detection.
+          Select benchmark agricultural parcels (Konya, Thrace, Harran, Çukurova, Bordeaux) or click anywhere on Earth to generate an instant agronomic digital twin with automatic land vs. marine water detection.
         </p>
 
         <div class="split-layout">
@@ -527,7 +527,7 @@
                 <span class="info-card-tag">GLOBAL GIS</span>
               </div>
               <p class="info-card-desc">
-                Select from benchmark agricultural parcels (Konya, Thrace, Harran, Çukurova, Bordeaux) or click any point on the globe for custom polygon telemetry.
+                Analyze any coordinate on Earth with real-time polygon vertex tracking, localized elevation modeling, and multi-field comparisons.
               </p>
             </div>
 
@@ -537,7 +537,7 @@
                 <span class="info-card-tag">LAND / WATER</span>
               </div>
               <p class="info-card-desc">
-                Uses Natural Earth 10m shapefiles with Shapely STRtree indexing to prevent terrestrial crop recommendations on ocean coordinates, with an 800m coastal buffer.
+                Uses Natural Earth 10m spatial polygons with Shapely STRtree indexing and an 800m coastal buffer to prevent terrestrial crop recommendations on ocean coordinates.
               </p>
             </div>
 
@@ -572,7 +572,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 2: Climate Intelligence & 30-Year NASA POWER Waveforms -->
+    <!-- PAGE 2: Climate Intelligence & 30-Year NASA POWER Waveforms -->
     <div class="slide" id="slide-1">
       <div class="slide-card">
         <div class="badge-bar">
@@ -636,7 +636,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 3: Deep Soil Intelligence (ISRIC SoilGrids 250m) -->
+    <!-- PAGE 3: Deep Soil Intelligence (ISRIC SoilGrids 250m) -->
     <div class="slide" id="slide-2">
       <div class="slide-card">
         <div class="badge-bar">
@@ -700,7 +700,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 4: Sentinel-2 & MODIS Optical NDVI -->
+    <!-- PAGE 4: Sentinel-2 & MODIS Optical NDVI -->
     <div class="slide" id="slide-3">
       <div class="slide-card">
         <div class="badge-bar">
@@ -764,7 +764,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 5: Scientific Crop Suitability Engine (MAUT) -->
+    <!-- PAGE 5: Scientific Crop Suitability Engine (MAUT) -->
     <div class="slide" id="slide-4">
       <div class="slide-card">
         <div class="badge-bar">
@@ -828,31 +828,31 @@
       </div>
     </div>
 
-    <!-- SLIDE 6: Phenological Planting Calendar & Thermal GDD -->
+    <!-- PAGE 6: Phenological Planting Calendar & What-If Climate Simulator -->
     <div class="slide" id="slide-5">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">Page 6 of 7 &bull; Phenology & Frost Protection</span>
+          <span class="slide-badge">Page 6 of 7 &bull; Phenology & What-If Climate Lab</span>
         </div>
-        <h2 class="slide-title">Thermal Planting Calendar & Growing Degree Days</h2>
+        <h2 class="slide-title">Thermal Planting Calendar & Scenario Simulator</h2>
         <p class="slide-subtitle">
-          Agriculture depends on accumulated thermal heat units, not calendar months. Farmelster models Growing Degree Days (GDD) alongside 30-year NASA frost probability curves.
+          Models Growing Degree Days (GDD) with NASA frost probability curves while stress-testing acreage against future IPCC climate anomalies (-50% to +50% rain, temp spikes).
         </p>
 
         <div class="split-layout">
           <div class="left-col">
             <div class="code-banner">
-              <span>GDD = &Sigma; max(0, T_mean - T_base)</span>
-              <span style="color: var(--accent-light);">NASA 30-YR FROST</span>
+              <span>GDD = &Sigma; max(0, T_mean - T_base) &bull; IPCC ANOMALY TESTING</span>
+              <span style="color: var(--accent-light);">THERMAL GDD</span>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
                 <span class="info-card-title">Growing Degree Days (GDD)</span>
-                <span class="info-card-tag">HEAT ACCUMULATION</span>
+                <span class="info-card-tag">HEAT UNITS</span>
               </div>
               <p class="info-card-desc">
-                Accumulates thermal units above the crop's biological base temperature to ensure physiological grain-fill and ripening before winter chills.
+                Accumulates thermal heat units above the crop's biological base temperature to ensure physiological grain-fill and ripening before winter freezes.
               </p>
             </div>
 
@@ -868,11 +868,11 @@
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">4 Phenological Stages</span>
-                <span class="info-card-tag">CROP TIMELINE</span>
+                <span class="info-card-title">What-If Climate Lab</span>
+                <span class="info-card-tag">SIMULATOR</span>
               </div>
               <p class="info-card-desc">
-                Dynamic month-by-month progress bars for Sowing, Vegetative Expansion, Flowering (Critical Pollination Window), and Harvest.
+                Interactive sliders for precipitation anomalies, temperature shifts, and irrigation regimes that instantly recalculate crop suitability and climate risk.
               </p>
             </div>
           </div>
@@ -883,7 +883,7 @@
                 <div class="dot-circle"></div>
                 <div class="dot-circle"></div>
                 <div class="dot-circle"></div>
-                <span class="frame-title">Phenological Sowing & Harvest Calendar</span>
+                <span class="frame-title">Phenological Planting Windows & Thermal Progress</span>
               </div>
               <img src="assets/shot_calendar.png" alt="Planting Calendar Interface" class="screenshot-img" />
             </div>
@@ -892,75 +892,11 @@
       </div>
     </div>
 
-    <!-- SLIDE 7: What-If Climate Simulator & Field Dossier PDF -->
+    <!-- PAGE 7: Production Deployment & Student Team (Credits) -->
     <div class="slide" id="slide-6">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">Page 7 of 7 &bull; Scenario Lab & Field Dossier</span>
-        </div>
-        <h2 class="slide-title">What-If Climate Simulator & Printable Field Dossier</h2>
-        <p class="slide-subtitle">
-          Empowering agronomists to stress-test their acreage against future IPCC climate anomalies and export publication-ready agronomic dossiers in one click.
-        </p>
-
-        <div class="split-layout">
-          <div class="left-col">
-            <div class="code-banner">
-              <span>SIMULATION: -50% to +50% Rain &bull; -3&deg;C to +5&deg;C Temp</span>
-              <span style="color: var(--accent-light);">IPCC STRESS TEST</span>
-            </div>
-
-            <div class="info-card">
-              <div class="info-card-header">
-                <span class="info-card-title">What-If Climate Simulator</span>
-                <span class="info-card-tag">DYNAMIC RECACULATION</span>
-              </div>
-              <p class="info-card-desc">
-                Interactive sliders for precipitation anomalies, temperature spikes, sowing date shifts, and irrigation regimes with instant suitability recalculations.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <div class="info-card-header">
-                <span class="info-card-title">Crop Succession & Rotation</span>
-                <span class="info-card-tag">AGRONOMY</span>
-              </div>
-              <p class="info-card-desc">
-                Alternates deep-taproot legumes with shallow-root grains to fix biological nitrogen and break soil-borne pathogen cycles.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <div class="info-card-header">
-                <span class="info-card-title">Printable Field Dossier (PDF)</span>
-                <span class="info-card-tag">ONE CLICK</span>
-              </div>
-              <p class="info-card-desc">
-                Exports a comprehensive report bundling 12-month NASA climate waveforms, ISRIC soil horizons, and crop advisories for bank loans and extension agents.
-              </p>
-            </div>
-          </div>
-
-          <div class="right-col">
-            <div class="screenshot-frame">
-              <div class="frame-bar">
-                <div class="dot-circle"></div>
-                <div class="dot-circle"></div>
-                <div class="dot-circle"></div>
-                <span class="frame-title">What-If Climate Simulator & Scenario Lab</span>
-              </div>
-              <img src="assets/shot_scenario.png" alt="What-If Simulator" class="screenshot-img" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 8: Production Deployment & Student Team (Bonus / Wrap-Up) -->
-    <div class="slide" id="slide-7">
-      <div class="slide-card">
-        <div class="badge-bar">
-          <span class="slide-badge">Submission & Team &bull; NASA Space Apps 2026</span>
+          <span class="slide-badge">Page 7 of 7 &bull; Student Creators & Field Dossier</span>
         </div>
         <h2 class="slide-title">Built by Students, Designed for the Planet</h2>
         <p class="slide-subtitle">
@@ -1052,20 +988,20 @@
     <div class="dots-container" id="dotsContainer"></div>
 
     <div style="font-size: 11px; color: var(--text-dim);">
-      Farmelster Presentation &bull; NASA Space Apps Challenge 2026
+      Farmelster Presentation &bull; NASA Space Apps Challenge 2026 &bull; Exactly 7 Pages
     </div>
   </footer>
 
   <script>
     let currentSlide = 0;
-    const totalSlides = 8;
+    const totalSlides = 7;
 
     const dotsContainer = document.getElementById('dotsContainer');
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.className = `dot ${i === 0 ? 'active' : ''}`;
       dot.onclick = () => goToSlide(i);
-      dot.title = i < 7 ? `Page ${i + 1} of 7: App Feature` : 'Team & Credits';
+      dot.title = `Page ${i + 1} of 7`;
       dotsContainer.appendChild(dot);
     }
 
@@ -1082,11 +1018,7 @@
         dot.classList.toggle('active', idx === currentSlide);
       });
 
-      if (currentSlide < 7) {
-        document.getElementById('slideNum').textContent = `${currentSlide + 1} / 7 (App Walkthrough)`;
-      } else {
-        document.getElementById('slideNum').textContent = `Credits (Team)`;
-      }
+      document.getElementById('slideNum').textContent = `${currentSlide + 1} / ${totalSlides}`;
     }
 
     function nextSlide() {
@@ -1132,7 +1064,7 @@
         prevSlide();
       } else if (e.key === 'f' || e.key === 'F') {
         toggleFullScreen();
-      } else if (e.key >= '1' && e.key <= '8') {
+      } else if (e.key >= '1' && e.key <= '7') {
         goToSlide(parseInt(e.key) - 1);
       }
     });
