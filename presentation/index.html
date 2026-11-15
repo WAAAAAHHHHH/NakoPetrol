@@ -205,7 +205,7 @@
       border: 1px solid var(--card-border);
       border-radius: 20px;
       backdrop-filter: blur(20px);
-      padding: 32px 36px;
+      padding: 30px 36px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -219,7 +219,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .slide-badge {
@@ -232,19 +232,19 @@
 
     .slide-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 700;
       color: #FFFFFF;
       letter-spacing: -0.02em;
       line-height: 1.15;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .slide-subtitle {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 20px;
+      line-height: 1.45;
+      margin-bottom: 16px;
     }
 
     /* Split layout: Text left, Real Photo right */
@@ -260,7 +260,7 @@
     .left-col {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
       height: 100%;
       overflow-y: auto;
@@ -330,7 +330,7 @@
       background: rgba(255, 255, 255, 0.025);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 12px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       transition: all 0.2s ease;
     }
 
@@ -348,7 +348,7 @@
 
     .info-card-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       color: #FFF;
     }
@@ -363,7 +363,7 @@
     }
 
     .info-card-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
       line-height: 1.45;
     }
@@ -373,45 +373,27 @@
       background: #0B0E14;
       border: 1px solid rgba(124, 154, 107, 0.25);
       border-radius: 10px;
-      padding: 10px 14px;
+      padding: 9px 12px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 10.5px;
       color: #A8C496;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    /* Grid layout for Slide 2 and Slide 7 */
+    /* 2x2 Student Grid for Slide 8 */
     .grid-2-students {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      flex: 1;
-      align-items: stretch;
-      min-height: 0;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      flex: 1;
-      align-items: stretch;
-      min-height: 0;
-    }
-
     .student-box {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 14px;
-      padding: 18px;
+      border-radius: 12px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -425,12 +407,12 @@
 
     .role-badge {
       display: inline-block;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .role-badge.leader-badge {
@@ -457,11 +439,11 @@
 
     .dots-container {
       display: flex;
-      gap: 8px;
+      gap: 7px;
     }
 
     .dot {
-      width: 24px;
+      width: 22px;
       height: 4px;
       border-radius: 2px;
       background: rgba(255, 255, 255, 0.12);
@@ -471,7 +453,7 @@
 
     .dot.active {
       background: var(--accent);
-      width: 44px;
+      width: 38px;
     }
 
     .footer-hints {
@@ -523,56 +505,55 @@
     </div>
   </header>
 
-  <!-- Slide Canvas -->
+  <!-- Slide Canvas: 7 Core App Walkthrough Pages + Slide 8 Team/Credits -->
   <main>
 
-    <!-- SLIDE 1: Title & Platform Overview -->
+    <!-- SLIDE 1: Global Agricultural GIS & Interactive Digital Twin -->
     <div class="slide active" id="slide-0">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">NASA Space Apps Challenge 2026 &bull; Challenge: Field Shift</span>
+          <span class="slide-badge">Page 1 of 7 &bull; Interactive Global GIS</span>
         </div>
-        <h1 class="slide-title">FARMELSTER</h1>
+        <h1 class="slide-title">Global GIS & Interactive Field Digital Twin</h1>
         <p class="slide-subtitle">
-          Global Agricultural Intelligence & Remote Sensing Platform.<br/>
-          Bridging NASA Earth Observations, Soil Physics, and Climate Modeling for Smallholder Resilience.
+          Pick preset agricultural regions across Turkey and Europe or click anywhere on Earth to generate an instant agronomic digital twin with automatic land vs. marine water detection.
         </p>
 
         <div class="split-layout">
           <div class="left-col">
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Challenge Mission</span>
-                <span class="info-card-tag">FIELD SHIFT</span>
+                <span class="info-card-title">Global Coordinate Autonomy</span>
+                <span class="info-card-tag">GLOBAL GIS</span>
               </div>
               <p class="info-card-desc">
-                Adapting agricultural fields to shifting climates by transforming raw satellite telemetry into hyper-localized agronomic guidance.
+                Select from benchmark agricultural parcels (Konya, Thrace, Harran, Çukurova, Bordeaux) or click any point on the globe for custom polygon telemetry.
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Core Science Pillars</span>
-                <span class="info-card-tag">PHYSICS BASED</span>
+                <span class="info-card-title">Deterministic Hydrosphere Physics</span>
+                <span class="info-card-tag">LAND / WATER</span>
               </div>
               <p class="info-card-desc">
-                Couples NASA POWER MERRA-2 30-year climatology with ISRIC SoilGrids 250m soil chemistry and Sentinel-2 optical NDVI.
+                Uses Natural Earth 10m shapefiles with Shapely STRtree indexing to prevent terrestrial crop recommendations on ocean coordinates, with an 800m coastal buffer.
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Engineering Squad</span>
-                <span class="info-card-tag">STUDENT TEAM</span>
+                <span class="info-card-title">Unified Workstation Feed</span>
+                <span class="info-card-tag">LIVE SYNC</span>
               </div>
               <p class="info-card-desc">
-                Built by 4 students: <strong>Mert</strong> (Team Leader), <strong>Zeynep</strong>, <strong>Anka</strong>, and <strong>Aras</strong>.
+                Coordinate selection triggers concurrent real-time queries across NASA POWER MERRA-2, ISRIC SoilGrids 250m, and Sentinel-2 optical bands.
               </p>
             </div>
 
             <div class="code-banner">
-              <span>Production URL: https://farmelster.com</span>
-              <span style="color: var(--accent-light);">200 OK</span>
+              <span>WORKSTATION: http://localhost:5173 / farmelster.com</span>
+              <span style="color: var(--accent-light);">ONLINE</span>
             </div>
           </div>
 
@@ -591,52 +572,52 @@
       </div>
     </div>
 
-    <!-- SLIDE 2: The Global Agricultural Crisis -->
+    <!-- SLIDE 2: Climate Intelligence & 30-Year NASA POWER Waveforms -->
     <div class="slide" id="slide-1">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">01 &bull; The Global Crisis</span>
+          <span class="slide-badge">Page 2 of 7 &bull; Climate Intelligence</span>
         </div>
-        <h2 class="slide-title">The Challenge: Blind Farming in a Volatile Climate</h2>
+        <h2 class="slide-title">NASA POWER 30-Year Climatology & Risk Matrix</h2>
         <p class="slide-subtitle">
-          Over 500 million smallholders worldwide face accelerating thermal stress and groundwater depletion, while Earth Observation data remains locked inside specialized scientific archives.
+          Replaces obsolete generational habits with 30 years of daily NASA MERRA-2 assimilation, graphing 12-month temperature, precipitation, and extreme risk thresholds.
         </p>
 
         <div class="split-layout">
           <div class="left-col">
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Static Generational Habits</span>
-                <span class="info-card-tag">OBSOLETE</span>
+                <span class="info-card-title">Empirical Microclimate Normals</span>
+                <span class="info-card-tag">MERRA-2</span>
               </div>
               <p class="info-card-desc">
-                Traditional planting calendars fail under sudden microclimate shifts. Farmers plant during false spring warm spells only to lose young crops to late seasonal freezes.
+                Pulls daily 2m temperatures (T2M, T2M_MIN, T2M_MAX), precipitation (PRECTOTCORR), solar insolation (ALLSKY_SW_DWN), and relative humidity.
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Fragmented Data Silos</span>
-                <span class="info-card-tag">INACCESSIBLE</span>
+                <span class="info-card-title">Severe Agrometeorological Risks</span>
+                <span class="info-card-tag">RISK MATRIX</span>
               </div>
               <p class="info-card-desc">
-                NASA POWER climate grids, ISRIC soil profiles, and Copernicus optical bands require advanced GIS workstations, Python scripts, and HDF5 decoders out of reach for growers.
+                Calculates probability distributions for heatwaves (&gt;35&deg;C), prolonged drought anomalies, spring frost strikes, and excess moisture events.
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Groundwater & Moisture Blindspots</span>
-                <span class="info-card-tag">DEPLETION</span>
+                <span class="info-card-title">Vapor Pressure Deficit (VPD)</span>
+                <span class="info-card-tag">TRANSPIRATION</span>
               </div>
               <p class="info-card-desc">
-                Without real-time vapor pressure deficit and root-zone water retention curves, irrigation regimes are either heavily wasteful or fatally late.
+                Quantifies atmospheric moisture thirst to alert growers before stomatal closure and vegetative stress occur.
               </p>
             </div>
 
             <div class="code-banner">
-              <span>NASA POWER & MERRA-2: 30-Year Thermal & Precipitation Extremes</span>
-              <span style="color: var(--accent-light);">EMPIRICAL PROOF</span>
+              <span>NASA POWER CLIMATOLOGY: T2M &bull; PRECTOTCORR &bull; RH2M &bull; WS2M</span>
+              <span style="color: var(--accent-light);">30-YR ACCURACY</span>
             </div>
           </div>
 
@@ -655,51 +636,115 @@
       </div>
     </div>
 
-    <!-- SLIDE 3: The Data Pipeline -->
+    <!-- SLIDE 3: Deep Soil Intelligence (ISRIC SoilGrids 250m) -->
     <div class="slide" id="slide-2">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">02 &bull; Earth Observation Architecture</span>
+          <span class="slide-badge">Page 3 of 7 &bull; Soil Intelligence</span>
         </div>
-        <h2 class="slide-title">Instant Digital Twins from Orbit to Subsoil</h2>
+        <h2 class="slide-title">ISRIC SoilGrids 250m Deep Subsurface Profiling</h2>
         <p class="slide-subtitle">
-          Farmelster pulls real-time telemetry from NASA POWER MERRA-2 and European Space Agency orbits to synthesize an instant agronomic digital twin for any coordinate on Earth.
+          Probes physical, geochemical, and textural properties down to 200cm depth horizons to evaluate soil water-holding capacity, nutrient exchange, and salinity risks.
+        </p>
+
+        <div class="split-layout">
+          <div class="left-col">
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Soil pH & Geochemistry</span>
+                <span class="info-card-tag">NUTRIENT UPTAKE</span>
+              </div>
+              <p class="info-card-desc">
+                Measures soil acidity/alkalinity and cation exchange capacity (CEC) to verify whether specific crops can absorb phosphorus, nitrogen, and micronutrients.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">USDA Soil Texture Triangle</span>
+                <span class="info-card-tag">PHYSICAL TEXTURE</span>
+              </div>
+              <p class="info-card-desc">
+                Calculates precise clay, sand, and silt percentages across 6 standard depth horizons (0-5cm, 5-15cm, 15-30cm, 30-60cm, 60-100cm, 100-200cm).
+              </p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-header">
+                <span class="info-card-title">Bulk Density & Organic Carbon</span>
+                <span class="info-card-tag">ROOT PENETRATION</span>
+              </div>
+              <p class="info-card-desc">
+                Flags compaction layers and soil organic carbon (SOC) levels to determine root penetration limits and moisture retention.
+              </p>
+            </div>
+
+            <div class="code-banner">
+              <span>ISRIC SoilGrids 250m: pH &bull; Clay % &bull; Sand % &bull; Silt % &bull; CEC &bull; BD</span>
+              <span style="color: var(--accent-light);">200CM DEPTH</span>
+            </div>
+          </div>
+
+          <div class="right-col">
+            <div class="screenshot-frame">
+              <div class="frame-bar">
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <div class="dot-circle"></div>
+                <span class="frame-title">ISRIC SoilGrids 250m Resolution Profile</span>
+              </div>
+              <img src="assets/shot_soil.png" alt="Soil Analysis View" class="screenshot-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Sentinel-2 & MODIS Optical NDVI -->
+    <div class="slide" id="slide-3">
+      <div class="slide-card">
+        <div class="badge-bar">
+          <span class="slide-badge">Page 4 of 7 &bull; Remote Sensing</span>
+        </div>
+        <h2 class="slide-title">Sentinel-2 & MODIS Optical Vegetation Index</h2>
+        <p class="slide-subtitle">
+          Tracks photosynthetic vigor and vegetative moisture stress using genuine optical surface reflectance from Copernicus Sentinel-2 multispectral instruments.
         </p>
 
         <div class="split-layout">
           <div class="left-col">
             <div class="code-banner">
-              <span>PIPELINE: NASA MERRA-2 &bull; ISRIC SoilGrids &bull; Sentinel-2</span>
-              <span style="color: var(--accent-light);">LIVE API</span>
+              <span>NDVI = (B08_NIR - B04_Red) / (B08_NIR + B04_Red)</span>
+              <span style="color: var(--accent-light);">SPECTRAL FORMULA</span>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">NASA POWER Engine</span>
-                <span class="info-card-tag">MERRA-2</span>
+                <span class="info-card-title">Authentic Optical Reflectance</span>
+                <span class="info-card-tag">10M RESOLUTION</span>
               </div>
               <p class="info-card-desc">
-                Daily & 30-year climatological normals: 2m temperatures, precipitation, solar insolation, relative humidity, and wind speed.
+                Distinguishes dense, highly active chlorophyll canopies (NDVI &gt; 0.65) from sparse scrubland, bare dry soil, or non-photosynthetic open water (NDVI &lt; 0).
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">ISRIC SoilGrids 250m</span>
-                <span class="info-card-tag">200CM DEPTH</span>
+                <span class="info-card-title">Canopy Moisture Stress</span>
+                <span class="info-card-tag">DROUGHT DEFICIT</span>
               </div>
               <p class="info-card-desc">
-                Deep profile: pH, USDA soil texture triangle (clay/sand/silt), cation exchange capacity (CEC), bulk density, and organic carbon.
+                Monitors shortwave infrared anomalies to detect early-stage crop moisture stress up to two weeks before visual leaf wilting.
               </p>
             </div>
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Sentinel-2 & MODIS NDVI</span>
-                <span class="info-card-tag">SPECTRAL</span>
+                <span class="info-card-title">Multi-Date Acquisition Timeline</span>
+                <span class="info-card-tag">TIME SERIES</span>
               </div>
               <p class="info-card-desc">
-                Optical surface reflectance computing true NDVI = (NIR - Red) / (NIR + Red) tracking photosynthetic canopy vigor.
+                Provides historical satellite acquisition dates and vegetation trend curves for accurate seasonal benchmarking.
               </p>
             </div>
           </div>
@@ -719,15 +764,15 @@
       </div>
     </div>
 
-    <!-- SLIDE 4: Crop Suitability & Scientific Scoring -->
-    <div class="slide" id="slide-3">
+    <!-- SLIDE 5: Scientific Crop Suitability Engine (MAUT) -->
+    <div class="slide" id="slide-4">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">03 &bull; Multi-Attribute Utility Theory (MAUT)</span>
+          <span class="slide-badge">Page 5 of 7 &bull; Multi-Attribute Crop Planning</span>
         </div>
-        <h2 class="slide-title">Scientific Crop Suitability Engine</h2>
+        <h2 class="slide-title">Scientific Crop Suitability Engine (MAUT)</h2>
         <p class="slide-subtitle">
-          Instead of arbitrary AI rankings, Farmelster applies strict Multi-Attribute Utility Theory grounded in peer-reviewed FAO EcoCrop physiological thresholds.
+          Applies Multi-Attribute Utility Theory grounded in peer-reviewed FAO EcoCrop biological thresholds across 11 key food crops to prevent hallucinated crop rankings.
         </p>
 
         <div class="split-layout">
@@ -759,11 +804,11 @@
 
             <div class="info-card">
               <div class="info-card-header">
-                <span class="info-card-title">Weight Sensitivity</span>
-                <span class="info-card-tag">CONFIGURABLE</span>
+                <span class="info-card-title">User Configurable Weights</span>
+                <span class="info-card-tag">SENSITIVITY</span>
               </div>
               <p class="info-card-desc">
-                Farmers can customize weights (Temperature 0.30, Water 0.30, Soil 0.25, Risk 0.15) to match their personal irrigation and capital tolerance.
+                Growers can calibrate weights (Temperature 0.30, Water 0.30, Soil 0.25, Risk 0.15) to match their farm's specific irrigation access and financial tolerance.
               </p>
             </div>
           </div>
@@ -783,15 +828,15 @@
       </div>
     </div>
 
-    <!-- SLIDE 5: Phenological Planting Calendar -->
-    <div class="slide" id="slide-4">
+    <!-- SLIDE 6: Phenological Planting Calendar & Thermal GDD -->
+    <div class="slide" id="slide-5">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">04 &bull; Phenology & Frost Protection</span>
+          <span class="slide-badge">Page 6 of 7 &bull; Phenology & Frost Protection</span>
         </div>
-        <h2 class="slide-title">Thermal Planting & Harvest Calendar</h2>
+        <h2 class="slide-title">Thermal Planting Calendar & Growing Degree Days</h2>
         <p class="slide-subtitle">
-          Agriculture depends on biological thermal accumulation, not fixed calendar months. Farmelster calculates Growing Degree Days (GDD) and NASA frost probabilities to chart exact phenological phases.
+          Agriculture depends on accumulated thermal heat units, not calendar months. Farmelster models Growing Degree Days (GDD) alongside 30-year NASA frost probability curves.
         </p>
 
         <div class="split-layout">
@@ -804,10 +849,10 @@
             <div class="info-card">
               <div class="info-card-header">
                 <span class="info-card-title">Growing Degree Days (GDD)</span>
-                <span class="info-card-tag">HEAT UNITS</span>
+                <span class="info-card-tag">HEAT ACCUMULATION</span>
               </div>
               <p class="info-card-desc">
-                Calculates thermal accumulation above base temperature to guarantee crops reach physiological maturity before autumn freezes.
+                Accumulates thermal units above the crop's biological base temperature to ensure physiological grain-fill and ripening before winter chills.
               </p>
             </div>
 
@@ -824,7 +869,7 @@
             <div class="info-card">
               <div class="info-card-header">
                 <span class="info-card-title">4 Phenological Stages</span>
-                <span class="info-card-tag">TIMELINE</span>
+                <span class="info-card-tag">CROP TIMELINE</span>
               </div>
               <p class="info-card-desc">
                 Dynamic month-by-month progress bars for Sowing, Vegetative Expansion, Flowering (Critical Pollination Window), and Harvest.
@@ -847,13 +892,13 @@
       </div>
     </div>
 
-    <!-- SLIDE 6: What-If Simulator & Field Dossier -->
-    <div class="slide" id="slide-5">
+    <!-- SLIDE 7: What-If Climate Simulator & Field Dossier PDF -->
+    <div class="slide" id="slide-6">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">05 &bull; Resilience Simulation & Export</span>
+          <span class="slide-badge">Page 7 of 7 &bull; Scenario Lab & Field Dossier</span>
         </div>
-        <h2 class="slide-title">What-If Climate Lab & Export Dossier</h2>
+        <h2 class="slide-title">What-If Climate Simulator & Printable Field Dossier</h2>
         <p class="slide-subtitle">
           Empowering agronomists to stress-test their acreage against future IPCC climate anomalies and export publication-ready agronomic dossiers in one click.
         </p>
@@ -868,7 +913,7 @@
             <div class="info-card">
               <div class="info-card-header">
                 <span class="info-card-title">What-If Climate Simulator</span>
-                <span class="info-card-tag">DYNAMIC</span>
+                <span class="info-card-tag">DYNAMIC RECACULATION</span>
               </div>
               <p class="info-card-desc">
                 Interactive sliders for precipitation anomalies, temperature spikes, sowing date shifts, and irrigation regimes with instant suitability recalculations.
@@ -911,11 +956,11 @@
       </div>
     </div>
 
-    <!-- SLIDE 7: Production Deployment & Student Team -->
-    <div class="slide" id="slide-6">
+    <!-- SLIDE 8: Production Deployment & Student Team (Bonus / Wrap-Up) -->
+    <div class="slide" id="slide-7">
       <div class="slide-card">
         <div class="badge-bar">
-          <span class="slide-badge">06 &bull; Production Architecture & Creators</span>
+          <span class="slide-badge">Submission & Team &bull; NASA Space Apps 2026</span>
         </div>
         <h2 class="slide-title">Built by Students, Designed for the Planet</h2>
         <p class="slide-subtitle">
@@ -1013,13 +1058,14 @@
 
   <script>
     let currentSlide = 0;
-    const totalSlides = 7;
+    const totalSlides = 8;
 
     const dotsContainer = document.getElementById('dotsContainer');
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.className = `dot ${i === 0 ? 'active' : ''}`;
       dot.onclick = () => goToSlide(i);
+      dot.title = i < 7 ? `Page ${i + 1} of 7: App Feature` : 'Team & Credits';
       dotsContainer.appendChild(dot);
     }
 
@@ -1036,7 +1082,11 @@
         dot.classList.toggle('active', idx === currentSlide);
       });
 
-      document.getElementById('slideNum').textContent = `${currentSlide + 1} / ${totalSlides}`;
+      if (currentSlide < 7) {
+        document.getElementById('slideNum').textContent = `${currentSlide + 1} / 7 (App Walkthrough)`;
+      } else {
+        document.getElementById('slideNum').textContent = `Credits (Team)`;
+      }
     }
 
     function nextSlide() {
@@ -1082,7 +1132,7 @@
         prevSlide();
       } else if (e.key === 'f' || e.key === 'F') {
         toggleFullScreen();
-      } else if (e.key >= '1' && e.key <= '7') {
+      } else if (e.key >= '1' && e.key <= '8') {
         goToSlide(parseInt(e.key) - 1);
       }
     });

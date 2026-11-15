@@ -1,5 +1,5 @@
 # FARMELSTER — NASA SPACE APPS CHALLENGE 2026
-## Official 7-Slide Presentation Deck & Pitch Guide
+## 7-Page Application Walkthrough & Pitch Guide
 
 > **Challenge**: Field Shift: Adapting Farms with NASA Data  
 > **Platform**: [farmelster.com](https://farmelster.com)  
@@ -9,100 +9,79 @@
 
 ---
 
-### Slide Overview (7 Slides Total)
+### The 7 Core Application Walkthrough Pages
 
-1. **Slide 1**: Title, NASA Challenge Context & Platform Overview (Featuring Dashboard Interface)
-2. **Slide 2**: The Real-World Agricultural Crisis (The Climate Problem)
-3. **Slide 3**: Earth Observation Architecture & Ingestion (NASA POWER, SoilGrids, Sentinel-2 NDVI)
-4. **Slide 4**: Scientific Crop Suitability Engine (Multi-Attribute Utility Theory & FAO EcoCrop)
-5. **Slide 5**: Phenological Planting Calendar & Thermal GDD Frost Windows
-6. **Slide 6**: What-If Climate Simulator & Exportable Field Dossier (PDF)
-7. **Slide 7**: Production Deployment, Open-Access GIS & Student Team Vision
+1. **Page 1: Global Agricultural GIS & Interactive Digital Twin** (`assets/shot_dashboard.png`)
+2. **Page 2: NASA POWER 30-Year Climatology & Historical Risk Matrix** (`assets/shot_climate.png`)
+3. **Page 3: ISRIC SoilGrids 250m Deep Subsurface Profiling** (`assets/shot_soil.png`)
+4. **Page 4: Sentinel-2 & MODIS Optical Vegetation Index (NDVI)** (`assets/shot_satellite.png`)
+5. **Page 5: Scientific Crop Suitability Engine (Multi-Attribute Utility Theory)** (`assets/shot_crops.png`)
+6. **Page 6: Thermal Planting Calendar & Growing Degree Days (GDD)** (`assets/shot_calendar.png`)
+7. **Page 7: What-If Climate Simulator & Printable Field Dossier (PDF)** (`assets/shot_scenario.png`)
+* **Bonus Slide 8: Student Engineering Team & NASA Challenge Submission** (`assets/shot_dossier.png`)
 
 ---
 
-## Detailed Slide-by-Slide Pitch & Talking Points
+## Detailed Page-by-Page Pitch & Talking Points
 
-### SLIDE 1: Title & Platform Overview
-* **Title**: **FARMELSTER — Global Agricultural Intelligence & Remote Sensing Platform**
-* **Subtitle**: *Bridging NASA Earth Observations, Soil Physics, and Climate Modeling for Smallholder Resilience.*
-* **Pill**: NASA Space Apps Challenge 2026 — *Field Shift*
+### PAGE 1: Global Agricultural GIS & Interactive Digital Twin
+* **Title**: **Global GIS & Interactive Field Digital Twin**
 * **Visual**: Live Workstation Dashboard Interface screenshot (`assets/shot_dashboard.png`).
 * **Speaker Script (Mert / Team)**:
-  > "Distinguished NASA Space Apps committee members, welcome. We are a team of four students who built **Farmelster** for the 2026 challenge 'Field Shift: Adapting Farms with NASA Data'. Over 500 million smallholder farms worldwide face unprecedented weather volatility. Farmelster translates complex NASA Earth Observation telemetry, satellite orbits, and soil physics into actionable agronomic intelligence that any farmer or researcher can access in seconds. As shown on the right, our interface provides a unified digital twin of any field on Earth. You can explore our live production build right now at farmelster.com."
+  > "Distinguished NASA Space Apps committee members, welcome to Farmelster. Built for the 2026 challenge 'Field Shift: Adapting Farms with NASA Data', Farmelster is an open-access geospatial intelligence platform. As shown on the right, users can select benchmark agricultural parcels (like Konya, Thrace, Harran, Çukurova, and Bordeaux) or click anywhere on Earth to generate a custom polygon. Our backend features deterministic Natural Earth spatial indexing to separate terrestrial farmland from marine water bodies with an 800-meter coastal buffer. In seconds, Farmelster connects satellite orbits and soil physics to build an instant agronomic digital twin."
 
 ---
 
-### SLIDE 2: The Global Agricultural Crisis
-* **Title**: **The Challenge: Blind Farming in a Volatile Climate**
+### PAGE 2: NASA POWER 30-Year Climatology & Risk Matrix
+* **Title**: **NASA POWER 30-Year Climatology & Risk Matrix**
 * **Visual**: Live Climate Intelligence & 30-Year Historical Risk Waveforms screenshot (`assets/shot_climate.png`).
-* **Key Pillars**:
-  1. **Static Historical Habit**: Generational planting calendars fail under sudden microclimate shifts.
-  2. **Fragmented Data Silos**: NASA POWER atmospheric grids, ISRIC soil profiles, and Copernicus Sentinel optical bands require specialized GIS workstations and Python scripts.
-  3. **Water Stress & Groundwater Depletion**: 70% of global freshwater is consumed by agriculture; inefficient irrigation leads to devastating crop failures.
 * **Speaker Script**:
-  > "Farmers today are effectively flying blind. Generational planting wisdom passed down for decades no longer holds because local temperatures and precipitation patterns are shifting faster than traditional habits can adapt. NASA and space agencies capture petabytes of high-value remote sensing telemetry every day, but smallholders and extension workers lack the tooling to process raw HDF5 or NetCDF arrays. Farmelster bridges this critical gap."
+  > "Traditional farming relies on generational habits that are no longer reliable under accelerating microclimate shifts. As demonstrated in our Climate Intelligence view, Farmelster pulls 30 years of daily NASA MERRA-2 assimilation data: 2-meter air temperatures, precipitation curves, solar radiation, and relative humidity. We calculate extreme risk probabilities—such as heatwave duration above 35°C, prolonged drought spells, and spring frost risk—giving farmers empirical climate baselines rather than guesswork."
 
 ---
 
-### SLIDE 3: Earth Observation Architecture & Ingestion
-* **Title**: **Instant Digital Twins from Orbit to Subsoil**
-* **Visual**: Live Sentinel-2 Optical NDVI & Surface Reflectance interface (`assets/shot_satellite.png`).
-* **Key Integrations**:
-  - **NASA POWER MERRA-2**: 30-year daily temperature curves (T2M, T2M_MIN, T2M_MAX), precipitation (PRECTOTCORR), solar insolation (ALLSKY_SW_DWN), and humidity (RH2M).
-  - **ISRIC SoilGrids 250m**: 6 depth horizons down to 200cm — pH, USDA sand/clay/silt texture, cation exchange capacity (CEC), bulk density, and organic carbon.
-  - **Sentinel-2 & MODIS (NDVI)**: Live calculation using exact spectral reflectance:
-    $$\text{NDVI} = \frac{\text{NIR} - \text{Red}}{\text{NIR} + \text{Red}}$$
+### PAGE 3: ISRIC SoilGrids 250m Deep Subsurface Profiling
+* **Title**: **ISRIC SoilGrids 250m Deep Subsurface Profiling**
+* **Visual**: Live SoilGrids 250m Resolution Profile screenshot (`assets/shot_soil.png`).
 * **Speaker Script**:
-  > "When a user selects or clicks any coordinate on Earth in Farmelster, our backend synthesizes a complete digital twin in seconds. We query NASA POWER's MERRA-2 assimilation for 30-year historical weather patterns and solar insolation. Concurrently, we probe ISRIC SoilGrids at 250-meter resolution for soil geochemistry down to two meters deep. Finally, we calculate true optical NDVI from Sentinel-2 bands to track vegetative vitality and canopy moisture stress. No mocked numbers, no synthetic placeholders—pure physics."
+  > "Crop adaptation begins below the surface. On Page 3, our Soil Intelligence engine queries ISRIC SoilGrids at 250-meter global resolution. We retrieve soil pH, cation exchange capacity (CEC), bulk density, and organic carbon across six standardized depth horizons down to two meters deep. Furthermore, we compute the USDA soil texture triangle—precise percentages of clay, sand, and silt—enabling growers to identify soil water retention limits and root penetration barriers before sowing."
 
 ---
 
-### SLIDE 4: Scientific Crop Suitability Engine (MAUT)
-* **Title**: **Multi-Attribute Utility Theory (MAUT) Scoring**
-* **Visual**: Live Crop Suitability Rankings & Breakdown screenshot (`assets/shot_crops.png`).
-* **Agronomic Formula**:
-  $$\text{Suitability Score} = w_T \cdot C_{\text{temp}} + w_W \cdot C_{\text{water}} + w_S \cdot C_{\text{soil}} + w_R \cdot C_{\text{risk}}$$
-* **Evaluated Crops (11)**: Wheat, Barley, Maize, Sunflower, Chickpea, Cotton, Soybeans, Olive, Grape, Lentil, Potato.
+### PAGE 4: Sentinel-2 & MODIS Optical Vegetation Index (NDVI)
+* **Title**: **Sentinel-2 & MODIS Optical Vegetation Index**
+* **Visual**: Live Sentinel-2 Optical NDVI & Surface Reflectance screenshot (`assets/shot_satellite.png`).
 * **Speaker Script**:
-  > "Rather than relying on arbitrary rankings, Farmelster calculates crop recommendations using Multi-Attribute Utility Theory grounded in peer-reviewed FAO EcoCrop biological thresholds. We evaluate 11 key food crops against local soil pH, salinity tolerances, seasonal rainfall, and temperature limits. As seen on the screen, a field in arid Harran will prioritize heat-tolerant Cotton and Chickpea, while the Central Anatolian steppe in Konya selects for drought-hardy winter Wheat and Barley. Every coordinate yields an authentic, scientifically isolated result."
+  > "To evaluate live vegetative vigor, Farmelster taps into Copernicus Sentinel-2 multispectral instruments. We calculate true optical Normalized Difference Vegetation Index using the formula (NIR - Red) / (NIR + Red) at 10-meter spatial resolution. This differentiates dense chlorophyll canopies from dry scrubland or open water, and tracks shortwave infrared anomalies to detect crop moisture deficit up to two weeks before visual leaf wilting occurs."
 
 ---
 
-### SLIDE 5: Phenological Planting Calendar & Thermal GDD
-* **Title**: **Thermal Planting & Harvest Calendar**
-* **Visual**: Live Phenological Sowing & Harvest Windows interface (`assets/shot_calendar.png`).
-* **Key Features**:
-  1. **Growing Degree Days (GDD)**: Accumulated biological heat units above baseline temperature.
-  2. **NASA 30-Year Frost Window**: Evaluates daily minimums to pinpoint safe spring planting and autumn freeze boundaries with a 90% statistical safety margin.
-  3. **4-Stage Phenology Timeline**: Sowing, Vegetative Growth, Flowering (Critical Pollination Window), and Harvest.
+### PAGE 5: Scientific Crop Suitability Engine (MAUT)
+* **Title**: **Scientific Crop Suitability Engine (MAUT)**
+* **Visual**: Live Multi-Attribute Crop Planning & Suitability Rankings screenshot (`assets/shot_crops.png`).
 * **Speaker Script**:
-  > "Crops don't grow according to calendar months; they grow according to thermal degree days. Farmelster calculates local Growing Degree Days and pairs them with 30 years of NASA frost telemetry. This generates an interactive planting calendar showing farmers the exact biological windows for sowing, vegetative canopy development, flowering, and harvest, protecting crops from devastating spring frosts and untimely autumn rains."
+  > "Instead of arbitrary recommendations, Farmelster evaluates 11 staple global crops (Wheat, Barley, Maize, Sunflower, Chickpea, Cotton, Soybeans, Olive, Grape, Lentil, Potato) using Multi-Attribute Utility Theory (MAUT). The engine pairs local NASA climate waveforms and SoilGrids chemistry with peer-reviewed FAO EcoCrop biological thresholds. As seen on screen, scores shift realistically across geographies: arid Harran favors Cotton and Chickpea, while the Central Anatolian steppe in Konya selects for drought-hardy winter grains."
 
 ---
 
-### SLIDE 6: What-If Climate Lab & Exportable Field Dossier (PDF)
-* **Title**: **Resilience Simulation & Farmer Decision Support**
-* **Visual**: Live Scenario Lab & Anomaly Sliders screenshot (`assets/shot_scenario.png`).
-* **Capabilities**:
-  - **Dynamic Anomaly Sliders**: Simulate -50% to +50% precipitation changes, -3 deg C to +5 deg C temperature shifts, sowing date shifts, and irrigation regimes.
-  - **Crop Succession & Pathogen Breaks**: Calculates biological nitrogen fixation credits and breaks pest life-cycles through botanical family alternation.
-  - **Official Field Dossier (PDF)**: Printable, export-ready dossier compiling climate curves, soil horizons, and crop advisories for bank loans, cooperatives, and agronomic extensions.
+### PAGE 6: Thermal Planting Calendar & Growing Degree Days (GDD)
+* **Title**: **Thermal Planting Calendar & Growing Degree Days**
+* **Visual**: Live Phenological Sowing & Harvest Calendar screenshot (`assets/shot_calendar.png`).
 * **Speaker Script**:
-  > "Farmelster gives farmers foresight. With our What-If Climate Simulator, users can simulate IPCC-level drought or heat scenarios and observe how crop viability responds before planting a single seed. We also recommend crop rotation strategies—such as alternating deep-taproot legumes with shallow-root grains to fix nitrogen and break pest life-cycles. When planning is complete, the farmer can click 'Export Dossier' to print a comprehensive agronomic PDF ready for field hands or agricultural financing."
+  > "Plants don't follow calendar months; they follow thermal degree days. Farmelster calculates Growing Degree Days (GDD) above base temperature and combines them with 30-year NASA frost probability curves. This generates a four-stage phenological timeline—Sowing, Vegetative Growth, Flowering (Critical Pollination Window), and Harvest—protecting crops from false spring warm spells and early autumn freezes."
 
 ---
 
-### SLIDE 7: Production Deployment & The Student Team
+### PAGE 7: What-If Climate Simulator & Printable Field Dossier (PDF)
+* **Title**: **What-If Climate Simulator & Printable Field Dossier**
+* **Visual**: Live What-If Climate Simulator & Scenario Lab screenshot (`assets/shot_scenario.png`).
+* **Speaker Script**:
+  > "Farmelster empowers farmers to test future resilience. With our What-If Climate Simulator, agronomists can stress-test fields against IPCC climate anomalies—sliding rainfall between -50% and +50%, testing temperature spikes up to +5°C, and toggling irrigation regimes—to immediately observe how crop viability responds. Once satisfied, a single click on 'Export Dossier' compiles the complete NASA climatology, soil horizons, and crop advisories into a printable PDF report for extension workers and agricultural banks."
+
+---
+
+### BONUS SLIDE 8: Student Team & NASA Space Apps Submission
 * **Title**: **Built by Students, Designed for the Planet**
-* **Visual**: Live One-Click Printable Field Dossier (PDF) screenshot (`assets/shot_dossier.png`).
-* **Architecture & Open Science**:
-  - Live in production on Vercel Serverless with FastAPI Python backends.
-  - Natural Earth deterministic spatial index: accurately distinguishes terrestrial agricultural soil from open marine waters (e.g. Aegean, Mediterranean, Sea of Marmara).
-* **The Team**:
-  - **Mert** — **Team Leader**: Architecture, backend services, scientific modeling, and project coordination.
-  - **Zeynep** — **Student Developer**: Frontend user interface, workstation layout, and interactive components.
-  - **Anka** — **Student Developer**: NASA POWER climatology research, NDVI spectral equations, and crop databases.
-  - **Aras** — **Student Developer**: GIS coordinate indexing, boundary validation, and end-to-end bug hunting.
-* **Closing Script**:
-  > "We built Farmelster as four students driven to show that NASA open data can tangibly safeguard global food security. Farmelster is live, completely open-access, and requires zero paid GIS licenses. We invite the NASA committee to visit farmelster.com and test any field on Earth. Thank you!"
+* **Visual**: Live Field Dossier Diagnostic Report modal (`assets/shot_dossier.png`).
+* **Speaker Script**:
+  > "Farmelster was built for the NASA Space Apps Challenge 2026 by a team of four students: Mert as Team Leader and Systems Architect, Zeynep on Frontend UI/UX, Anka on NASA Data Research, and Aras on GIS QA. Farmelster is live in production today at farmelster.com, completely free and open-source. Thank you, NASA Space Apps committee!"
