@@ -17,6 +17,7 @@ interface PlantingCalendarViewProps {
   latitude: number;
   longitude: number;
   fieldName: string;
+  fieldId?: string;
 }
 
 export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
@@ -25,7 +26,8 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
   onSelectCrop,
   latitude,
   longitude,
-  fieldName
+  fieldName,
+  fieldId
 }) => {
   const [calendarData, setCalendarData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -54,7 +56,14 @@ export const PlantingCalendarView: React.FC<PlantingCalendarViewProps> = ({
   const getEffectiveCalendar = () => {
     if (calendarData?.monthly_schedule) return calendarData;
 
-    // Check precomputed cached calendars
+    // Check precomputed cached calendars for this exact field
+    if (fieldId) {
+      const exactKey = `${fieldId}_${selectedCropId}`;
+      if (ALL_FIELD_CALENDARS && ALL_FIELD_CALENDARS[exactKey]) {
+        return ALL_FIELD_CALENDARS[exactKey];
+      }
+    }
+
     const cachedKey = Object.keys(ALL_FIELD_CALENDARS || {}).find(k => k.endsWith(`_${selectedCropId}`));
     if (cachedKey && ALL_FIELD_CALENDARS[cachedKey]) {
       return ALL_FIELD_CALENDARS[cachedKey];

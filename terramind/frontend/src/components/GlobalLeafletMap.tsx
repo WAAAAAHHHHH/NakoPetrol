@@ -25,6 +25,8 @@ export const GlobalLeafletMap: React.FC<GlobalLeafletMapProps> = ({
   const baseTileLayerRef = useRef<L.TileLayer | null>(null);
   const activePolygonRef = useRef<L.Polygon | L.Circle | null>(null);
   const markerRef = useRef<L.Marker | null>(null);
+  const onMapClickRef = useRef(onMapClick);
+  onMapClickRef.current = onMapClick;
 
   // 1. Initialize Map instance once
   useEffect(() => {
@@ -51,7 +53,7 @@ export const GlobalLeafletMap: React.FC<GlobalLeafletMapProps> = ({
 
       // Handle user clicking anywhere on Earth
       map.on('click', (e: L.LeafletMouseEvent) => {
-        onMapClick(e.latlng.lat, e.latlng.lng);
+        onMapClickRef.current(e.latlng.lat, e.latlng.lng);
       });
 
       mapInstanceRef.current = map;
@@ -162,6 +164,10 @@ export const GlobalLeafletMap: React.FC<GlobalLeafletMapProps> = ({
         className: 'leaflet-dark-pill-label'
       });
 
+      polygon.on('click', (e: L.LeafletMouseEvent) => {
+        onMapClickRef.current(e.latlng.lat, e.latlng.lng);
+      });
+
       activePolygonRef.current = polygon;
     } else {
       // Point circle parcel (250m radius)
@@ -177,6 +183,10 @@ export const GlobalLeafletMap: React.FC<GlobalLeafletMapProps> = ({
         permanent: true,
         direction: 'center',
         className: 'leaflet-dark-pill-label'
+      });
+
+      circle.on('click', (e: L.LeafletMouseEvent) => {
+        onMapClickRef.current(e.latlng.lat, e.latlng.lng);
       });
 
       activePolygonRef.current = circle;

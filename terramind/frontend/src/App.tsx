@@ -296,6 +296,7 @@ export function App() {
                     latitude={currentFieldLat}
                     longitude={currentFieldLon}
                     fieldName={currentFieldName}
+                    fieldId={selectedField?.id}
                   />
                 </div>
               )}
