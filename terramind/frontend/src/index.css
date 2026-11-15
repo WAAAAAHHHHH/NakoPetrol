@@ -225,48 +225,99 @@
     margin: 12mm 15mm;
   }
 
-  body, html {
+  /* Reset all root containers to allow natural multi-page flow without clipping */
+  html, 
+  body, 
+  #root, 
+  #root > div {
     background: #FFFFFF !important;
     color: #111827 !important;
     margin: 0 !important;
     padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+    position: static !important;
+    display: block !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Hide app chrome during print */
-  header, nav, main {
+  /* Hide app chrome, navigation docks, and background map during print */
+  header, 
+  nav, 
+  main, 
+  footer, 
+  .leaflet-container, 
+  .print\:hidden {
     display: none !important;
   }
 
+  /* Unclip modal wrappers so multi-page printing flows naturally */
   .no-print-backdrop {
     position: static !important;
+    display: block !important;
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    inset: auto !important;
   }
 
-  .no-print-backdrop > div {
+  .no-print-backdrop > div,
+  .dossier-modal-box {
     max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
     max-height: none !important;
     border: none !important;
     background: #FFFFFF !important;
     box-shadow: none !important;
     overflow: visible !important;
+    overflow-y: visible !important;
+    display: block !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  #printable-dossier, .dossier-print-area {
+  /* Unclip the inner scrollable container so it paginates every page */
+  .dossier-scroll-body,
+  .no-print-backdrop div {
+    overflow: visible !important;
+    overflow-y: visible !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+
+  #printable-dossier, 
+  .dossier-print-area {
+    display: block !important;
     color: #111827 !important;
     background: #FFFFFF !important;
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   #printable-dossier * {
     color: #111827 !important;
     border-color: #E2E8F0 !important;
+  }
+
+  #printable-dossier .text-white\/40,
+  #printable-dossier .text-white\/50,
+  #printable-dossier .text-white\/60 {
+    color: #475569 !important;
   }
 
   #printable-dossier h1, 
@@ -275,14 +326,33 @@
     color: #0F172A !important;
   }
 
+  #printable-dossier .text-\[\#7C9A6B\],
+  #printable-dossier .text-\[\#A8C496\] {
+    color: #245A22 !important;
+    font-weight: 600 !important;
+  }
+
+  #printable-dossier thead {
+    display: table-header-group !important;
+  }
+
   #printable-dossier table {
+    width: 100% !important;
     border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  #printable-dossier tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   #printable-dossier th {
     background: #F1F5F9 !important;
     color: #475569 !important;
     border-bottom: 2px solid #CBD5E1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   #printable-dossier td {
@@ -290,19 +360,31 @@
   }
 
   #printable-dossier .bg-white\/\[0\.02\],
-  #printable-dossier .bg-white\/\[0\.03\] {
+  #printable-dossier .bg-white\/\[0\.03\],
+  #printable-dossier .bg-white\/\[0\.05\],
+  #printable-dossier .bg-white\/\[0\.01\] {
     background: #F8FAFC !important;
     border: 1px solid #E2E8F0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
+  #printable-dossier .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  /* Clean section breaks */
   .dossier-page-break {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-bottom: 18pt !important;
+    page-break-inside: auto;
+    break-inside: auto;
+    margin-bottom: 22pt !important;
   }
 
   .dossier-footer {
     border-top: 1px solid #CBD5E1 !important;
     color: #64748B !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 24pt !important;
   }
 }

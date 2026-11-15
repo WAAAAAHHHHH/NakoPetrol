@@ -260,7 +260,7 @@ export function App() {
       {showSplash && <IntroSplash onDone={handleDismissSplash} />}
 
       {/* ── MAIN APP ── */}
-      <div className="flex flex-col h-screen w-screen bg-[#0E0F12] text-white overflow-hidden font-sans select-none">
+      <div className="flex flex-col h-screen w-screen bg-[#0E0F12] text-white overflow-hidden font-sans select-none print:h-auto print:w-auto print:overflow-visible print:bg-white print:block">
 
         <FarmelsterHeader
           activeTab={activeTab}

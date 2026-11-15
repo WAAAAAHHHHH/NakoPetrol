@@ -79,8 +79,8 @@ export const FieldDossierModal: React.FC<FieldDossierModalProps> = ({
   const docId = `FAR-NASA-${Math.abs(Math.round(lat * 100))}${Math.abs(Math.round(lon * 100))}`;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto anim-fade-in no-print-backdrop">
-      <div className="bg-[#121316] border border-white/[0.08] rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden anim-scale-in text-white">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto anim-fade-in no-print-backdrop print:static print:p-0 print:bg-transparent print:overflow-visible print:block">
+      <div className="bg-[#121316] border border-white/[0.08] rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden anim-scale-in text-white dossier-modal-box print:max-w-none print:w-full print:h-auto print:max-h-none print:overflow-visible print:border-none print:shadow-none print:bg-white print:block">
         
         {/* Top Control Bar (Screen only, hidden on print) */}
         <div className="p-4 border-b border-white/[0.08] bg-[#16181D] flex items-center justify-between shrink-0 print:hidden">
@@ -117,10 +117,10 @@ export const FieldDossierModal: React.FC<FieldDossierModalProps> = ({
         </div>
 
         {/* Scrollable Document Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-8 bg-[#0E0F12]">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-8 bg-[#0E0F12] dossier-scroll-body print:overflow-visible print:p-0 print:h-auto print:max-h-none print:bg-white print:block">
           
           {/* Print container styling */}
-          <div id="printable-dossier" className="max-w-3xl mx-auto space-y-8 text-white dossier-print-area">
+          <div id="printable-dossier" className="max-w-3xl mx-auto space-y-8 text-white dossier-print-area print:max-w-none print:text-black print:space-y-6">
             
             {/* ── DOCUMENT HEADER ── */}
             <div className="border-b border-white/[0.1] pb-6 space-y-3">
